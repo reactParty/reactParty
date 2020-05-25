@@ -1,0 +1,2 @@
+const myArr= ["hej", "olof"]
+

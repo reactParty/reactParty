@@ -2,11 +2,8 @@ import React, { Component } from 'react';
 import Todos from './components/Todos';
 import Header from './components/layout/Header';
 import AddTodo from './components/AddTodo';
-<<<<<<< HEAD
 import PickupLines from './components/PickupLines';
-=======
 import Main from './components/Main';
->>>>>>> f73acb6befed8fcb56863719fae826b846888fbd
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 // import { render } from 'react-dom';

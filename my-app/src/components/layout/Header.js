@@ -11,7 +11,10 @@ function Header() {
 
 const headerStyle = {
     height: "400px",
-    backgroundImage: "url(" + Logo + ")"
+    backgroundImage: "url(" + Logo + ")",
+    backgroundpostion: "center",
+    backgroundSize: "cover",
+    backgroundRepeat: "no-repeat",
 }
 
 export default Header;

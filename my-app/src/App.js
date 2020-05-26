@@ -6,6 +6,8 @@ import PickupLines from './components/PickupLines';
 import Main from './components/Main';
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
+import Utilities from './Utilities'
 // import { render } from 'react-dom';
 
 class App extends Component {
@@ -36,7 +38,7 @@ class App extends Component {
   componentDidMount() {
     fetch('http://pebble-pickup.herokuapp.com/tweets')
       .then(response => response.json())
-      .then(data => this.setState( { pickupLines: data } ))
+      .then(data => this.setState( { pickupLines: Utilities.shuffleArray(data) } ))
   }
 
   markComplete = (id) => {

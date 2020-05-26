@@ -1,14 +1,16 @@
-import React from 'react';
+import React, { Component } from 'react';
 import Logo1 from './layout/Drinks.png'; 
 import Logo2 from './layout/Music.png';
 
-function Main () {
-    return (
-        <main style={mainStyle}>
-            <img src={Logo1} alt="Logo" style={logoStyle1}/>
-            <img src={Logo2} alt="Logo" style={logoStyle2}/>                  
-        </main>
-    )
+class Main extends Component {
+    render() {
+        return (
+            <main style={mainStyle}>
+                <img src={Logo1} alt="Logo" style={logoStyle1}/>
+                <img src={Logo2} alt="Logo" style={logoStyle2}/>                  
+            </main>
+        )
+    }
 }
 
 const mainStyle = {
@@ -18,12 +20,12 @@ const mainStyle = {
     textAlign: "center",
 }
 
-const logoStyle1 ={
+const logoStyle1 = {
     height: "300px",
     margin: "60px 60px"
 }
 
-const logoStyle2 ={
+const logoStyle2 = {
     height: "300px",
     margin: "60px 60px"
 }

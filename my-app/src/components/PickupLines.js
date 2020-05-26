@@ -20,7 +20,7 @@ class PickupLines extends Component {
         if (this.props.pickupLines.length === 0) return <div></div>;
         let i = 0;
         return (
-            <Carousel showArrows={false} infiniteLoop autoPlay showIndicators={false} showStatus={false} transitionTime={10000} interval={10000}>
+            <Carousel showArrows={false} infiniteLoop autoPlay showIndicators={false} showStatus={false} transitionTime={10000} interval={10000} showThumbs={false}>
                 {this.props.pickupLines.map((pickupLine)=> {
                     i++;
                     return (

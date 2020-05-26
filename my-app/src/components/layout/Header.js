@@ -1,10 +1,11 @@
 import React from 'react';
-import Logo from './logo2.png'; 
+import Logo from './danicng.png'; 
 
 function Header() {
     return (
         <header style={headerStyle}>
             <h1 style={h1Style}>react</h1>
+            <img src={Logo} alt="Logo" style={logoStyle}/>
             <h1 style={h1PartyStyle}>Party</h1>
     
         </header>
@@ -33,6 +34,10 @@ const headerStyle = {
     backgroundColor: "#9e2e50",
     textAlign: "center",
     margin: "auto",
+}
+
+const logoStyle ={
+    height: "80px"
 }
 
 export default Header;

@@ -5,36 +5,38 @@ import { Carousel } from 'react-responsive-carousel';
 class PickupLines extends Component {
     constructor(props) {
         super(props);
+
         this.state = {
-            showIndex: 0,
-            pickupLine: this.props.pickupLines
-        }
-    }
-
-    getPickupLine(pickupLine, i) {
-        if (pickupLine.tweet == null) return;
-        return <PickupLine key={"slide" + i} pickupLine={pickupLine.tweet}/>
-    }
-
-    getCarousel() {
-        if (this.props.pickupLines.length === 0) return <div></div>;
-        let i = 0;
-        return (
-            <Carousel showArrows={false} infiniteLoop autoPlay showIndicators={false} showStatus={false} transitionTime={10000} interval={10000} showThumbs={false}>
-                {this.props.pickupLines.map((pickupLine)=> {
-                    i++;
-                    return (
-                        <div style={carouselItemStyle}>
-                            {this.getPickupLine(pickupLine, i)}
-                        </div>
-                    )
-                })}
-            </Carousel>
-        )
+            currentSlide: 0
+        };
     }
 
     render() {
-        return this.getCarousel();
+        if (this.props.pickupLines.length === 0) return <div></div>;
+        setTimeout(() => { if ( this.state.currentSlide === 0) this.setState({currentSlide: 1}) }, 1000)
+        return (
+            <Carousel
+                showArrows={false}
+                selectedItem={this.state.currentSlide}
+                infiniteLoop={true}
+                autoPlay={true}
+                stopOnHover={false}
+                showIndicators={false}
+                showStatus={false}
+                transitionTime={10000}
+                interval={10000}
+                showThumbs={false}>
+                {this.props.pickupLines.filter(pickupLine => pickupLine.tweet != null).map(
+                    (pickupLine, i) => {
+                        return (
+                            <div key={"pickupLineparent" + i} style={carouselItemStyle}>
+                                <PickupLine key={"slide" + i} pickupLine={pickupLine.tweet}/>
+                            </div>
+                        )
+                    })
+                }
+            </Carousel>
+        );
     }
 }
 

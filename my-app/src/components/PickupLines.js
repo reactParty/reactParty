@@ -6,7 +6,7 @@ class PickupLines extends Component {
 
         this.props.pickupLines.forEach(
             (pickupLine) => {
-                pickupLinesContainer.push(<div key={pickupLine._id} style={{backgroundColor: "#f00"}}>{pickupLine.tweet}</div>);
+                pickupLinesContainer.push(<div key={pickupLine._id} style={{backgroundColor: "#FFE4E1"}}>{pickupLine.tweet}</div>);
             }
         )
                 

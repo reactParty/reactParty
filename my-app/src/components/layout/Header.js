@@ -1,5 +1,5 @@
 import React from 'react';
-import Logo from './logo.png'; 
+import Logo from './logo2.png'; 
 
 function Header() {
     return (
@@ -11,6 +11,7 @@ function Header() {
 
 const headerStyle = {
     height: "400px",
+    width: "100%",
     backgroundImage: "url(" + Logo + ")",
     backgroundpostion: "center",
     backgroundSize: "cover",

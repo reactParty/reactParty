@@ -4,6 +4,7 @@ import Header from './components/layout/Header';
 import AddTodo from './components/AddTodo';
 import Main from './components/Main';
 import './App.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
 // import { render } from 'react-dom';
 
 class App extends Component {

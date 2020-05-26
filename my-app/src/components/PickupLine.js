@@ -3,15 +3,19 @@ import React, { Component } from 'react';
 class PickupLine extends Component {    
     render() {
         return (
-            <p>
+            <p style={pStyle}>
                 {this.props.pickupLine}
             </p>
         )
     }
 }
 
-// const pickupLineStyle = {
-//     backgroundColor: "white"
-// }
+const pStyle = {
+    margin: "0px",
+    height: "66px",
+    width: "100%",
+    position: "absolute",
+    top: "30%"
+}
 
 export default PickupLine;

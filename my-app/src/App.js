@@ -2,8 +2,13 @@ import React, { Component } from 'react';
 import Todos from './components/Todos';
 import Header from './components/layout/Header';
 import AddTodo from './components/AddTodo';
+<<<<<<< HEAD
 import PickupLines from './components/PickupLines';
+=======
+import Main from './components/Main';
+>>>>>>> f73acb6befed8fcb56863719fae826b846888fbd
 import './App.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
 // import { render } from 'react-dom';
 
 class App extends Component {
@@ -67,6 +72,7 @@ class App extends Component {
         <div className="container">
           <Header />
           <PickupLines pickupLines={this.state.pickupLines}/>
+          <Main />
           <AddTodo addTodo={this.addTodo}/>
           <Todos todos={this.state.todos} markComplete={this.markComplete} delTodo={this.delTodo}/>
         </div>

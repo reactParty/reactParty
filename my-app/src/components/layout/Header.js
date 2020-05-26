@@ -1,18 +1,17 @@
 import React from 'react';
+import Logo from './logo.png'; 
 
 function Header() {
     return (
         <header style={headerStyle}>
-            <h1>reactParty</h1>
+    
         </header>
     )
 }
 
 const headerStyle = {
-    background: "#333",
-    color: "#fff",
-    textAlign: "center",
-    padding: "10px"
+    height: "400px",
+    backgroundImage: "url(" + Logo + ")"
 }
 
 export default Header;

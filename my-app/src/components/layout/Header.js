@@ -16,8 +16,8 @@ const h1PartyStyle = {
     fontFamily: "Monoton",
     color: "white",
     display: "inline-block",
-    fontFont: "120px"
-
+    fontFont: "120px",
+    textDecoration: "underline white",
 }
 
 const h1Style = {

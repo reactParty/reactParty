@@ -1,5 +1,5 @@
 import React from 'react';
-import Logo from './danicng.png'; 
+import Logo from './logo2.png'; 
 
 function Header() {
     return (

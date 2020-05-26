@@ -3,7 +3,7 @@ import Todos from './components/Todos';
 import Header from './components/layout/Header';
 import AddTodo from './components/AddTodo';
 import './App.css';
-import { render } from 'react-dom';
+// import { render } from 'react-dom';
 
 class App extends Component {
   state = {

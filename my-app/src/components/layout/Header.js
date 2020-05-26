@@ -14,15 +14,15 @@ function Header() {
 
 const h1PartyStyle = {
     fontFamily: "Monoton",
-    color: "white",
+    color: "dark-grey",
     display: "inline-block",
     fontFont: "120px",
-    textDecoration: "underline white",
+    textDecoration: "underline black",
 }
 
 const h1Style = {
     display: "inline-block",
-    color: "white",
+    color: "dark-grey",
     fontFamily: 'Monoton',
     fontSize: "100px",
     paddingTop: "30px",
@@ -31,7 +31,7 @@ const h1Style = {
 
 const headerStyle = {
     height: "200px",
-    backgroundColor: "#9e2e50",
+    backgroundColor: "#99B8F7",
     textAlign: "center",
     margin: "auto",
 }

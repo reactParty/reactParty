@@ -13,15 +13,19 @@ function Main () {
 
 const mainStyle = {
     height: "500px",
-    backgroundColor: "#fee"
+    backgroundColor: "#fee",
+    margin: "auto",
+    textAlign: "center",
 }
 
 const logoStyle1 ={
     height: "300px",
+    margin: "60px 60px"
 }
 
 const logoStyle2 ={
     height: "300px",
+    margin: "60px 60px"
 }
 
 export default Main;

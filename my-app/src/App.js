@@ -2,30 +2,42 @@ import React, { Component } from 'react';
 import Todos from './components/Todos';
 import Header from './components/layout/Header';
 import AddTodo from './components/AddTodo';
+import PickupLines from './components/PickupLines';
 import Main from './components/Main';
 import './App.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
 // import { render } from 'react-dom';
 
 class App extends Component {
-  state = {
-    todos: [
-      {
-        id: 1,
-        title: 'Take out the trash',
-        completed: false
-      },
-      {
-        id: 2,
-        title: 'Dinner with wife',
-        completed: true
-      },
-      {
-        id: 3,
-        title: 'Dinner with mistress',
-        completed: false
-      }
-    ]
-  };
+  constructor(props) {
+    super(props);
+    this.state = {
+      todos: [
+        {
+          id: 1,
+          title: 'Take out the trash',
+          completed: false
+        },
+        {
+          id: 2,
+          title: 'Dinner with wife',
+          completed: true
+        },
+        {
+          id: 3,
+          title: 'Dinner with mistress',
+          completed: false
+        }
+      ],
+      pickupLines: []
+    }
+  }
+
+  componentDidMount() {
+    fetch('http://pebble-pickup.herokuapp.com/tweets')
+      .then(response => response.json())
+      .then(data => this.setState( { pickupLines: data } ))
+  }
 
   markComplete = (id) => {
     this.setState( {todos: this.state.todos.map(todo => {
@@ -56,6 +68,7 @@ class App extends Component {
       <div className="App">
         <div className="container">
           <Header />
+          <PickupLines pickupLines={this.state.pickupLines}/>
           <Main />
           <AddTodo addTodo={this.addTodo}/>
           <Todos todos={this.state.todos} markComplete={this.markComplete} delTodo={this.delTodo}/>

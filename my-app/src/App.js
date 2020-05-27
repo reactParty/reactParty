@@ -15,7 +15,8 @@ class App extends Component {
     super(props);
     this.state = {
       page: "home",
-      pickupLines: []
+      pickupLines: [],
+      recipesSearchResult: []
     }
   }
 
@@ -23,6 +24,13 @@ class App extends Component {
     fetch('http://pebble-pickup.herokuapp.com/tweets')
       .then(response => response.json())
       .then(data => this.setState( { pickupLines: Utilities.shuffleArray(data) } ))
+  }
+
+  getDrinksFromSearch = (query) => {
+    console.log(query);
+    fetch('https://www.thecocktaildb.com/api/json/v1/1/search.php?s=' + query)
+      .then(response => response.json())
+      .then(data => this.setState( { recipesSearchResult: data.drinks } ))
   }
 
   toHomePage = () => {
@@ -36,7 +44,7 @@ class App extends Component {
   getMain = () => {
     switch (this.state.page) {
       case "drinks":
-        return <DrinksPage />
+        return <DrinksPage searchResults={this.state.recipesSearchResult} getDrinksFromSearch={this.getDrinksFromSearch} />
       default:
         return <Main toDrinkPage={this.toDrinkPage}/>
     }

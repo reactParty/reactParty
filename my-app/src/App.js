@@ -4,6 +4,7 @@ import PickupLines from './components/PickupLines';
 import Main from './components/Main';
 import Footer from './components/Footer';
 import DrinksPage from './components/DrinksPage';
+import Popup from './components/Popup';
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
@@ -16,8 +17,15 @@ class App extends Component {
     this.state = {
       page: "home",
       pickupLines: [],
-      recipesSearchResult: []
+      recipesSearchResult: [],
+      showPopup : false 
     }
+  }
+
+  togglePopup() {  
+    this.setState({  
+         showPopup: !this.state.showPopup  
+    });
   }
 
   componentDidMount() {
@@ -57,7 +65,14 @@ class App extends Component {
           <Header toHomePage={this.toHomePage}/>
           <PickupLines pickupLines={this.state.pickupLines}/>
           {this.getMain()}
-          <Footer />          
+          <button onClick={this.togglePopup.bind(this)}>Info</button>  
+          {this.state.showPopup ?  
+          <Popup    
+            closePopup={this.togglePopup.bind(this)}  
+          />  
+          : null  
+          }  
+          <Footer />           
         </div>
       </div>
     );

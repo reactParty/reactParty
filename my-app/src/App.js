@@ -34,10 +34,10 @@ class App extends Component {
 
   getMain = () => {
     switch (this.state.page) {
-      case "home":
-        return <Main toDrinkPage={this.toDrinkPage}/>
       case "drinks":
         return <DrinksPage />
+      default:
+        return <Main toDrinkPage={this.toDrinkPage}/>
     }
 
   }

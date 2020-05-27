@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import closingCross from './layout/close.png'
+import dancingPinapple from './layout/dancing.png'
 
 
 class Popup extends Component {  
@@ -6,8 +8,36 @@ class Popup extends Component {
         return (  
             <div style={popUp}> 
             <div style={popUpInner}>  
-                <h1>{this.props.text}</h1>
-                <button onClick={this.props.closePopup}>Close me</button>  
+                <img src={closingCross} alt="ClosingCross" onClick={this.props.closePopup} style={{height: "50px", padding: "8px"}}/>
+                <article style={{margin: "0 20px 20px 20px", textAlign: "center"}}>
+                    <h2>
+                        Hi, welcome to reactParty!
+                    </h2>
+                    <p>
+                        This app opens up the oppertunity for you and your friends to have the perfect cocktail night. 
+                    </p>
+                    <p style={pStyle}>    
+                        Don't know what to mix?
+                    </p>
+                    <p>    
+                        No problem - just klick on the drink icon and search for whatever liqour
+                        you have availible at home. 
+                    </p>
+                    <p style={pStyle}>    
+                        Don't have time to make the drinks right away? 
+                    </p>
+                    <p>    
+                        Save your favorite cocktails to your personal home and make them whenever you've got time.
+                    </p>
+                    <p>    
+                        Need some good tunes as well? We got that covered! The Spotify icon will start some good 
+                        party music for ya'll!
+                    </p>
+                    <h5 style={h5Style}>
+                        Have fun and drink responsibly!
+                    </h5>
+                    <img src={dancingPinapple} alt="dancing Pineapple" style={{height: "100px", padding: "8px"}}/>
+                </article>
             </div>  
             </div>  
             );  
@@ -30,11 +60,20 @@ const popUpInner = {
     position: "absolute",  
     left: "25%",  
     right: "25%",  
-    top: "25%",  
-    bottom: "25%",  
-    margin: "auto",  
+    top: "25%",   
+    margin: "auto",
     borderRadius: "20px",  
     background: "white"
+}
+
+const pStyle = {
+    textDecoration: "underline skyblue"
+}
+
+const h5Style = {
+    textDecoration: "underline black",
+    fontWeight: "bold",
+    color: "black"
 }
   
 export default Popup;

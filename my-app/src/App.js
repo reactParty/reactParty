@@ -35,9 +35,9 @@ class App extends Component {
       .then(data => this.setState( { pickupLines: Utilities.shuffleArray(data) } ))
   }
 
-  getDrinksFromSearch = (query) => {
-    console.log(query);
-    fetch('https://www.thecocktaildb.com/api/json/v1/1/search.php?s=' + query)
+  getDrinksFromSearch = (search, nonAlcoholic) => {
+    let qNonAlcoholic = (nonAlcoholic) ? "Alcoholic" : "Non_Alcoholic";
+    fetch('https://www.thecocktaildb.com/api/json/v1/1/search.php?s=' + search + "&a=" + qNonAlcoholic)
       .then(response => response.json())
       .then(data => this.setState( { recipesSearchResult: data.drinks } ))
   }

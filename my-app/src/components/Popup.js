@@ -63,7 +63,7 @@ const popUpInner = {
     position: "absolute",  
     left: "25%",  
     right: "25%",  
-    top: "25%",   
+    top: "15%",   
     margin: "auto",
     borderRadius: "20px",  
     background: "white"

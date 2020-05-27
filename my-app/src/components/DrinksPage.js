@@ -11,14 +11,6 @@ class DrinksPage extends Component {
         }
     }
 
-    handleHover = (event, enter) => {
-        if (enter) {
-            event.target.style.cursor = "pointer";
-        } else {
-            event.target.style.cursor = "none";
-        }
-    }
-
     getNoResults() {
         return (
             <div style={{width: "100%", fontSize: "1.3em", textAlign: "center", padding: "50px"}}>
@@ -31,16 +23,15 @@ class DrinksPage extends Component {
     getResults = () => {
         if (this.props.searchResults == null) return this.getNoResults();
         if (!this.props.searchResults.length) return;
+        let strAlcoholic = (this.state.nonAlcoholic) ? "Non alcoholic" : "Alcoholic";
         return (
             <div style={drinkContainer}>
-                {this.props.searchResults.map((result) => {
+                {this.props.searchResults.filter((result) => result.strAlcoholic === strAlcoholic).map((result) => {
                     return (
                         <div style={drinkItem} key={result.idDrink}>
-                            <img width="100%" style = {{borderRadius: "10px"}}
+                            <img width="100%" style = {{borderRadius: "10px", cursor: "pointer"}}
                                 src={result.strDrinkThumb}
                                 alt={result.strDrink}
-                                onMouseEnter={(event)=>this.handleHover(event, true)}
-                                onMouseLeave={(event)=>this.handleHover(event, false)}
                                 onClick={()=>this.setState( { viewRecipe: result } )}/>
                             <div style={drinkTitleStyle}>
                                 <div style={drinkTitleChild}>
@@ -76,11 +67,11 @@ class DrinksPage extends Component {
         ) :
         (
             <div>
-                <Search handleHover={this.handleHover} getDrinksFromSearch={(search)=>this.props.getDrinksFromSearch(search, this.state.nonAlcoholic)}/>
-                {this.getResults()}
+                <Search handleHover={this.handleHover} getDrinksFromSearch={this.props.getDrinksFromSearch}/>
                 <div style={{width: "100%", margin: "20px 0", display: "flex", justifyContent: "center"}}>
                     <label><input onChange={()=>this.setState( { nonAlcoholic: !this.state.nonAlcoholic } )} name="nonAlcoholic" type="checkbox"/>Non alcoholic</label>
                 </div>
+                {this.getResults()}
             </div>
         )
     }

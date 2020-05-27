@@ -7,7 +7,7 @@ class Search extends Component {
         return (
             <div style={divStyle}>
             
-                <Form.Group>
+                <Form.Group style={searchContainer}>
                     <Form.Control style={searchStyle} size="lg" type="text" placeholder="Search.." />
                 </Form.Group>
 
@@ -27,16 +27,22 @@ const divStyle = {
     paddingBottom: "10px"
 }
 
-const searchStyle = {
+const searchContainer = {
   height: "50px",
-  fontSize: "50px",
-  boxShadow: "none"
+  fontSize: "30px",
+  boxShadow: "none",
+  width: "60%",
 }
 
 const logoStyle = {
     height:"40px",
     marginLeft: "-55px",
     marginTop: "5px"
+}
+
+const searchStyle = {
+    padding: "30px",
+    borderRadius: "40px"
 }
 
 export default Search;

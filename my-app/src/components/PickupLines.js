@@ -42,7 +42,9 @@ class PickupLines extends Component {
 
 const carouselItemStyle = {
     backgroundColor: "white",
-    height: "66px"
+    height: "66px",
+    borderBottom: "5px black",
+    borderBottomStyle: "double"
 }
 
 // const pickupLineStyle = {

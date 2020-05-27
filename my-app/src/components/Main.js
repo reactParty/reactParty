@@ -37,7 +37,6 @@ class Main extends Component {
 }
 
 const mainStyle = {
-    backgroundColor: "#fee",
     margin: "auto",
     textAlign: "center",
 }

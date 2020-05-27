@@ -29,8 +29,11 @@ class Popup extends Component {
                     <p>    
                         Save your favorite cocktails to your personal home and make them whenever you've got time.
                     </p>
-                    <p>    
-                        Need some good tunes as well? We got that covered! The Spotify icon will start some good 
+                    <p style={pStyle}>   
+                        Need some good tunes as well? 
+                    </p>
+                    <p>
+                        We got that covered! The Spotify icon will start some good 
                         party music for ya'll!
                     </p>
                     <h5 style={h5Style}>
@@ -60,20 +63,19 @@ const popUpInner = {
     position: "absolute",  
     left: "25%",  
     right: "25%",  
-    top: "25%",   
+    top: "15%",   
     margin: "auto",
     borderRadius: "20px",  
     background: "white"
 }
 
 const pStyle = {
-    textDecoration: "underline skyblue"
+    fontStyle: "italic"
 }
 
 const h5Style = {
-    textDecoration: "underline black",
     fontWeight: "bold",
-    color: "black"
+    color: "black",
 }
   
 export default Popup;

@@ -62,18 +62,20 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <div className="container-fluid" style={{backgroundColor: "#fee"}}>
+        <div className="container-fluid" >
           <Header toHomePage={this.toHomePage}/>
           <PickupLines pickupLines={this.state.pickupLines}/>
-          <img src={info} alt="info" onClick={this.togglePopup.bind(this)} style={{height: "50px", backgroundColor: "#fee", margin: "10px 0 0 10px"}}/>  
-            {this.state.showPopup ?  
+          <div>
+          <img src={info} alt="info" onClick={this.togglePopup.bind(this)} style={{height: "50px", margin: "10px 0 0 10px"}}/> 
+          </div> 
+          {this.getMain()}
+          <Footer />
+          {this.state.showPopup ?  
             <Popup    
               closePopup={this.togglePopup.bind(this)}  
             />  
             : null  
-            }  
-          {this.getMain()}
-          <Footer />           
+            }             
         </div>
       </div>
     );

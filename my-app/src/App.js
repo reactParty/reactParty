@@ -3,6 +3,7 @@ import Header from './components/layout/Header';
 import PickupLines from './components/PickupLines';
 import Main from './components/Main';
 import Footer from './components/Footer';
+import DrinksPage from './components/DrinksPage';
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
@@ -13,6 +14,7 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      page: "home",
       pickupLines: []
     }
   }
@@ -23,14 +25,31 @@ class App extends Component {
       .then(data => this.setState( { pickupLines: Utilities.shuffleArray(data) } ))
   }
 
+  toHomePage = () => {
+    this.setState( { page: "home" } )
+  }
+
+  toDrinkPage = () => {
+    this.setState( { page: "drinks" } )
+  }
+
+  getMain = () => {
+    switch (this.state.page) {
+      case "drinks":
+        return <DrinksPage />
+      default:
+        return <Main toDrinkPage={this.toDrinkPage}/>
+    }
+  }
+
   render() {
     return (
       <div className="App">
         <div className="container-fluid">
-          <Header />
+          <Header toHomePage={this.toHomePage}/>
           <PickupLines pickupLines={this.state.pickupLines}/>
-          <Main />
-          <Footer />
+          {this.getMain()}
+          <Footer />          
         </div>
       </div>
     );

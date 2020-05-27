@@ -15,7 +15,8 @@ const pStyle = {
     height: "66px",
     width: "100%",
     padding: "20px",
-    backgroundColor: "#f7f7f7"
+    backgroundColor: "#fee",
+    fontSize: "25px",
 }
 
 export default PickupLine;

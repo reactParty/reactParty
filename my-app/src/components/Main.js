@@ -19,6 +19,7 @@ class Main extends Component {
         return (
             <main style={mainStyle}>
                 <img
+                    onClick={this.props.toDrinkPage}
                     src={Logo1}
                     alt="Logo"
                     style={logoStyle1}
@@ -44,13 +45,15 @@ const mainStyle = {
 const logoStyle1 = {
     height: "300px",
     margin: "50px 85px",
-    transition: "all 0.5s"
+    transition: "all 0.5s",
+    cursor: "pointer"
 }
 
 const logoStyle2 = {
     height: "300px",
     margin: "50px 85px",
-    transition: "all 0.5s"
+    transition: "all 0.5s",
+    cursor: "pointer"
 }
 
 export default Main;

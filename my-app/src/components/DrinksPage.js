@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Search from './Search';
+import danceImg from './layout/danicng.png'
 
 class DrinksPage extends Component {
     constructor(props) {
@@ -17,7 +18,17 @@ class DrinksPage extends Component {
         }
     }
 
+    getNoResults() {
+        return (
+            <div style={{width: "100%", fontSize: "1.3em", textAlign: "center", padding: "50px"}}>
+                <div style={{width: "100%", marginBottom: "20px"}}>No results! Perhaps you've had enough ...</div>
+                <img src={danceImg} alt="dance" width="100px"/>
+            </div>
+        )
+    }
+
     getResults = () => {
+        if (this.props.searchResults == null) return this.getNoResults();
         if (!this.props.searchResults.length) return;
         return (
             <div style={drinkContainer}>

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Form from 'react-bootstrap/Form';
+import searchLogo from './layout/search1.png';
 
 class Search extends Component {
     render() {

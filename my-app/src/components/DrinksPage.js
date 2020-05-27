@@ -69,7 +69,7 @@ class DrinksPage extends Component {
             <div>
                 <Search handleHover={this.handleHover} getDrinksFromSearch={this.props.getDrinksFromSearch}/>
                 <div style={{width: "100%", margin: "20px 0", display: "flex", justifyContent: "center"}}>
-                    <label><input onChange={()=>this.setState( { nonAlcoholic: !this.state.nonAlcoholic } )} name="nonAlcoholic" type="checkbox"/>Non alcoholic</label>
+                    <label style={{cursor: "pointer"}}><input style={{cursor: "pointer"}} onChange={()=>this.setState( { nonAlcoholic: !this.state.nonAlcoholic } )} name="nonAlcoholic" type="checkbox"/>Non alcoholic</label>
                 </div>
                 {this.getResults()}
             </div>

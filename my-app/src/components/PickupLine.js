@@ -14,8 +14,8 @@ const pStyle = {
     margin: "0px",
     height: "66px",
     width: "100%",
-    position: "absolute",
-    top: "30%"
+    padding: "20px",
+    backgroundColor: "#f7f7f7"
 }
 
 export default PickupLine;

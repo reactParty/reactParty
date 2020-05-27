@@ -7,8 +7,8 @@ class Popup extends Component {
         return (  
             <div style={popUp}> 
             <div style={popUpInner}>  
-                <img src={closingCross} alt="ClosingCross" onClick={this.props.closePopup} style={{height: "40px", paddingLeft: "8px"}}/>
-                <article>
+                <img src={closingCross} alt="ClosingCross" onClick={this.props.closePopup} style={{height: "50px", padding: "8px"}}/>
+                <article style={{margin: "20px", textAlign: "center"}}>
                     <h2>
                         Hi, welcome to reactParty!
                     </h2>

@@ -24,13 +24,17 @@ class DrinksPage extends Component {
                 {this.props.searchResults.map((result) => {
                     return (
                         <div style={drinkItem} key={result.idDrink}>
-                            {/* {result.strDrink} */}
-                            <img width="100%"
+                            <img width="100%" style = {{borderRadius: "10px"}}
                                 src={result.strDrinkThumb}
                                 alt={result.strDrink}
                                 onMouseEnter={(event)=>this.handleHover(event, true)}
                                 onMouseLeave={(event)=>this.handleHover(event, false)}
                                 onClick={()=>this.setState( { viewRecipe: result } )}/>
+                            <div style={drinkTitleStyle}>
+                                <div style={drinkTitleChild}>
+                                    {result.strDrink}
+                                </div>
+                            </div>
                         </div>
                     )
                 })}
@@ -57,12 +61,12 @@ class DrinksPage extends Component {
 }
 
 const drinkContainer = {
-    width: "100%",
+    width: "80%",
     display: "flex",
     padding: "0",
-    listStyle: "none",
+    justifyContent: "center",
     flexWrap: "wrap",
-    margin: "0"
+    margin: "50px auto"
 }
 
 const drinkItem = {
@@ -71,7 +75,28 @@ const drinkItem = {
     justifyContent: "center",
     margin: "10px",
     padding: "2%",
-    backgroundColor: "red"
+    backgroundColor: "#fafafa",
+    borderRadius: "10px",
+    flexDirection: "column",
+    position: "relative",
+    boxShadow: "#333 0px 0px 3px"
+}
+
+const drinkTitleStyle = {
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+    position: "absolute",
+    bottom: "6.4%",
+    width: "87.2%",
+    backgroundColor: "rgba(0,0,0 , 0.3)",
+    color: "white",
+    height: "20%",
+    borderRadius: "0 0 10px 10px"
+}
+
+const drinkTitleChild = {
+    position: "absolute"
 }
 
 export default DrinksPage;

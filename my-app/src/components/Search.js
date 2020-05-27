@@ -36,8 +36,8 @@ const searchContainer = {
 
 const logoStyle = {
     height:"40px",
-    marginLeft: "-55px",
-    marginTop: "5px"
+    marginLeft: "-60px",
+    marginTop: "10px"
 }
 
 const searchStyle = {

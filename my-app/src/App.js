@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Header from './components/layout/Header';
 import PickupLines from './components/PickupLines';
 import Main from './components/Main';
+import Footer from './components/Footer';
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
@@ -29,6 +30,7 @@ class App extends Component {
           <Header />
           <PickupLines pickupLines={this.state.pickupLines}/>
           <Main />
+          <Footer />
         </div>
       </div>
     );

@@ -60,7 +60,7 @@ const searchContainer = {
 const logoStyle = {
     height:"40px",
     marginLeft: "-55px",
-    marginTop: "5px"
+    marginTop: "12px"
 }
 
 const searchStyle = {

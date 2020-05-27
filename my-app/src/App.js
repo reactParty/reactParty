@@ -6,6 +6,7 @@ import Footer from './components/Footer';
 import DrinksPage from './components/DrinksPage';
 import Popup from './components/Popup';
 import info from './components/layout/info.png';
+import house from './components/layout/house1.png';
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
@@ -67,6 +68,7 @@ class App extends Component {
           <PickupLines pickupLines={this.state.pickupLines}/>
           <div>
           <img src={info} alt="info" onClick={this.togglePopup.bind(this)} style={{height: "50px", margin: "10px 0 0 10px"}}/> 
+          <img src={house} alt="log for saved drinks" style={{height: "50px", margin: "10px 60px 0 0", float: "right"}}/>
           </div> 
           {this.getMain()}
           <Footer />

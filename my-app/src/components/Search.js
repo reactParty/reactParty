@@ -34,7 +34,9 @@ const searchStyle = {
 }
 
 const logoStyle = {
-    height:"50px"
+    height:"40px",
+    marginLeft: "-55px",
+    marginTop: "5px"
 }
 
 export default Search;

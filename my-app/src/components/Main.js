@@ -18,10 +18,6 @@ class Main extends Component {
     render() {
         return (
             <main style={mainStyle}>
-                <aside style={asideStyle}>
-                    <p>Hey you! Are you thirsty? We got your drinks sorted for the night!</p>
-                    <p>You wanna listen to some party musik? We got your party music!</p>
-                </aside>
                 <img
                     onClick={this.props.toDrinkPage}
                     src={Logo1}
@@ -60,11 +56,5 @@ const logoStyle2 = {
     cursor: "pointer"
 }
 
-const asideStyle = {
-    paddingTop: "50px",
-    color: "black",
-    display: "flex",
-    flexDirection: "column"
-}
 
 export default Main;

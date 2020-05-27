@@ -19,6 +19,7 @@ class Main extends Component {
         return (
             <main style={mainStyle}>
                 <img
+                    onClick={this.props.toDrinkPage}
                     src={Logo1}
                     alt="Logo"
                     style={logoStyle1}

@@ -57,9 +57,20 @@ class DrinksPage extends Component {
     render() {
         return (this.state.viewRecipe) ? 
         (
-            <div>
-                <h2>{this.state.viewRecipe.strDrink}</h2>
-                <img src={this.state.viewRecipe.strDrinkThumb} alt={this.state.viewRecipe.strDrink}/>
+            <div style={drinkInfoContainer}>
+                <div style={drinkStyle}>
+                    <h2>{this.state.viewRecipe.strDrink}</h2>
+                    <img width="100%" style = {{borderRadius: "10px"}} src={this.state.viewRecipe.strDrinkThumb} alt={this.state.viewRecipe.strDrink}/>
+                </div>
+                <div style={drinkInfo}>
+                    <h2>Ingredients</h2>
+                    <ul>
+                        <li style = {{display: "flex", justifyContent: "space-between"}}>
+                            <div>{this.state.viewRecipe.strIngredient1}</div>
+                            <div>{this.state.viewRecipe.strMeasure1}</div>
+                        </li>
+                    </ul>
+                </div>
             </div>
         ) :
         (
@@ -69,6 +80,17 @@ class DrinksPage extends Component {
             </div>
         )
     }
+}
+
+const drinkInfoContainer = {
+    width: "60%",
+    display: "flex",
+    padding: "0",
+    justifyContent: "center",
+    flexWrap: "wrap",
+    margin: "50px auto",
+    borderRadius: "10px",
+    boxShadow: "#333 0px 0px 3px"
 }
 
 const drinkContainer = {
@@ -108,6 +130,18 @@ const drinkTitleStyle = {
 
 const drinkTitleChild = {
     position: "absolute"
+}
+
+const drinkStyle = {
+    width: "50%",
+    backgroundColor: "#fafafa",
+    padding: "2%",
+}
+
+const drinkInfo = {
+    width: "50%",
+    backgroundColor: "#fafafa",
+    padding: "2%",   
 }
 
 export default DrinksPage;

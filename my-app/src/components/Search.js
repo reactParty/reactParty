@@ -8,10 +8,8 @@ class Search extends Component {
             <div style={divStyle}>
             
                 <Form.Group>
-                    <Form.Control size="lg" type="text" placeholder="Large text" />
+                    <Form.Control style={searchStyle} size="lg" type="text" placeholder="Large text" />
                 </Form.Group>
-            
-                <input style={searchStyle} type="text" placeholder="Search..." />
                 <img 
                     style={logoStyle}
                     src={searchLogo}

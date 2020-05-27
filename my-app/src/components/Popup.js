@@ -8,7 +8,7 @@ class Popup extends Component {
             <div style={popUp}> 
             <div style={popUpInner}>  
                 <img src={closingCross} alt="ClosingCross" onClick={this.props.closePopup} style={{height: "50px", padding: "8px"}}/>
-                <article style={{margin: "20px", textAlign: "center"}}>
+                <article style={{margin: "0 20px 20px 20px", textAlign: "center"}}>
                     <h2>
                         Hi, welcome to reactParty!
                     </h2>
@@ -46,9 +46,8 @@ const popUpInner = {
     position: "absolute",  
     left: "25%",  
     right: "25%",  
-    top: "25%",  
-    bottom: "25%",  
-    margin: "auto",  
+    top: "25%",   
+    margin: "auto",
     borderRadius: "20px",  
     background: "white"
 }

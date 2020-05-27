@@ -7,8 +7,15 @@ class Popup extends Component {
         return (  
             <div style={popUp}> 
             <div style={popUpInner}>  
-                <h1>{this.props.text}</h1>
-                <img src={closingCross} alt="ClosingCross" onClick={this.props.closePopup} style={{height: "40px", paddingLeft: "8px"}}/>  
+                <img src={closingCross} alt="ClosingCross" onClick={this.props.closePopup} style={{height: "40px", paddingLeft: "8px"}}/>
+                <article>
+                    <h2>
+                        Tjaaaaa
+                    </h2>
+                    <p>
+                        tjeeeenaaaaaa
+                    </p>
+                </article>
             </div>  
             </div>  
             );  

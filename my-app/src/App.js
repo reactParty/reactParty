@@ -37,7 +37,6 @@ class App extends Component {
   }
 
   getDrinksFromSearch = (search) => {
-    console.log("did drink search")
     fetch('https://www.thecocktaildb.com/api/json/v1/1/search.php?s=' + search)
       .then(response => response.json())
       .then(data => this.setState( { recipesSearchResult: data.drinks } ))

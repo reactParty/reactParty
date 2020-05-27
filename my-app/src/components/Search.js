@@ -5,10 +5,12 @@ import searchLogo from './layout/search1.png';
 class Search extends Component {
     render() {
         return (
-            <Form.Group>
-                <Form.Control size="lg" type="text" placeholder="Large text" />
-            </Form.Group>
             <div style={divStyle}>
+            
+                <Form.Group>
+                    <Form.Control size="lg" type="text" placeholder="Large text" />
+                </Form.Group>
+            
                 <input style={searchStyle} type="text" placeholder="Search..." />
                 <img 
                     style={logoStyle}

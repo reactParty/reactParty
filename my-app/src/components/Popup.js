@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import closingCross from './layout/close.png'
+import dancingPinapple from './layout/dancing.png'
 
 
 class Popup extends Component {  
@@ -35,6 +36,7 @@ class Popup extends Component {
                     <h5 style={h5Style}>
                         Have fun and drink responsibly.
                     </h5>
+                    <img src={dancingPinapple} alt="dancing Pineapple" style={{height: "100px", padding: "8px"}}/>
                 </article>
             </div>  
             </div>  

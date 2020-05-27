@@ -4,4 +4,5 @@ body {
 
 .container-fluid {
   padding: 0px !important;
+  width: 100%;
 }

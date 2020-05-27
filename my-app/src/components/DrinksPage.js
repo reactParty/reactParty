@@ -20,21 +20,21 @@ class DrinksPage extends Component {
     getResults = () => {
         if (!this.props.searchResults.length) return;
         return (
-            <ul>
+            <div style={drinkContainer}>
                 {this.props.searchResults.map((result) => {
                     return (
-                        <li key={result.idDrink}>
-                            {result.strDrink}
-                            <img
+                        <div style={drinkItem} key={result.idDrink}>
+                            {/* {result.strDrink} */}
+                            <img width="100%"
                                 src={result.strDrinkThumb}
                                 alt={result.strDrink}
                                 onMouseEnter={(event)=>this.drinkHover(event, true)}
                                 onMouseLeave={(event)=>this.drinkHover(event, false)}
                                 onClick={()=>this.setState( { viewRecipe: result } )}/>
-                        </li>
+                        </div>
                     )
                 })}
-            </ul>
+            </div>
         )
 
     }
@@ -51,10 +51,28 @@ class DrinksPage extends Component {
             <div>
                 <button onClick={()=>this.props.getDrinksFromSearch("margarita")}>KÖR</button>
                 <Search />
-                <div>{this.getResults()}</div>
+                {this.getResults()}
             </div>
         )
     }
+}
+
+const drinkContainer = {
+    width: "100%",
+    display: "flex",
+    padding: "0",
+    listStyle: "none",
+    flexWrap: "wrap",
+    margin: "0"
+}
+
+const drinkItem = {
+    display: "flex",
+    width: "31%",
+    justifyContent: "center",
+    margin: "10px",
+    padding: "2%",
+    backgroundColor: "red"
 }
 
 export default DrinksPage;

@@ -65,13 +65,12 @@ const popUpInner = {
 }
 
 const pStyle = {
-    textDecoration: "underline skyblue"
+    fontStyle: "italic"
 }
 
 const h5Style = {
-    textDecoration: "underline black",
     fontWeight: "bold",
-    color: "black"
+    color: "black",
 }
   
 export default Popup;

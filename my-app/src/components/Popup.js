@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import closingCross from './layout/close.png'
 
 
 class Popup extends Component {  
@@ -7,7 +8,7 @@ class Popup extends Component {
             <div style={popUp}> 
             <div style={popUpInner}>  
                 <h1>{this.props.text}</h1>
-                <button onClick={this.props.closePopup}>Close me</button>  
+                <img src={closingCross} alt="ClosingCross" onClick={this.props.closePopup} style={{height: "40px", paddingLeft: "8px"}}/>  
             </div>  
             </div>  
             );  

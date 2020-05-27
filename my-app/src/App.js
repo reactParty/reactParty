@@ -5,6 +5,7 @@ import Main from './components/Main';
 import Footer from './components/Footer';
 import DrinksPage from './components/DrinksPage';
 import Popup from './components/Popup';
+import info from './components/layout/info.png';
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
@@ -61,17 +62,17 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <div className="container-fluid">
+        <div className="container-fluid" style={{backgroundColor: "#fee"}}>
           <Header toHomePage={this.toHomePage}/>
           <PickupLines pickupLines={this.state.pickupLines}/>
+          <img src={info} alt="info" onClick={this.togglePopup.bind(this)} style={{height: "50px", backgroundColor: "#fee", margin: "10px 0 0 10px"}}/>  
+            {this.state.showPopup ?  
+            <Popup    
+              closePopup={this.togglePopup.bind(this)}  
+            />  
+            : null  
+            }  
           {this.getMain()}
-          <button onClick={this.togglePopup.bind(this)}>Info</button>  
-          {this.state.showPopup ?  
-          <Popup    
-            closePopup={this.togglePopup.bind(this)}  
-          />  
-          : null  
-          }  
           <Footer />           
         </div>
       </div>

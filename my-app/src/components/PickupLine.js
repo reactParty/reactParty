@@ -15,7 +15,6 @@ const pStyle = {
     height: "66px",
     width: "100%",
     padding: "20px",
-    backgroundColor: "#fee",
     fontSize: "25px",
 }
 

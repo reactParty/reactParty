@@ -11,4 +11,9 @@ class Search extends Component {
     }
 }
 
+const searchStyle = {
+    width: "80%",
+    marginLeft: "20px"
+}
+
 export default Search;

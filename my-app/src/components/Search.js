@@ -3,15 +3,38 @@ import Form from 'react-bootstrap/Form';
 import searchLogo from './layout/search1.png';
 
 class Search extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            value: ""
+        }
+    }
+
+    handleChange = (event) => {
+        this.setState( { value: event.target.value } )
+        if (event.keyCode === 13) {
+            this.props.getDrinksFromSearch(this.state.value);
+        }
+    }
+
     render() {
+        const { handleHover } = this.props
         return (
             <div style={divStyle}>
             
                 <Form.Group style={searchContainer}>
-                    <Form.Control style={searchStyle} size="lg" type="text" placeholder="Search.." />
+                    <Form.Control
+                        onKeyUp={this.handleChange}
+                        style={searchStyle}
+                        size="lg"
+                        type="text"
+                        placeholder="Search.." />
                 </Form.Group>
 
-                <img 
+                <img
+                    onClick={()=>this.props.getDrinksFromSearch(this.state.value)}
+                    onMouseEnter={(event)=>handleHover(event, true)}
+                    onMouseLeave={(event)=>handleHover(event, false)}
                     style={logoStyle}
                     src={searchLogo}
                     alt="logo"/>

@@ -9,7 +9,7 @@ class DrinksPage extends Component {
         }
     }
 
-    drinkHover = (event, enter) => {
+    handleHover = (event, enter) => {
         if (enter) {
             event.target.style.cursor = "pointer";
         } else {
@@ -28,8 +28,8 @@ class DrinksPage extends Component {
                             <img width="100%"
                                 src={result.strDrinkThumb}
                                 alt={result.strDrink}
-                                onMouseEnter={(event)=>this.drinkHover(event, true)}
-                                onMouseLeave={(event)=>this.drinkHover(event, false)}
+                                onMouseEnter={(event)=>this.handleHover(event, true)}
+                                onMouseLeave={(event)=>this.handleHover(event, false)}
                                 onClick={()=>this.setState( { viewRecipe: result } )}/>
                         </div>
                     )
@@ -49,8 +49,7 @@ class DrinksPage extends Component {
         ) :
         (
             <div>
-                <button onClick={()=>this.props.getDrinksFromSearch("margarita")}>KÖR</button>
-                <Search />
+                <Search handleHover={this.handleHover} getDrinksFromSearch={this.props.getDrinksFromSearch}/>
                 {this.getResults()}
             </div>
         )

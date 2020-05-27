@@ -14,15 +14,27 @@ class Popup extends Component {
                     </h2>
                     <p>
                         This app opens up the oppertunity for you and your friends to have the perfect cocktail night. 
+                    </p>
+                    <p>    
                         Don't know what to mix?
+                    </p>
+                    <p>    
                         No problem - just klick on the drink icon and search for whatever liqour
                         you have availible at home. 
+                    </p>
+                    <p>    
                         Don't have time to make the drinks right away? 
+                    </p>
+                    <p>    
                         Save your favorite cocktails to your personal home and make them whenever you've got time.
+                    </p>
+                    <p>    
                         Need some good tunes as well? We got that covered! The Spotify icon will start some good 
                         party music for ya'll!
-                        Have fun and drink responsibly.
                     </p>
+                    <h5 style={h5Style}>
+                        Have fun and drink responsibly.
+                    </h5>
                 </article>
             </div>  
             </div>  
@@ -51,6 +63,12 @@ const popUpInner = {
     margin: "auto",  
     borderRadius: "20px",  
     background: "white"
+}
+
+const h5Style = {
+    textDecoration: "underline black",
+    fontWeight: "bold",
+    color: "black"
 }
   
 export default Popup;

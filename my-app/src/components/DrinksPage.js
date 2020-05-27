@@ -1,11 +1,10 @@
 import React, { Component } from 'react';
+import Search from './Search';
 
 class DrinksPage extends Component {
     render() {
         return (
-            <main>
-                Drinks
-            </main>
+            <Search />
         )
     }
 }

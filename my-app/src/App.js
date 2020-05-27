@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Header from './components/layout/Header';
 import PickupLines from './components/PickupLines';
 import Main from './components/Main';
+import Footer from './components/Footer';
 import DrinksPage from './components/DrinksPage';
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -39,7 +40,6 @@ class App extends Component {
       default:
         return <Main toDrinkPage={this.toDrinkPage}/>
     }
-
   }
 
   render() {
@@ -49,6 +49,7 @@ class App extends Component {
           <Header toHomePage={this.toHomePage}/>
           <PickupLines pickupLines={this.state.pickupLines}/>
           {this.getMain()}
+          <Footer />          
         </div>
       </div>
     );

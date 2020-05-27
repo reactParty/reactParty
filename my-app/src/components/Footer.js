@@ -11,7 +11,7 @@ function Footer() {
                 <li>lukeJoensson</li>
                 <li>vigge13</li>
             </ul>
-            <p>*Please drink responsibly*</p>
+            <p style={{marginBottom: "0", paddingBottom: "10px"}}>*Please drink responsibly*</p>
         </footer>
     )
 }

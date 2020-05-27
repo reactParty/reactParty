@@ -16,14 +16,14 @@ class Popup extends Component {
                     <p>
                         This app opens up the oppertunity for you and your friends to have the perfect cocktail night. 
                     </p>
-                    <p>    
+                    <p style={pStyle}>    
                         Don't know what to mix?
                     </p>
                     <p>    
                         No problem - just klick on the drink icon and search for whatever liqour
                         you have availible at home. 
                     </p>
-                    <p>    
+                    <p style={pStyle}>    
                         Don't have time to make the drinks right away? 
                     </p>
                     <p>    
@@ -34,7 +34,7 @@ class Popup extends Component {
                         party music for ya'll!
                     </p>
                     <h5 style={h5Style}>
-                        Have fun and drink responsibly.
+                        Have fun and drink responsibly!
                     </h5>
                     <img src={dancingPinapple} alt="dancing Pineapple" style={{height: "100px", padding: "8px"}}/>
                 </article>
@@ -64,6 +64,10 @@ const popUpInner = {
     margin: "auto",
     borderRadius: "20px",  
     background: "white"
+}
+
+const pStyle = {
+    textDecoration: "underline skyblue"
 }
 
 const h5Style = {

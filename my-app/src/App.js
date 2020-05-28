@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+// import hash from "./hash";
+import { clientId } from './ignore';
 import Header from './components/layout/Header';
 import PickupLines from './components/PickupLines';
 import Main from './components/Main';
@@ -13,6 +15,30 @@ import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a lo
 import Utilities from './Utilities'
 // import { render } from 'react-dom';
 
+// spotify endpoint
+const authEndpoint = 'https://accounts.spotify.com/authorize';
+
+// declaring redirect and scopes for spotify
+const redirectUri = "http://localhost:3000/";
+const scopes = [
+  "user-read-currently-playing",
+  "user-read-playback-state",
+  "user-modify-playback-state"
+];
+
+// Get the hash of the url for spotify
+const hash = window.location.hash
+  .substring(1)
+  .split("&")
+  .reduce(function(initial, item) {
+    if (item) {
+      var parts = item.split("=");
+      initial[parts[0]] = decodeURIComponent(parts[1]);
+    }
+    return initial;
+  }, {});
+window.location.hash = "";
+
 class App extends Component {
   constructor(props) {
     super(props);
@@ -20,7 +46,9 @@ class App extends Component {
       page: "home",
       pickupLines: [],
       recipesSearchResult: [],
-      showPopup : false 
+      showPopup : false,
+      spotifyToken: undefined,
+      spotifyCurrentlyPlaying: undefined
     }
   }
 
@@ -31,9 +59,60 @@ class App extends Component {
   }
 
   componentDidMount() {
+    // Set token for spotify
+    let _token = hash.access_token;
+    if (_token) {
+      // Set token for spotify
+      this.setState({
+        spotifyToken: _token
+      });
+    }
     fetch('http://pebble-pickup.herokuapp.com/tweets')
       .then(response => response.json())
       .then(data => this.setState( { pickupLines: Utilities.shuffleArray(data) } ))
+  }
+
+  // Spotify methods
+  getCurrentlyPlaying() {
+    fetch("https://api.spotify.com/v1/me/player", {
+      method: "GET",
+      headers: new Headers({
+        Authorization: "Bearer " + this.state.spotifyToken
+      })
+    }).then((response)=>{
+      if (response.status !== 204) {
+        response.json()
+      } else {
+        alert("Du är inte aktiv på ditt spotify-konto!")
+      }
+    })
+  }
+
+  getSpotifyCurrentlyPlaying() {
+    fetch("https://api.spotify.com/v1/me/player/currently-playing", {
+      method: "GET",
+      headers: new Headers({
+        Authorization: "Bearer " + this.state.spotifyToken
+      })
+    }).then((response)=>response.json())
+      .then((currentlyPlayingData) => {this.setState( { spotifyCurrentlyPlaying: currentlyPlayingData.item.name } ); console.log(currentlyPlayingData.item.name)})
+  }
+
+  modifyPlayer(action) {
+    if (action == null) return;
+    let method;
+    if (action === "next" || action === "previous") {
+      method = "POST";
+    } else if (action === "play" || action === "pause") {
+      method = "PUT";
+    }
+
+    fetch("https://api.spotify.com/v1/me/player/" + action, {
+      method: method,
+      headers: new Headers({
+        Authorization: "Bearer " + this.state.spotifyToken
+      })
+    })
   }
 
   getDrinksFromSearch = (search) => {
@@ -55,7 +134,32 @@ class App extends Component {
       case "drinks":
         return <DrinksPage searchResults={this.state.recipesSearchResult} getDrinksFromSearch={this.getDrinksFromSearch} />
       default:
-        return <Main toDrinkPage={this.toDrinkPage}/>
+        return (
+          <div>
+            <Main toDrinkPage={this.toDrinkPage}/>        
+            {!this.state.spotifyToken && (
+              <a
+                className="btn btn--loginApp-link"
+                href={`${authEndpoint}?client_id=${clientId}&redirect_uri=${redirectUri}&scope=${scopes.join("%20")}&response_type=token&show_dialog=true`}
+              >
+                Login to Spotify
+              </a>
+            )}
+            {this.state.spotifyToken && (
+              <div>
+                <p>
+                  {this.getSpotifyCurrentlyPlaying}
+                </p>
+                <p>
+                  <button onClick={()=>this.modifyPlayer("next")}> NExt </button>
+                  <button onClick={()=>this.modifyPlayer("pause")}> pause </button>
+                  <button onClick={()=>this.modifyPlayer("play")}> play </button>
+                  <button onClick={()=>this.modifyPlayer("previous")}> previous </button>
+                </p>
+              </div>
+            )}
+          </div>
+        )
     }
   }
 

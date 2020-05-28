@@ -5,6 +5,7 @@ import Main from './components/Main';
 import Footer from './components/Footer';
 import DrinksPage from './components/DrinksPage';
 import Popup from './components/Popup';
+import SpotifyPopUp from './components/SpotifyPopUp';
 import info from './components/layout/info.png';
 import house from './components/layout/house1.png';
 import './App.css';
@@ -20,13 +21,21 @@ class App extends Component {
       page: "home",
       pickupLines: [],
       recipesSearchResult: [],
-      showPopup : false 
+      showPopup : false, 
+      showSpotifyPopUp : false
     }
   }
 
   togglePopup() {  
     this.setState({  
          showPopup: !this.state.showPopup  
+    });
+  }
+
+  toggleSpotifyPopup = () => {
+    console.log("toggle")
+    this.setState({
+      showSpotifyPopUp: !this.state.showSpotifyPopUp
     });
   }
 
@@ -55,7 +64,7 @@ class App extends Component {
       case "drinks":
         return <DrinksPage searchResults={this.state.recipesSearchResult} getDrinksFromSearch={this.getDrinksFromSearch} />
       default:
-        return <Main toDrinkPage={this.toDrinkPage}/>
+        return <Main toggleSpotifyPopUp={this.toggleSpotifyPopup} toDrinkPage={this.toDrinkPage}/>
     }
   }
 
@@ -74,6 +83,12 @@ class App extends Component {
           {this.state.showPopup ?  
             <Popup    
               closePopup={this.togglePopup.bind(this)}  
+            />  
+            : null  
+            }
+            {this.state.showSpotifyPopUp ?  
+            <SpotifyPopUp    
+              closeSpotifyPopUp={this.toggleSpotifyPopup}  
             />  
             : null  
             }             

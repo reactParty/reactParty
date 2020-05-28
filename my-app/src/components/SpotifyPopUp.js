@@ -6,7 +6,7 @@ class Spotifypopup extends Component {
         return(
             <div style={spotifyPopUp}> 
             <div style={SpotifyPopUpInner}> 
-            <img src={closingCross} alt="ClosingCross" onClick={this.props.closeSpotifyPopUp} style={{height: "50px", padding: "8px"}}/>
+            <img src={closingCross} alt="ClosingCross" onClick={this.props.closeSpotifyPopUp} style={{height: "50px", padding: "8px", cursor: "pointer"}}/>
             </div>
             </div> 
         );

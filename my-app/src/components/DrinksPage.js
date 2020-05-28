@@ -61,6 +61,10 @@ class DrinksPage extends Component {
                             <div>{this.state.viewRecipe.strIngredient1}</div>
                             <div>{this.state.viewRecipe.strMeasure1}</div>
                         </li>
+                        <li style = {{display: "flex", justifyContent: "space-between"}}>
+                            <div>{this.state.viewRecipe.strIngredient2}</div>
+                            <div>{this.state.viewRecipe.strMeasure2}</div>
+                        </li>
                     </ul>
                 </div>
             </div>
@@ -119,6 +123,8 @@ const drinkTitleStyle = {
     width: "87.2%",
     backgroundColor: "rgba(0,0,0 , 0.3)",
     color: "white",
+    textShadow: "2px 2px 4px #000000",
+    fontWeight: "bold",
     height: "20%",
     borderRadius: "0 0 10px 10px"
 }

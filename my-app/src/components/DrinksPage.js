@@ -50,7 +50,7 @@ class DrinksPage extends Component {
     render() {
         return (
             <div>
-                <Search handleHover={this.handleHover} getDrinksFromSearch={this.props.getDrinksFromSearch}/>
+                <Search handleHover={this.handleHover} getDrinksFromSearch={this.props.getDrinksFromSearch} autoFocus/>
                 <div style={{width: "100%", margin: "20px 0", display: "flex", justifyContent: "center"}}>
                     <label style={{cursor: "pointer"}}><input style={{cursor: "pointer"}} onChange={()=>this.setState( { nonAlcoholic: !this.state.nonAlcoholic } )} name="nonAlcoholic" type="checkbox"/>Non alcoholic</label>
                 </div>
@@ -63,9 +63,9 @@ class DrinksPage extends Component {
                             </div>
                             <div style={drinkInfo}>
                                 <h2>Ingredients</h2>
-                                <ul style={{listStyle: ""}}>
-                                    <li style = {{display: "flex", justifyContent: "space-between"}}>
-                                        <div><img src={drinkDot} alt="drinkingdot" style={{height: "30px"}}/>{this.state.viewRecipe.strIngredient1}</div>
+                                <ul style={{marginTop: "50px", padding:"0"}}>
+                                    <li style = {{display: "flex", justifyContent: "space-between", fontSize:"20px"}}>
+                                        <div><img src={drinkDot} alt="drinkingdot" style={{height: "30px", marginRight: "15px"}}/>{this.state.viewRecipe.strIngredient1}</div>
                                         <div>{this.state.viewRecipe.strMeasure1}</div>
                                     </li>
                                 </ul>

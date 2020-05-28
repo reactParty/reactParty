@@ -22,7 +22,7 @@ class Search extends Component {
             <div style={divStyle}>
             
                 <Form.Group style={searchContainer}>
-                    <Form.Control
+                    <Form.Control autoFocus
                         onKeyUp={this.handleChange}
                         style={searchStyle}
                         size="lg"

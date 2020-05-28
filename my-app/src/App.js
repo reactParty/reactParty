@@ -45,7 +45,8 @@ class App extends Component {
       .then(data => this.setState( { pickupLines: Utilities.shuffleArray(data) } ))
   }
 
-  getDrinksFromSearch = (search) => {
+  getDrinksFromSearch = (search, drinkPage) => {
+    drinkPage.setState( { viewRecipe: null } )
     fetch('https://www.thecocktaildb.com/api/json/v1/1/search.php?s=' + search)
       .then(response => response.json())
       .then(data => this.setState( { recipesSearchResult: data.drinks } ))

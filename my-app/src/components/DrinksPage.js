@@ -50,7 +50,7 @@ class DrinksPage extends Component {
     render() {
         return (
             <div>
-                <Search handleHover={this.handleHover} getDrinksFromSearch={this.props.getDrinksFromSearch} autoFocus/>
+                <Search handleHover={this.handleHover} getDrinksFromSearch={(search)=>this.props.getDrinksFromSearch(search, this)} autoFocus/>
                 <div style={{width: "100%", margin: "20px 0", display: "flex", justifyContent: "center"}}>
                     <label style={{cursor: "pointer"}}><input style={{cursor: "pointer"}} onChange={()=>this.setState( { nonAlcoholic: !this.state.nonAlcoholic } )} name="nonAlcoholic" type="checkbox"/>Non alcoholic</label>
                 </div>

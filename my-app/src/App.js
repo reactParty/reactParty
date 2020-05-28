@@ -5,8 +5,9 @@ import Main from './components/Main';
 import Footer from './components/Footer';
 import DrinksPage from './components/DrinksPage';
 import Popup from './components/Popup';
+import SpotifyPopUp from './components/SpotifyPopUp';
 import info from './components/layout/info.png';
-import house from './components/layout/house1.png';
+import savedDrinksLogo from './components/layout/saveddrinks.png';
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
@@ -20,13 +21,21 @@ class App extends Component {
       page: "home",
       pickupLines: [],
       recipesSearchResult: [],
-      showPopup : false 
+      showPopup : false, 
+      showSpotifyPopUp : false
     }
   }
 
   togglePopup() {  
     this.setState({  
          showPopup: !this.state.showPopup  
+    });
+  }
+
+  toggleSpotifyPopup = () => {
+    console.log("toggle")
+    this.setState({
+      showSpotifyPopUp: !this.state.showSpotifyPopUp
     });
   }
 
@@ -55,7 +64,7 @@ class App extends Component {
       case "drinks":
         return <DrinksPage searchResults={this.state.recipesSearchResult} getDrinksFromSearch={this.getDrinksFromSearch} />
       default:
-        return <Main toDrinkPage={this.toDrinkPage}/>
+        return <Main toggleSpotifyPopUp={this.toggleSpotifyPopup} toDrinkPage={this.toDrinkPage}/>
     }
   }
 
@@ -65,15 +74,21 @@ class App extends Component {
         <div className="container-fluid" >
           <Header toHomePage={this.toHomePage}/>
           <PickupLines pickupLines={this.state.pickupLines}/>
-          <div>
-            <img src={info} alt="info" onClick={this.togglePopup.bind(this)} style={{height: "50px", margin: "10px 0 0 10px", cursor: "pointer"}}/>
-            <img src={house} alt="log for saved drinks" onClick={()=>this.setState( { page: "home" } )} style={{height: "50px", margin: "10px 60px 0 0", float: "right", cursor: "pointer"}}/>
+          <div style={{height: "100px"}}>
+            <img src={info} alt="info" onClick={this.togglePopup.bind(this)} style={{height: "50px", margin: "10px 0 0 50px", cursor: "pointer"}}/>
+            <img src={savedDrinksLogo} alt="log for saved drinks" onClick={()=>this.setState( { page: "home" } )} style={{height: "80px", margin: "10px 50px 0 0", float: "right", cursor: "pointer"}}/>
           </div> 
           {this.getMain()}
           <Footer />
           {this.state.showPopup ?  
             <Popup    
               closePopup={this.togglePopup.bind(this)}  
+            />  
+            : null  
+            }
+            {this.state.showSpotifyPopUp ?  
+            <SpotifyPopUp    
+              closeSpotifyPopUp={this.toggleSpotifyPopup}  
             />  
             : null  
             }             

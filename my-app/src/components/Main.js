@@ -26,6 +26,7 @@ class Main extends Component {
                     onMouseOver={this.increaseSize}
                     onMouseLeave={this.decreaseSize}/>
                 <img
+                    onClick={this.props.toggleSpotifyPopUp}
                     src={Logo2}
                     alt="Logo"
                     style={logoStyle2}

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Search from './Search';
 import danceImg from './layout/danicng.png'
+import drinkDot from './layout/drinkDot.png'
 
 class DrinksPage extends Component {
     constructor(props) {
@@ -58,12 +59,8 @@ class DrinksPage extends Component {
                     <h2>Ingredients</h2>
                     <ul>
                         <li style = {{display: "flex", justifyContent: "space-between"}}>
-                            <div>{this.state.viewRecipe.strIngredient1}</div>
+                            <div><img src={drinkDot} alt="drinkdot" width="30px"/>{this.state.viewRecipe.strIngredient1}</div>
                             <div>{this.state.viewRecipe.strMeasure1}</div>
-                        </li>
-                        <li style = {{display: "flex", justifyContent: "space-between"}}>
-                            <div>{this.state.viewRecipe.strIngredient2}</div>
-                            <div>{this.state.viewRecipe.strMeasure2}</div>
                         </li>
                     </ul>
                 </div>

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Search from './Search';
 import danceImg from './layout/danicng.png'
+import drinkDot from './layout/drinkDot.png'
 
 class DrinksPage extends Component {
     constructor(props) {
@@ -47,31 +48,35 @@ class DrinksPage extends Component {
     }
 
     render() {
-        return (this.state.viewRecipe) ? 
-        (
-            <div style={drinkInfoContainer}>
-                <div style={drinkStyle}>
-                    <h2>{this.state.viewRecipe.strDrink}</h2>
-                    <img width="100%" style = {{borderRadius: "10px"}} src={this.state.viewRecipe.strDrinkThumb} alt={this.state.viewRecipe.strDrink}/>
-                </div>
-                <div style={drinkInfo}>
-                    <h2>Ingredients</h2>
-                    <ul>
-                        <li style = {{display: "flex", justifyContent: "space-between"}}>
-                            <div>{this.state.viewRecipe.strIngredient1}</div>
-                            <div>{this.state.viewRecipe.strMeasure1}</div>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        ) :
-        (
+        return (
             <div>
-                <Search handleHover={this.handleHover} getDrinksFromSearch={this.props.getDrinksFromSearch}/>
+                <Search handleHover={this.handleHover} getDrinksFromSearch={(search)=>this.props.getDrinksFromSearch(search, this)} autoFocus/>
                 <div style={{width: "100%", margin: "20px 0", display: "flex", justifyContent: "center"}}>
                     <label style={{cursor: "pointer"}}><input style={{cursor: "pointer"}} onChange={()=>this.setState( { nonAlcoholic: !this.state.nonAlcoholic } )} name="nonAlcoholic" type="checkbox"/>Non alcoholic</label>
                 </div>
-                {this.getResults()}
+                {(this.state.viewRecipe) ? 
+                    (
+                        <div style={drinkInfoContainer}>
+                            <div style={drinkStyle}>
+                                <h2>{this.state.viewRecipe.strDrink}</h2>
+                                <img width="100%" style = {{borderRadius: "10px"}} src={this.state.viewRecipe.strDrinkThumb} alt={this.state.viewRecipe.strDrink}/>
+                            </div>
+                            <div style={drinkInfo}>
+                                <h2>Ingredients</h2>
+                                <ul style={{marginTop: "50px", padding:"0"}}>
+                                    <li style = {{display: "flex", justifyContent: "space-between", fontSize:"20px"}}>
+                                        <div><img src={drinkDot} alt="drinkingdot" style={{height: "30px", marginRight: "15px"}}/>{this.state.viewRecipe.strIngredient1}</div>
+                                        <div>{this.state.viewRecipe.strMeasure1}</div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    ) :
+                    (
+                        <div>
+                            {this.getResults()}
+                        </div>
+                    )}
             </div>
         )
     }
@@ -119,6 +124,8 @@ const drinkTitleStyle = {
     width: "87.2%",
     backgroundColor: "rgba(0,0,0 , 0.3)",
     color: "white",
+    textShadow: "2px 2px 4px #000000",
+    fontWeight: "bold",
     height: "20%",
     borderRadius: "0 0 10px 10px"
 }

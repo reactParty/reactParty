@@ -27,7 +27,7 @@ class Popup extends Component {
                         Don't have time to make the drinks right away? 
                     </p>
                     <p>    
-                        Save your favorite cocktails to your personal drink file and make them whenever you've got time.
+                        Save your favorite cocktails to your personal drink folder and make them whenever you've got time.
                     </p>
                     <p style={pStyle}>   
                         Need some good tunes as well? 

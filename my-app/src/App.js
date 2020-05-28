@@ -6,7 +6,7 @@ import Footer from './components/Footer';
 import DrinksPage from './components/DrinksPage';
 import Popup from './components/Popup';
 import info from './components/layout/info.png';
-import house from './components/layout/house1.png';
+import savedDrinksLogo from './components/layout/saveddrinks.png';
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
@@ -65,9 +65,9 @@ class App extends Component {
         <div className="container-fluid" >
           <Header toHomePage={this.toHomePage}/>
           <PickupLines pickupLines={this.state.pickupLines}/>
-          <div>
+          <div style={{height: "100px"}}>
             <img src={info} alt="info" onClick={this.togglePopup.bind(this)} style={{height: "50px", margin: "10px 0 0 10px", cursor: "pointer"}}/>
-            <img src={house} alt="log for saved drinks" onClick={()=>this.setState( { page: "home" } )} style={{height: "50px", margin: "10px 60px 0 0", float: "right", cursor: "pointer"}}/>
+            <img src={savedDrinksLogo} alt="log for saved drinks" onClick={()=>this.setState( { page: "home" } )} style={{height: "80px", margin: "10px 50px 0 0", float: "right", cursor: "pointer"}}/>
           </div> 
           {this.getMain()}
           <Footer />

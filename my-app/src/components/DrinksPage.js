@@ -61,6 +61,10 @@ class DrinksPage extends Component {
                             <div>{this.state.viewRecipe.strIngredient1}</div>
                             <div>{this.state.viewRecipe.strMeasure1}</div>
                         </li>
+                        <li style = {{display: "flex", justifyContent: "space-between"}}>
+                            <div>{this.state.viewRecipe.strIngredient2}</div>
+                            <div>{this.state.viewRecipe.strMeasure2}</div>
+                        </li>
                     </ul>
                 </div>
             </div>

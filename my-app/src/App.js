@@ -36,9 +36,8 @@ class App extends Component {
       .then(data => this.setState( { pickupLines: Utilities.shuffleArray(data) } ))
   }
 
-  getDrinksFromSearch = (query) => {
-    console.log(query);
-    fetch('https://www.thecocktaildb.com/api/json/v1/1/search.php?s=' + query)
+  getDrinksFromSearch = (search) => {
+    fetch('https://www.thecocktaildb.com/api/json/v1/1/search.php?s=' + search)
       .then(response => response.json())
       .then(data => this.setState( { recipesSearchResult: data.drinks } ))
   }
@@ -67,8 +66,8 @@ class App extends Component {
           <Header toHomePage={this.toHomePage}/>
           <PickupLines pickupLines={this.state.pickupLines}/>
           <div>
-          <img src={info} alt="info" onClick={this.togglePopup.bind(this)} style={{height: "50px", margin: "10px 0 0 10px"}}/> 
-          <img src={house} alt="log for saved drinks" style={{height: "50px", margin: "10px 60px 0 0", float: "right"}}/>
+            <img src={info} alt="info" onClick={this.togglePopup.bind(this)} style={{height: "50px", margin: "10px 0 0 10px", cursor: "pointer"}}/>
+            <img src={house} alt="log for saved drinks" onClick={()=>this.setState( { page: "home" } )} style={{height: "50px", margin: "10px 60px 0 0", float: "right", cursor: "pointer"}}/>
           </div> 
           {this.getMain()}
           <Footer />

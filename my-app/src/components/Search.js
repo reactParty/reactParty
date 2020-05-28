@@ -18,7 +18,6 @@ class Search extends Component {
     }
 
     render() {
-        const { handleHover } = this.props
         return (
             <div style={divStyle}>
             
@@ -33,8 +32,6 @@ class Search extends Component {
 
                 <img
                     onClick={()=>this.props.getDrinksFromSearch(this.state.value)}
-                    onMouseEnter={(event)=>handleHover(event, true)}
-                    onMouseLeave={(event)=>handleHover(event, false)}
                     style={logoStyle}
                     src={searchLogo}
                     alt="logo"/>
@@ -60,7 +57,8 @@ const searchContainer = {
 const logoStyle = {
     height:"40px",
     marginLeft: "-55px",
-    marginTop: "12px"
+    marginTop: "12px",
+    cursor: "pointer"
 }
 
 const searchStyle = {

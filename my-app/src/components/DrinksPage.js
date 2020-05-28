@@ -47,31 +47,35 @@ class DrinksPage extends Component {
     }
 
     render() {
-        return (this.state.viewRecipe) ? 
-        (
-            <div style={drinkInfoContainer}>
-                <div style={drinkStyle}>
-                    <h2>{this.state.viewRecipe.strDrink}</h2>
-                    <img width="100%" style = {{borderRadius: "10px"}} src={this.state.viewRecipe.strDrinkThumb} alt={this.state.viewRecipe.strDrink}/>
-                </div>
-                <div style={drinkInfo}>
-                    <h2>Ingredients</h2>
-                    <ul>
-                        <li style = {{display: "flex", justifyContent: "space-between"}}>
-                            <div>{this.state.viewRecipe.strIngredient1}</div>
-                            <div>{this.state.viewRecipe.strMeasure1}</div>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        ) :
-        (
+        return (
             <div>
                 <Search handleHover={this.handleHover} getDrinksFromSearch={this.props.getDrinksFromSearch}/>
                 <div style={{width: "100%", margin: "20px 0", display: "flex", justifyContent: "center"}}>
                     <label style={{cursor: "pointer"}}><input style={{cursor: "pointer"}} onChange={()=>this.setState( { nonAlcoholic: !this.state.nonAlcoholic } )} name="nonAlcoholic" type="checkbox"/>Non alcoholic</label>
                 </div>
-                {this.getResults()}
+                {(this.state.viewRecipe) ? 
+                    (
+                        <div style={drinkInfoContainer}>
+                            <div style={drinkStyle}>
+                                <h2>{this.state.viewRecipe.strDrink}</h2>
+                                <img width="100%" style = {{borderRadius: "10px"}} src={this.state.viewRecipe.strDrinkThumb} alt={this.state.viewRecipe.strDrink}/>
+                            </div>
+                            <div style={drinkInfo}>
+                                <h2>Ingredients</h2>
+                                <ul style={{listStyle: ""}}>
+                                    <li style = {{display: "flex", justifyContent: "space-between"}}>
+                                        <div>{this.state.viewRecipe.strIngredient1}</div>
+                                        <div>{this.state.viewRecipe.strMeasure1}</div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    ) :
+                    (
+                        <div>
+                            {this.getResults()}
+                        </div>
+                    )}
             </div>
         )
     }

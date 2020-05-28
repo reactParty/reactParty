@@ -123,6 +123,8 @@ const drinkTitleStyle = {
     width: "87.2%",
     backgroundColor: "rgba(0,0,0 , 0.3)",
     color: "white",
+    textShadow: "2px 2px 4px #000000",
+    fontWeight: "bold",
     height: "20%",
     borderRadius: "0 0 10px 10px"
 }

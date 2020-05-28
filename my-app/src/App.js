@@ -158,9 +158,6 @@ class App extends Component {
             {this.state.spotifyToken && (
               <div>
                 <p>
-                  {this.getSpotifyCurrentlyPlaying}
-                </p>
-                <p>
                   <button onClick={()=>this.modifyPlayer("next")}> NExt </button>
                   <button onClick={()=>this.modifyPlayer("pause")}> pause </button>
                   <button onClick={()=>this.modifyPlayer("play")}> play </button>

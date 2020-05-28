@@ -65,7 +65,7 @@ class DrinksPage extends Component {
                                 <h2>Ingredients</h2>
                                 <ul style={{listStyle: ""}}>
                                     <li style = {{display: "flex", justifyContent: "space-between"}}>
-                                        <div>{this.state.viewRecipe.strIngredient1}</div>
+                                        <div><img src={drinkDot} alt="drinkingdot" style={{height: "30px"}}/>{this.state.viewRecipe.strIngredient1}</div>
                                         <div>{this.state.viewRecipe.strMeasure1}</div>
                                     </li>
                                 </ul>

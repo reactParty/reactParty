@@ -50,9 +50,19 @@ class App extends Component {
       showPopup : false,
       spotifyToken: undefined,
       spotifyCurrentlyPlaying: undefined,
-      showSpotifyPopUp : false
+      showSpotifyPopUp : false,
+      storedRecipes: this.getLocalStorageDrinks()
     }
   }
+
+  getLocalStorageDrinks = () => {
+    if (localStorage.getItem("recipes")) {
+      return JSON.parse(localStorage.getItem("recipes"));
+    } else {
+      localStorage.setItem("recipes", JSON.stringify([]));
+      return [];
+    }
+  }  
 
   togglePopup() {  
     this.setState({  
@@ -107,7 +117,8 @@ class App extends Component {
       .then((currentlyPlayingData) => {this.setState( { spotifyCurrentlyPlaying: currentlyPlayingData.item.name } ); console.log(currentlyPlayingData.item.name)})
   }
 
-  modifyPlayer(action) {
+  modifyPlayer=(action) => {
+    // behövs catch error och guard för status != 200 samt 204 => ej aktiv på sitt spotify-konto.
     if (action == null) return;
     let method;
     if (action === "next" || action === "previous") {
@@ -125,6 +136,7 @@ class App extends Component {
   }
 
   getDrinksFromSearch = (search, drinkPage) => {
+    // behövs catch error
     drinkPage.setState( { viewRecipe: null } )
     fetch('https://www.thecocktaildb.com/api/json/v1/1/search.php?s=' + search)
       .then(response => response.json())
@@ -146,25 +158,7 @@ class App extends Component {
       default:
         return (
           <div>
-            <Main toggleSpotifyPopUp={this.toggleSpotifyPopup} toDrinkPage={this.toDrinkPage}/>
-            {!this.state.spotifyToken && (
-              <a
-                className="btn btn--loginApp-link"
-                href={`${authEndpoint}?client_id=${clientId}&redirect_uri=${redirectUri}&scope=${scopes.join("%20")}&response_type=token&show_dialog=true`}
-              >
-                Login to Spotify
-              </a>
-            )}
-            {this.state.spotifyToken && (
-              <div>
-                <p>
-                  <button onClick={()=>this.modifyPlayer("next")}> NExt </button>
-                  <button onClick={()=>this.modifyPlayer("pause")}> pause </button>
-                  <button onClick={()=>this.modifyPlayer("play")}> play </button>
-                  <button onClick={()=>this.modifyPlayer("previous")}> previous </button>
-                </p>
-              </div>
-            )}
+            <Main spotifyData={{spotifyToken: this.state.spotifyToken, authEndpoint: authEndpoint, clientId: clientId, redirectUri: redirectUri, scopes: scopes.join("%20")}} toggleSpotifyPopUp={this.toggleSpotifyPopup} toDrinkPage={this.toDrinkPage}/>
           </div>
         )
     }
@@ -189,7 +183,8 @@ class App extends Component {
             : null  
             }
             {this.state.showSpotifyPopUp ?  
-            <SpotifyPopUp    
+            <SpotifyPopUp
+              modifyPlayer={this.modifyPlayer}    
               closeSpotifyPopUp={this.toggleSpotifyPopup}  
             />  
             : null  

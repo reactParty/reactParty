@@ -16,6 +16,7 @@ class Main extends Component {
     }
 
     render() {
+        const { spotifyToken, authEndpoint, clientId, redirectUri, scopes } = this.props.spotifyData;
         return (
             <main style={mainStyle}>
                 <img
@@ -25,13 +26,29 @@ class Main extends Component {
                     style={logoStyle1}
                     onMouseOver={this.increaseSize}
                     onMouseLeave={this.decreaseSize}/>
-                <img
-                    onClick={this.props.toggleSpotifyPopUp}
-                    src={Logo2}
-                    alt="Logo"
-                    style={logoStyle2}
-                    onMouseOver={this.increaseSize}
-                    onMouseLeave={this.decreaseSize}/>
+                {!spotifyToken && (
+                    <a
+                        className="btn btn--loginApp-link"
+                        href={`${authEndpoint}?client_id=${clientId}&redirect_uri=${redirectUri}&scope=${scopes}&response_type=token&show_dialog=true`}>
+                        <img
+                            src={Logo2}
+                            alt="Logo"
+                            style={logoStyle2}
+                            onMouseOver={this.increaseSize}
+                            onMouseLeave={this.decreaseSize}
+                        />
+                    </a>
+                )}
+                {spotifyToken && (
+                    <img
+                        onClick={this.props.toggleSpotifyPopUp}
+                        src={Logo2}
+                        alt="Logo"
+                        style={logoStyle2}
+                        onMouseOver={this.increaseSize}
+                        onMouseLeave={this.decreaseSize}
+                    />
+                )}
             </main>
         )
     }

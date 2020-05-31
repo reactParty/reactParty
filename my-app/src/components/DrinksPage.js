@@ -44,8 +44,40 @@ class DrinksPage extends Component {
                 })}
             </div>
         )
-
     }
+
+    getDrinkInfo = (ingredient) => {
+        return (
+            <li key = {ingredient.key} style = {{display: "flex", justifyContent: "space-between", fontSize:"20px"}}>
+                <div>
+                    <img src={drinkDot} alt="drinkingdot" style={{height: "30px", marginRight: "15px"}}/>
+                    {ingredient.ingredient}
+                </div>
+                <div>{ingredient.measure}</div>
+            </li>
+        )
+    }
+
+    getIngredients = () => {
+        let ingredients = []
+        let i = 1;
+        while (i <= 10) {
+            if (this.state.viewRecipe["strIngredient" + i] == null) break;
+            let ingredientObj = {
+                ingredient: this.state.viewRecipe["strIngredient" + i],
+                measure: this.state.viewRecipe["strMeasure" + i],
+                key: "ingredient" + i
+            }
+            ingredients.push(ingredientObj)
+            i++
+        }
+        return (<ul style={{marginTop: "50px", padding:"0"}}>
+                {ingredients.map(this.getDrinkInfo)}
+            </ul>
+        )
+    }
+
+
 
     render() {
         return (
@@ -63,12 +95,9 @@ class DrinksPage extends Component {
                             </div>
                             <div style={drinkInfo}>
                                 <h2>Ingredients</h2>
-                                <ul style={{marginTop: "50px", padding:"0"}}>
-                                    <li style = {{display: "flex", justifyContent: "space-between", fontSize:"20px"}}>
-                                        <div><img src={drinkDot} alt="drinkingdot" style={{height: "30px", marginRight: "15px"}}/>{this.state.viewRecipe.strIngredient1}</div>
-                                        <div>{this.state.viewRecipe.strMeasure1}</div>
-                                    </li>
-                                </ul>
+                                {
+                                    this.getIngredients()
+                                }
                             </div>
                         </div>
                     ) :

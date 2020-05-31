@@ -107,7 +107,7 @@ class App extends Component {
       .then((currentlyPlayingData) => {this.setState( { spotifyCurrentlyPlaying: currentlyPlayingData.item.name } ); console.log(currentlyPlayingData.item.name)})
   }
 
-  modifyPlayer(action) {
+  modifyPlayer=(action) => {
     if (action == null) return;
     let method;
     if (action === "next" || action === "previous") {
@@ -189,7 +189,8 @@ class App extends Component {
             : null  
             }
             {this.state.showSpotifyPopUp ?  
-            <SpotifyPopUp    
+            <SpotifyPopUp
+              modifyPlayer={this.modifyPlayer}    
               closeSpotifyPopUp={this.toggleSpotifyPopup}  
             />  
             : null  

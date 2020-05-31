@@ -62,7 +62,21 @@ class App extends Component {
       localStorage.setItem("recipes", JSON.stringify([]));
       return [];
     }
-  }  
+  }
+
+  updateLocalStorage = () => {
+    localStorage.setItem("recipes", JSON.stringify(this.state.storedRecipes));
+  }
+
+  addDrink = (drink) => {
+    this.setState( { storedRecipes: [...this.state.storedRecipes].push(drink) } );
+    this.updateLocalStorage();
+  }
+
+  removeDrink = (drink) => {
+    this.setState( { storedRecipes: Utilities.removeFromArray([...this.state.storedRecipes], drink) } );
+    this.updateLocalStorage();
+  }
 
   togglePopup() {  
     this.setState({  

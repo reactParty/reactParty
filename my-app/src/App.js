@@ -155,16 +155,7 @@ class App extends Component {
                 Login to Spotify
               </a>
             )}
-            {this.state.spotifyToken && (
-              <div>
-                <p>
-                  <button onClick={()=>this.modifyPlayer("next")}> NExt </button>
-                  <button onClick={()=>this.modifyPlayer("pause")}> pause </button>
-                  <button onClick={()=>this.modifyPlayer("play")}> play </button>
-                  <button onClick={()=>this.modifyPlayer("previous")}> previous </button>
-                </p>
-              </div>
-            )}
+            {/* {this.state.spotifyToken && ()} */}
           </div>
         )
     }

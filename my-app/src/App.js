@@ -73,8 +73,8 @@ class App extends Component {
     this.updateLocalStorage();
   }
 
-  removeDrink = (drink) => {
-    this.setState( { storedRecipes: Utilities.removeFromArray([...this.state.storedRecipes], drink) } );
+  removeDrink = (drinkId) => {
+    this.setState( { storedRecipes: [...this.state.storedRecipes].filter((drink)=>drink.drinkId !== drinkId) } );
     this.updateLocalStorage();
   }
 

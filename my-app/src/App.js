@@ -50,9 +50,19 @@ class App extends Component {
       showPopup : false,
       spotifyToken: undefined,
       spotifyCurrentlyPlaying: undefined,
-      showSpotifyPopUp : false
+      showSpotifyPopUp : false,
+      storedRecipes: this.getLocalStorageDrinks()
     }
   }
+
+  getLocalStorageDrinks = () => {
+    if (localStorage.getItem("recipes")) {
+      return JSON.parse(localStorage.getItem("recipes"));
+    } else {
+      localStorage.setItem("recipes", JSON.stringify([]));
+      return [];
+    }
+  }  
 
   togglePopup() {  
     this.setState({  

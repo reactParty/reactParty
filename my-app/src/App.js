@@ -200,7 +200,8 @@ class App extends Component {
             {this.state.showSpotifyPopUp ?  
             <SpotifyPopUp
               spotifyCurrentlyPlaying={this.state.spotifyCurrentlyPlaying}
-              modifyPlayer={this.modifyPlayer}    
+              getSpotifyCurrentlyPlaying={this.getSpotifyCurrentlyPlaying}
+              modifyPlayer={this.modifyPlayer}
               closeSpotifyPopUp={this.toggleSpotifyPopup}  
             />  
             : null  

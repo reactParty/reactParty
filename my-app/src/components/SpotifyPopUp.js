@@ -6,6 +6,21 @@ import nextsongbtn from './layout/nextsongbtn.png'
 import previousbtn from './layout/previousbtn.png'
 
 class Spotifypopup extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            intervalId: undefined
+        }
+    }
+
+    componentDidMount() {
+        this.setState( { intervalId: setInterval(()=>this.props.getSpotifyCurrentlyPlaying(), 1000) });
+    }
+
+    componentWillUnmount() {
+        clearInterval(this.state.intervalId);
+    }
+
     render() {
         return(
             <div style={spotifyPopUp}> 

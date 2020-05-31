@@ -129,7 +129,7 @@ class App extends Component {
         Authorization: "Bearer " + this.state.spotifyToken
       })
     }).then(response=>response.json())
-      .then(currentlyPlayingData=>{this.setState( { spotifyCurrentlyPlaying: currentlyPlayingData.item } ); console.log(currentlyPlayingData)})
+      .then(currentlyPlayingData=>this.setState( { spotifyCurrentlyPlaying: currentlyPlayingData.item } ))
   }
 
   modifyPlayer=(action) => {

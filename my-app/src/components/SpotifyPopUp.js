@@ -11,6 +11,14 @@ class Spotifypopup extends Component {
             <div style={spotifyPopUp}> 
             <div style={SpotifyPopUpInner}> 
                 <img src={closingCross} alt="ClosingCross" onClick={this.props.closeSpotifyPopUp} style={{height: "50px", padding: "8px", cursor: "pointer"}}/>
+                
+                    {this.props.spotifyCurrentlyPlaying && (
+                        <p style={{textAlign: "center"}}>
+                            {this.props.spotifyCurrentlyPlaying.artists.map((artist)=>artist.name).join(", ")}
+                            {" - "}
+                            {this.props.spotifyCurrentlyPlaying.name}
+                        </p>
+                    )}
                 <div style={Spotifybtn}>
                     <img onClick={()=>this.props.modifyPlayer("previous")} src={previousbtn} alt="previousbutton" style={{maxWidth: "15%", height: "auto", marginRight: "6%", cursor: "pointer"}} />
                     <img onClick={()=>this.props.modifyPlayer("pause")} src={pausebtn} alt="pausebutton" style={{maxWidth: "15%", height: "auto", marginRight: "6%", cursor: "pointer"}}  />

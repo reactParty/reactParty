@@ -89,6 +89,7 @@ class App extends Component {
     this.setState({
       showSpotifyPopUp: !this.state.showSpotifyPopUp
     });
+    this.getSpotifyCurrentlyPlaying();
   }
 
   componentDidMount() {
@@ -121,14 +122,14 @@ class App extends Component {
     })
   }
 
-  getSpotifyCurrentlyPlaying() {
+  getSpotifyCurrentlyPlaying = () => {
     fetch("https://api.spotify.com/v1/me/player/currently-playing", {
       method: "GET",
       headers: new Headers({
         Authorization: "Bearer " + this.state.spotifyToken
       })
-    }).then((response)=>response.json())
-      .then((currentlyPlayingData) => {this.setState( { spotifyCurrentlyPlaying: currentlyPlayingData.item.name } ); console.log(currentlyPlayingData.item.name)})
+    }).then(response=>response.json())
+      .then(currentlyPlayingData=>{this.setState( { spotifyCurrentlyPlaying: currentlyPlayingData.item } ); console.log(currentlyPlayingData)})
   }
 
   modifyPlayer=(action) => {
@@ -146,7 +147,7 @@ class App extends Component {
       headers: new Headers({
         Authorization: "Bearer " + this.state.spotifyToken
       })
-    })
+    }).then(()=>this.getSpotifyCurrentlyPlaying())
   }
 
   getDrinksFromSearch = (search, drinkPage) => {
@@ -198,6 +199,7 @@ class App extends Component {
             }
             {this.state.showSpotifyPopUp ?  
             <SpotifyPopUp
+              spotifyCurrentlyPlaying={this.state.spotifyCurrentlyPlaying}
               modifyPlayer={this.modifyPlayer}    
               closeSpotifyPopUp={this.toggleSpotifyPopup}  
             />  

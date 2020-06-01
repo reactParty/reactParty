@@ -45,20 +45,22 @@ class DrinksPage extends Component {
                             </div>
                             {(storedDrinks.filter((storedDrink)=>result.idDrink === storedDrink.idDrink).length) ?
                                 (
+                                    <div style={drinkDiv}>
                                     <img
-                                        height="80px"
                                         onClick={()=>this.props.removeDrink(result.idDrink)}
-                                        style={{cursor: "pointer"}}
+                                        style={drinkImg}
                                         src={removeIcon}
                                         alt="Remove Drink"/>
+                                    </div>
                                 ) :
                                 (
+                                    <div style={drinkDiv}>
                                     <img
-                                        height="80px"
                                         onClick={()=>this.props.addDrink(result)}
-                                        style={{cursor: "pointer"}}
+                                        style={drinkImg}
                                         src={saveIcon}
                                         alt="Save Drink"/>
+                                    </div>
                                 )
                             }
                         </div>
@@ -195,6 +197,17 @@ const drinkInfo = {
     width: "50%",
     backgroundColor: "#fafafa",
     padding: "2%",   
+}
+
+const drinkDiv = {
+    cursor: "pointer",
+    position: "absolute",
+    right: "35px",
+    bottom: "9%"
+}
+
+const drinkImg = {
+    maxHeight: "60px",
 }
 
 export default DrinksPage;

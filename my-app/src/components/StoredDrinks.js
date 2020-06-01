@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import ViewRecipe from './ViewRecipe';
+import backbtn from './layout/backbtn.png';
 // import drinkDot from './layout/drinkDot.png'
 
 class StoredDrinks extends Component {
@@ -18,7 +19,7 @@ class StoredDrinks extends Component {
                 {(this.state.viewRecipe) ?
                     (
                         <div>
-                            <button onClick={()=>this.setState( { viewRecipe: null } )}>Go back</button>
+                            <img src={backbtn} alt="backbutton" style={stylebackbtn} onClick={()=>this.setState( { viewRecipe: null } )} />
                             <ViewRecipe drink={this.state.viewRecipe}/>
                         </div>
                     ) : 
@@ -47,6 +48,12 @@ class StoredDrinks extends Component {
             </div>
         )
     }
+}
+
+const stylebackbtn = {
+    height: "80px",
+    marginLeft: "4%",
+    cursor: "pointer"
 }
 
 export default StoredDrinks;

@@ -167,7 +167,7 @@ class App extends Component {
       case "drinks":
         return <DrinksPage addDrink={this.addDrink} removeDrink={this.removeDrink} storedDrinks={this.state.storedRecipes} searchResults={this.state.recipesSearchResult} getDrinksFromSearch={this.getDrinksFromSearch} />
       case "savedDrinks":
-        return <StoredDrinks drinks={this.state.storedRecipes} />
+        return <StoredDrinks addDrink={this.addDrink} removeDrink={this.removeDrink} drinks={this.state.storedRecipes} />
       default:
         return (
           <div>

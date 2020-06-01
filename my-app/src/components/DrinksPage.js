@@ -78,7 +78,7 @@ class DrinksPage extends Component {
                     (
                         <div>
                             <img src={backbtn} alt="backbutton" style={stylebackbtn} onClick={()=>this.setState( { viewRecipe: null } )} />
-                            <ViewRecipe drink={this.state.viewRecipe}/>
+                            <ViewRecipe addDrink={this.props.addDrink} removeDrink={this.props.removeDrink} storedDrinks={this.props.storedDrinks} drink={this.state.viewRecipe}/>
                         </div>
                     ) :
                     (

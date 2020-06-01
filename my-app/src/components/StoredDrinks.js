@@ -20,7 +20,7 @@ class StoredDrinks extends Component {
                     (
                         <div>
                             <img src={backbtn} alt="backbutton" style={stylebackbtn} onClick={()=>this.setState( { viewRecipe: null } )} />
-                            <ViewRecipe drink={this.state.viewRecipe}/>
+                            <ViewRecipe addDrink={this.props.addDrink} removeDrink={this.props.removeDrink} storedDrinks={drinks} drink={this.state.viewRecipe}/>
                         </div>
                     ) : 
                     (

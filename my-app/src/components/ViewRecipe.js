@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
-import drinkDot from './layout/drinkDot.png'
+import drinkDot from './layout/drinkDot.png';
+import removeIcon from "./layout/saveIcon1.png";
+import saveIcon from "./layout/saveIcon2.png";
 
 class ViewRecipe extends Component {
     constructor(props) {
@@ -43,12 +45,34 @@ class ViewRecipe extends Component {
     }
 
     render() {
-        const { drink } = this.props;
+        const { drink, storedDrinks } = this.props;
         return (
             <div style={drinkInfoContainer}>
                 <div style={drinkStyle}>
                     <h2>{drink.strDrink}</h2>
                     <img width="100%" style = {{borderRadius: "10px"}} src={drink.strDrinkThumb} alt={drink.strDrink}/>
+                    <div style={imgParent}>
+                        {(storedDrinks.filter((storedDrink)=>drink.idDrink === storedDrink.idDrink).length) ?
+                            (
+                                <div style={drinkDiv}>
+                                <img
+                                    onClick={()=>this.props.removeDrink(drink.idDrink)}
+                                    style={drinkImg}
+                                    src={removeIcon}
+                                    alt="Remove Drink"/>
+                                </div>
+                            ) :
+                            (
+                                <div style={drinkDiv}>
+                                <img
+                                    onClick={()=>this.props.addDrink(drink)}
+                                    style={drinkImg}
+                                    src={saveIcon}
+                                    alt="Save Drink"/>
+                                </div>
+                            )
+                        }
+                    </div>
                 </div>
                 <div style={drinkInfo}>
                     <h2>Ingredients</h2>
@@ -82,6 +106,23 @@ const drinkInfo = {
     width: "50%",
     backgroundColor: "#fafafa",
     padding: "2%",   
+}
+
+const drinkDiv = {
+    cursor: "pointer",
+    position: "absolute",
+    right: "20px",
+    bottom: "10px"
+}
+
+const drinkImg = {
+    maxHeight: "60px",
+}
+
+const imgParent = {
+    width: "100%",
+    margin: "0",
+    position: "relative",
 }
 
 export default ViewRecipe;

@@ -68,13 +68,11 @@ class App extends Component {
   }
 
   addDrink = (drink) => {
-    this.setState( { storedRecipes: [...this.state.storedRecipes].push(drink) } );
-    this.updateLocalStorage();
+    this.setState( { storedRecipes: [...this.state.storedRecipes, drink] }, this.updateLocalStorage );
   }
 
   removeDrink = (drinkId) => {
-    this.setState( { storedRecipes: [...this.state.storedRecipes].filter((drink)=>drink.idDrink !== drinkId) } );
-    this.updateLocalStorage();
+    this.setState( { storedRecipes: [...this.state.storedRecipes].filter((drink)=>drink.idDrink !== drinkId) }, this.updateLocalStorage );
   }
 
   togglePopup() {  
@@ -168,7 +166,7 @@ class App extends Component {
   getMain = () => {
     switch (this.state.page) {
       case "drinks":
-        return <DrinksPage searchResults={this.state.recipesSearchResult} getDrinksFromSearch={this.getDrinksFromSearch} />
+        return <DrinksPage addDrink={this.addDrink} removeDrink={this.removeDrink} storedDrinks={this.state.storedRecipes} searchResults={this.state.recipesSearchResult} getDrinksFromSearch={this.getDrinksFromSearch} />
       case "savedDrinks":
         return <StoredDrinks drinks={this.state.storedRecipes} />
       default:

@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import Search from './Search';
 import danceImg from './layout/danicng.png'
 import drinkDot from './layout/drinkDot.png'
+import removeIcon from "./layout/saveIcon1.png"
+import saveIcon from "./layout/saveIcon2.png"
 
 class DrinksPage extends Component {
     constructor(props) {
@@ -22,6 +24,8 @@ class DrinksPage extends Component {
     }
 
     getResults = () => {
+        const { storedDrinks } = this.props;
+        console.log(storedDrinks)
         if (this.props.searchResults == null) return this.getNoResults();
         if (!this.props.searchResults.length) return;
         let strAlcoholic = (this.state.nonAlcoholic) ? "Non alcoholic" : "Alcoholic";
@@ -39,6 +43,24 @@ class DrinksPage extends Component {
                                     {result.strDrink}
                                 </div>
                             </div>
+                            {(storedDrinks.filter((storedDrink)=>result.idDrink === storedDrink.idDrink).length) ?
+                                (
+                                    <img
+                                        height="80px"
+                                        onClick={()=>this.props.removeDrink(result.idDrink)}
+                                        style={{cursor: "pointer"}}
+                                        src={removeIcon}
+                                        alt="Remove Drink"/>
+                                ) :
+                                (
+                                    <img
+                                        height="80px"
+                                        onClick={()=>this.props.addDrink(result)}
+                                        style={{cursor: "pointer"}}
+                                        src={saveIcon}
+                                        alt="Save Drink"/>
+                                )
+                            }
                         </div>
                     )
                 })}

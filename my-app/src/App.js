@@ -82,7 +82,6 @@ class App extends Component {
   }
 
   toggleSpotifyPopup = () => {
-    console.log("toggle")
     this.setState({
       showSpotifyPopUp: !this.state.showSpotifyPopUp
     });

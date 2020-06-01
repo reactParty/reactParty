@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import Search from './Search';
-import danceImg from './layout/danicng.png'
-import drinkDot from './layout/drinkDot.png'
-import removeIcon from "./layout/saveIcon1.png"
-import saveIcon from "./layout/saveIcon2.png"
+import danceImg from './layout/danicng.png';
+import removeIcon from "./layout/saveIcon1.png";
+import saveIcon from "./layout/saveIcon2.png";
+import ViewRecipe from "./ViewRecipe";
 
 class DrinksPage extends Component {
     constructor(props) {
@@ -25,7 +25,6 @@ class DrinksPage extends Component {
 
     getResults = () => {
         const { storedDrinks } = this.props;
-        console.log(storedDrinks)
         if (this.props.searchResults == null) return this.getNoResults();
         if (!this.props.searchResults.length) return;
         let strAlcoholic = (this.state.nonAlcoholic) ? "Non alcoholic" : "Alcoholic";
@@ -70,39 +69,6 @@ class DrinksPage extends Component {
         )
     }
 
-    getDrinkInfo = (ingredient) => {
-        return (
-            <li key = {ingredient.key} style = {{display: "flex", justifyContent: "space-between", fontSize:"20px"}}>
-                <div>
-                    <img src={drinkDot} alt="drinkingdot" style={{height: "30px", marginRight: "15px"}}/>
-                    {ingredient.ingredient}
-                </div>
-                <div>{ingredient.measure}</div>
-            </li>
-        )
-    }
-
-    getIngredients = () => {
-        let ingredients = []
-        let i = 1;
-        while (i <= 10) {
-            if (this.state.viewRecipe["strIngredient" + i] == null) break;
-            let ingredientObj = {
-                ingredient: this.state.viewRecipe["strIngredient" + i],
-                measure: this.state.viewRecipe["strMeasure" + i],
-                key: "ingredient" + i
-            }
-            ingredients.push(ingredientObj)
-            i++
-        }
-        return (<ul style={{marginTop: "50px", padding:"0"}}>
-                {ingredients.map(this.getDrinkInfo)}
-            </ul>
-        )
-    }
-
-
-
     render() {
         return (
             <div>
@@ -112,18 +78,7 @@ class DrinksPage extends Component {
                 </div>
                 {(this.state.viewRecipe) ? 
                     (
-                        <div style={drinkInfoContainer}>
-                            <div style={drinkStyle}>
-                                <h2>{this.state.viewRecipe.strDrink}</h2>
-                                <img width="100%" style = {{borderRadius: "10px"}} src={this.state.viewRecipe.strDrinkThumb} alt={this.state.viewRecipe.strDrink}/>
-                            </div>
-                            <div style={drinkInfo}>
-                                <h2>Ingredients</h2>
-                                {
-                                    this.getIngredients()
-                                }
-                            </div>
-                        </div>
+                        <ViewRecipe drink={this.state.viewRecipe}/>
                     ) :
                     (
                         <div>
@@ -133,17 +88,6 @@ class DrinksPage extends Component {
             </div>
         )
     }
-}
-
-const drinkInfoContainer = {
-    width: "60%",
-    display: "flex",
-    padding: "0",
-    justifyContent: "center",
-    flexWrap: "wrap",
-    margin: "50px auto",
-    borderRadius: "10px",
-    boxShadow: "#333 0px 0px 3px"
 }
 
 const drinkContainer = {
@@ -185,18 +129,6 @@ const drinkTitleStyle = {
 
 const drinkTitleChild = {
     position: "absolute"
-}
-
-const drinkStyle = {
-    width: "50%",
-    backgroundColor: "#fafafa",
-    padding: "2%",
-}
-
-const drinkInfo = {
-    width: "50%",
-    backgroundColor: "#fafafa",
-    padding: "2%",   
 }
 
 const drinkDiv = {

@@ -62,7 +62,21 @@ class App extends Component {
       localStorage.setItem("recipes", JSON.stringify([]));
       return [];
     }
-  }  
+  }
+
+  updateLocalStorage = () => {
+    localStorage.setItem("recipes", JSON.stringify(this.state.storedRecipes));
+  }
+
+  addDrink = (drink) => {
+    this.setState( { storedRecipes: [...this.state.storedRecipes].push(drink) } );
+    this.updateLocalStorage();
+  }
+
+  removeDrink = (drinkId) => {
+    this.setState( { storedRecipes: [...this.state.storedRecipes].filter((drink)=>drink.drinkId !== drinkId) } );
+    this.updateLocalStorage();
+  }
 
   togglePopup() {  
     this.setState({  
@@ -75,6 +89,7 @@ class App extends Component {
     this.setState({
       showSpotifyPopUp: !this.state.showSpotifyPopUp
     });
+    this.getSpotifyCurrentlyPlaying();
   }
 
   componentDidMount() {
@@ -107,14 +122,14 @@ class App extends Component {
     })
   }
 
-  getSpotifyCurrentlyPlaying() {
+  getSpotifyCurrentlyPlaying = () => {
     fetch("https://api.spotify.com/v1/me/player/currently-playing", {
       method: "GET",
       headers: new Headers({
         Authorization: "Bearer " + this.state.spotifyToken
       })
-    }).then((response)=>response.json())
-      .then((currentlyPlayingData) => {this.setState( { spotifyCurrentlyPlaying: currentlyPlayingData.item.name } ); console.log(currentlyPlayingData.item.name)})
+    }).then(response=>response.json())
+      .then(currentlyPlayingData=>this.setState( { spotifyCurrentlyPlaying: currentlyPlayingData.item } ))
   }
 
   modifyPlayer=(action) => {
@@ -132,7 +147,7 @@ class App extends Component {
       headers: new Headers({
         Authorization: "Bearer " + this.state.spotifyToken
       })
-    })
+    }).then(()=>this.getSpotifyCurrentlyPlaying())
   }
 
   getDrinksFromSearch = (search, drinkPage) => {
@@ -184,7 +199,9 @@ class App extends Component {
             }
             {this.state.showSpotifyPopUp ?  
             <SpotifyPopUp
-              modifyPlayer={this.modifyPlayer}    
+              spotifyCurrentlyPlaying={this.state.spotifyCurrentlyPlaying}
+              getSpotifyCurrentlyPlaying={this.getSpotifyCurrentlyPlaying}
+              modifyPlayer={this.modifyPlayer}
               closeSpotifyPopUp={this.toggleSpotifyPopup}  
             />  
             : null  

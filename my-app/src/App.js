@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
-// import hash from "./hash";
 import { clientId } from './ignore';
 import Header from './components/layout/Header';
 import PickupLines from './components/PickupLines';
 import Main from './components/Main';
 import Footer from './components/Footer';
 import DrinksPage from './components/DrinksPage';
+import StoredDrinks from "./components/StoredDrinks";
 import Popup from './components/Popup';
 import SpotifyPopUp from './components/SpotifyPopUp';
 import info from './components/layout/info.png';
@@ -14,7 +14,6 @@ import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
 import Utilities from './Utilities'
-// import { render } from 'react-dom';
 
 // spotify endpoint
 const authEndpoint = 'https://accounts.spotify.com/authorize';
@@ -74,7 +73,7 @@ class App extends Component {
   }
 
   removeDrink = (drinkId) => {
-    this.setState( { storedRecipes: [...this.state.storedRecipes].filter((drink)=>drink.drinkId !== drinkId) } );
+    this.setState( { storedRecipes: [...this.state.storedRecipes].filter((drink)=>drink.idDrink !== drinkId) } );
     this.updateLocalStorage();
   }
 
@@ -170,6 +169,8 @@ class App extends Component {
     switch (this.state.page) {
       case "drinks":
         return <DrinksPage searchResults={this.state.recipesSearchResult} getDrinksFromSearch={this.getDrinksFromSearch} />
+      case "savedDrinks":
+        return <StoredDrinks drinks={this.state.storedRecipes} />
       default:
         return (
           <div>
@@ -187,7 +188,7 @@ class App extends Component {
           <PickupLines pickupLines={this.state.pickupLines}/>
           <div style={{height: "100px"}}>
             <img src={info} alt="info" onClick={this.togglePopup.bind(this)} style={{height: "50px", margin: "10px 0 0 3px", cursor: "pointer"}}/>
-            <img src={savedDrinksLogo} alt="log for saved drinks" onClick={()=>this.setState( { page: "home" } )} style={{height: "80px", margin: "10px 50px 0 0", float: "right", cursor: "pointer"}}/>
+            <img src={savedDrinksLogo} alt="log for saved drinks" onClick={()=>this.setState( { page: "savedDrinks" } )} style={{height: "80px", margin: "10px 50px 0 0", float: "right", cursor: "pointer"}}/>
           </div> 
           {this.getMain()}
           <Footer />

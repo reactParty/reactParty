@@ -4,6 +4,7 @@ import danceImg from './layout/danicng.png';
 import removeIcon from "./layout/saveIcon1.png";
 import saveIcon from "./layout/saveIcon2.png";
 import ViewRecipe from "./ViewRecipe";
+import backbtn from "./layout/backbtn.png";
 
 class DrinksPage extends Component {
     constructor(props) {
@@ -73,16 +74,21 @@ class DrinksPage extends Component {
         return (
             <div>
                 <Search handleHover={this.handleHover} getDrinksFromSearch={(search)=>this.props.getDrinksFromSearch(search, this)} autoFocus/>
-                <div style={{width: "100%", margin: "20px 0", display: "flex", justifyContent: "center"}}>
-                    <label style={{cursor: "pointer"}}><input style={{cursor: "pointer"}} onChange={()=>this.setState( { nonAlcoholic: !this.state.nonAlcoholic } )} name="nonAlcoholic" type="checkbox"/>Non alcoholic</label>
-                </div>
                 {(this.state.viewRecipe) ? 
                     (
-                        <ViewRecipe drink={this.state.viewRecipe}/>
+                        <div>
+                            <img src={backbtn} alt="backbutton" style={stylebackbtn} onClick={()=>this.setState( { viewRecipe: null } )} />
+                            <ViewRecipe drink={this.state.viewRecipe}/>
+                        </div>
                     ) :
                     (
                         <div>
-                            {this.getResults()}
+                            <div style={{width: "100%", margin: "20px 0", display: "flex", justifyContent: "center"}}>
+                                <label style={{cursor: "pointer"}}><input style={{cursor: "pointer"}} onChange={()=>this.setState( { nonAlcoholic: !this.state.nonAlcoholic } )} name="nonAlcoholic" type="checkbox"/>Non alcoholic</label>
+                            </div>
+                            <div>
+                                {this.getResults()}
+                            </div>
                         </div>
                     )}
             </div>
@@ -140,6 +146,12 @@ const drinkDiv = {
 
 const drinkImg = {
     maxHeight: "60px",
+}
+
+const stylebackbtn = {
+    height: "80px",
+    marginLeft: "4%",
+    cursor: "pointer"
 }
 
 export default DrinksPage;

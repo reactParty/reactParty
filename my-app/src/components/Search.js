@@ -2,6 +2,9 @@ import React, { Component } from 'react';
 import Form from 'react-bootstrap/Form';
 import searchLogo from './layout/search1.png';
 
+    /**
+     * @class
+     */
 class Search extends Component {
     constructor(props) {
         super(props);
@@ -10,6 +13,10 @@ class Search extends Component {
         }
     }
 
+    /**
+     * Updates this.state.value to the users input when typing in searchform
+     * The search starts when the user presses enter
+     */
     handleChange = (event) => {
         this.setState( { value: event.target.value } )
         if (event.keyCode === 13) {
@@ -17,6 +24,12 @@ class Search extends Component {
         }
     }
 
+    /**
+     * Search form fetched from Bootstrap
+     * Fetches user search input when clicking on the magnifying glass icon
+     * Changes the current state value
+     * @returns JSX
+     */
     render() {
         return (
             <div style={divStyle}>
@@ -40,6 +53,7 @@ class Search extends Component {
     }
 }
 
+// Style properites for div
 const divStyle = {
     display: "flex",
     justifyContent: "center",
@@ -47,6 +61,7 @@ const divStyle = {
     paddingBottom: "10px"
 }
 
+// Style properites for the search container
 const searchContainer = {
   height: "50px",
   fontSize: "30px",
@@ -54,6 +69,7 @@ const searchContainer = {
   width: "60%",
 }
 
+// Style properites for the magnifying glass icon/img
 const logoStyle = {
     height:"40px",
     marginLeft: "-55px",
@@ -61,6 +77,7 @@ const logoStyle = {
     cursor: "pointer"
 }
 
+// Style properites for form search
 const searchStyle = {
     padding: "30px",
     borderRadius: "40px"

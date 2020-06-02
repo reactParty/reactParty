@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
-// import hash from "./hash";
 import { clientId } from './ignore';
 import Header from './components/layout/Header';
 import PickupLines from './components/PickupLines';
 import Main from './components/Main';
 import Footer from './components/Footer';
 import DrinksPage from './components/DrinksPage';
+import StoredDrinks from "./components/StoredDrinks";
 import Popup from './components/Popup';
 import SpotifyPopUp from './components/SpotifyPopUp';
 import info from './components/layout/info.png';
@@ -14,7 +14,6 @@ import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
 import Utilities from './Utilities'
-// import { render } from 'react-dom';
 
 // spotify endpoint
 const authEndpoint = 'https://accounts.spotify.com/authorize';
@@ -62,7 +61,19 @@ class App extends Component {
       localStorage.setItem("recipes", JSON.stringify([]));
       return [];
     }
-  }  
+  }
+
+  updateLocalStorage = () => {
+    localStorage.setItem("recipes", JSON.stringify(this.state.storedRecipes));
+  }
+
+  addDrink = (drink) => {
+    this.setState( { storedRecipes: [...this.state.storedRecipes, drink] }, this.updateLocalStorage );
+  }
+
+  removeDrink = (drinkId) => {
+    this.setState( { storedRecipes: [...this.state.storedRecipes].filter((drink)=>drink.idDrink !== drinkId) }, this.updateLocalStorage );
+  }
 
   togglePopup() {  
     this.setState({  
@@ -71,10 +82,19 @@ class App extends Component {
   }
 
   toggleSpotifyPopup = () => {
-    console.log("toggle")
     this.setState({
       showSpotifyPopUp: !this.state.showSpotifyPopUp
     });
+    this.getSpotifyCurrentlyPlaying();
+  }
+
+  handleCatch(e) {
+    console.error(e)
+  }
+
+  handleSpotifyCatch = (e) => {
+    this.setState( { spotifyCurrentlyPlaying: "Something went wrong! Perhaps you're not active on your Spotify-account!" } )
+    console.error(e);
   }
 
   componentDidMount() {
@@ -89,36 +109,21 @@ class App extends Component {
     fetch('http://pebble-pickup.herokuapp.com/tweets')
       .then(response => response.json())
       .then(data => this.setState( { pickupLines: Utilities.shuffleArray(data) } ))
+      .catch(this.handleCatch)
   }
 
-  // Spotify methods
-  getCurrentlyPlaying() {
-    fetch("https://api.spotify.com/v1/me/player", {
-      method: "GET",
-      headers: new Headers({
-        Authorization: "Bearer " + this.state.spotifyToken
-      })
-    }).then((response)=>{
-      if (response.status !== 204) {
-        response.json()
-      } else {
-        alert("Du är inte aktiv på ditt spotify-konto!")
-      }
-    })
-  }
-
-  getSpotifyCurrentlyPlaying() {
+  getSpotifyCurrentlyPlaying = () => {
     fetch("https://api.spotify.com/v1/me/player/currently-playing", {
       method: "GET",
       headers: new Headers({
         Authorization: "Bearer " + this.state.spotifyToken
       })
-    }).then((response)=>response.json())
-      .then((currentlyPlayingData) => {this.setState( { spotifyCurrentlyPlaying: currentlyPlayingData.item.name } ); console.log(currentlyPlayingData.item.name)})
+    }).then(response=>response.json())
+      .then(currentlyPlayingData=>this.setState( { spotifyCurrentlyPlaying: currentlyPlayingData.item } ))
+      .catch(this.handleSpotifyCatch)
   }
 
   modifyPlayer=(action) => {
-    // behövs catch error och guard för status != 200 samt 204 => ej aktiv på sitt spotify-konto.
     if (action == null) return;
     let method;
     if (action === "next" || action === "previous") {
@@ -132,15 +137,16 @@ class App extends Component {
       headers: new Headers({
         Authorization: "Bearer " + this.state.spotifyToken
       })
-    })
+    }).then(()=>this.getSpotifyCurrentlyPlaying())
+      .catch(this.handleSpotifyCatch)
   }
 
   getDrinksFromSearch = (search, drinkPage) => {
-    // behövs catch error
     drinkPage.setState( { viewRecipe: null } )
     fetch('https://www.thecocktaildb.com/api/json/v1/1/search.php?s=' + search)
       .then(response => response.json())
       .then(data => this.setState( { recipesSearchResult: data.drinks } ))
+      .catch(this.handleCatch)
   }
 
   toHomePage = () => {
@@ -154,7 +160,9 @@ class App extends Component {
   getMain = () => {
     switch (this.state.page) {
       case "drinks":
-        return <DrinksPage searchResults={this.state.recipesSearchResult} getDrinksFromSearch={this.getDrinksFromSearch} />
+        return <DrinksPage addDrink={this.addDrink} removeDrink={this.removeDrink} storedDrinks={this.state.storedRecipes} searchResults={this.state.recipesSearchResult} getDrinksFromSearch={this.getDrinksFromSearch} />
+      case "savedDrinks":
+        return <StoredDrinks addDrink={this.addDrink} removeDrink={this.removeDrink} drinks={this.state.storedRecipes} />
       default:
         return (
           <div>
@@ -172,7 +180,7 @@ class App extends Component {
           <PickupLines pickupLines={this.state.pickupLines}/>
           <div style={{height: "100px"}}>
             <img src={info} alt="info" onClick={this.togglePopup.bind(this)} style={{height: "50px", margin: "10px 0 0 3px", cursor: "pointer"}}/>
-            <img src={savedDrinksLogo} alt="log for saved drinks" onClick={()=>this.setState( { page: "home" } )} style={{height: "80px", margin: "10px 50px 0 0", float: "right", cursor: "pointer"}}/>
+            <img src={savedDrinksLogo} alt="log for saved drinks" onClick={()=>this.setState( { page: "savedDrinks" } )} style={{height: "80px", margin: "10px 50px 0 0", float: "right", cursor: "pointer"}}/>
           </div> 
           {this.getMain()}
           <Footer />
@@ -184,7 +192,9 @@ class App extends Component {
             }
             {this.state.showSpotifyPopUp ?  
             <SpotifyPopUp
-              modifyPlayer={this.modifyPlayer}    
+              spotifyCurrentlyPlaying={this.state.spotifyCurrentlyPlaying}
+              getSpotifyCurrentlyPlaying={this.getSpotifyCurrentlyPlaying}
+              modifyPlayer={this.modifyPlayer}
               closeSpotifyPopUp={this.toggleSpotifyPopup}  
             />  
             : null  

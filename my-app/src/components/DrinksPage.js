@@ -1,7 +1,10 @@
 import React, { Component } from 'react';
 import Search from './Search';
-import danceImg from './layout/danicng.png'
-import drinkDot from './layout/drinkDot.png'
+import danceImg from './layout/danicng.png';
+import removeIcon from "./layout/saveIcon1.png";
+import saveIcon from "./layout/saveIcon2.png";
+import ViewRecipe from "./ViewRecipe";
+import backbtn from "./layout/backbtn.png";
 
 class DrinksPage extends Component {
     /**
@@ -34,6 +37,7 @@ class DrinksPage extends Component {
     * @returns JSX
     */
     getResults = () => {
+        const { storedDrinks } = this.props;
         if (this.props.searchResults == null) return this.getNoResults();
         if (!this.props.searchResults.length) return;
         let strAlcoholic = (this.state.nonAlcoholic) ? "Non alcoholic" : "Alcoholic";
@@ -51,6 +55,26 @@ class DrinksPage extends Component {
                                     {result.strDrink}
                                 </div>
                             </div>
+                            {(storedDrinks.filter((storedDrink)=>result.idDrink === storedDrink.idDrink).length) ?
+                                (
+                                    <div style={drinkDiv}>
+                                    <img
+                                        onClick={()=>this.props.removeDrink(result.idDrink)}
+                                        style={drinkImg}
+                                        src={removeIcon}
+                                        alt="Remove Drink"/>
+                                    </div>
+                                ) :
+                                (
+                                    <div style={drinkDiv}>
+                                    <img
+                                        onClick={()=>this.props.addDrink(result)}
+                                        style={drinkImg}
+                                        src={saveIcon}
+                                        alt="Save Drink"/>
+                                    </div>
+                                )
+                            }
                         </div>
                     )
                 })}
@@ -58,78 +82,25 @@ class DrinksPage extends Component {
         )
     }
 
-    /**
-     * @param {Object}
-     * @returns JSX
-     * Contains a key, an ingredient and a measure to an ingredient
-     * Returns HTML to display ingredients and measures
-     */
-    getDrinkInfo = (ingredient) => {
-        return (
-            <li key = {ingredient.key} style = {{display: "flex", justifyContent: "space-between", fontSize:"20px"}}>
-                <div>
-                    <img src={drinkDot} alt="drinkingdot" style={{height: "30px", marginRight: "15px"}}/>
-                    {ingredient.ingredient}
-                </div>
-                <div>{ingredient.measure}</div>
-            </li>
-        )
-    }
-
-    /**
-     * Creates an Object ingredientObj (key, ingredient, measure)
-     * Loops through all objects and pushes these to ingredients list
-     * @returns JSX
-     */
-    getIngredients = () => {
-        let ingredients = []
-        let i = 1;
-        while (i <= 10) {
-            if (this.state.viewRecipe["strIngredient" + i] == null) break;
-            let ingredientObj = {
-                ingredient: this.state.viewRecipe["strIngredient" + i],
-                measure: this.state.viewRecipe["strMeasure" + i],
-                key: "ingredient" + i
-            }
-            ingredients.push(ingredientObj)
-            i++
-        }
-        return (<ul style={{marginTop: "50px", padding:"0"}}> {/** Returns an ul element */}
-                {ingredients.map(this.getDrinkInfo)} {/** Maps ingredients and calls function getDrinkInfo */}
-            </ul>
-        )
-    }
-
-
-    /**
-     * Returns JSX for rendering search results and recipes
-     * @returns JSX
-     */
     render() {
         return (
             <div>
                 <Search handleHover={this.handleHover} getDrinksFromSearch={(search)=>this.props.getDrinksFromSearch(search, this)} autoFocus/>
-                <div style={{width: "100%", margin: "20px 0", display: "flex", justifyContent: "center"}}>
-                    <label style={{cursor: "pointer"}}><input style={{cursor: "pointer"}} onChange={()=>this.setState( { nonAlcoholic: !this.state.nonAlcoholic } )} name="nonAlcoholic" type="checkbox"/>Non alcoholic</label>
-                </div>
                 {(this.state.viewRecipe) ? 
                     (
-                        <div style={drinkInfoContainer}>
-                            <div style={drinkStyle}>
-                                <h2>{this.state.viewRecipe.strDrink}</h2>
-                                <img width="100%" style = {{borderRadius: "10px"}} src={this.state.viewRecipe.strDrinkThumb} alt={this.state.viewRecipe.strDrink}/>
-                            </div>
-                            <div style={drinkInfo}>
-                                <h2>Ingredients</h2>
-                                {
-                                    this.getIngredients()
-                                }
-                            </div>
+                        <div>
+                            <img src={backbtn} alt="backbutton" style={stylebackbtn} onClick={()=>this.setState( { viewRecipe: null } )} />
+                            <ViewRecipe addDrink={this.props.addDrink} removeDrink={this.props.removeDrink} storedDrinks={this.props.storedDrinks} drink={this.state.viewRecipe}/>
                         </div>
                     ) :
                     (
                         <div>
-                            {this.getResults()}
+                            <div style={{width: "100%", margin: "20px 0", display: "flex", justifyContent: "center"}}>
+                                <label style={{cursor: "pointer"}}><input style={{cursor: "pointer"}} onChange={()=>this.setState( { nonAlcoholic: !this.state.nonAlcoholic } )} name="nonAlcoholic" type="checkbox"/>Non alcoholic</label>
+                            </div>
+                            <div>
+                                {this.getResults()}
+                            </div>
                         </div>
                     )}
             </div>
@@ -137,19 +108,6 @@ class DrinksPage extends Component {
     }
 }
 
-// Styling container of drinkInfo
-const drinkInfoContainer = {
-    width: "60%",
-    display: "flex",
-    padding: "0",
-    justifyContent: "center",
-    flexWrap: "wrap",
-    margin: "50px auto",
-    borderRadius: "10px",
-    boxShadow: "#333 0px 0px 3px"
-}
-
-// Styling container of recipes and image
 const drinkContainer = {
     width: "80%",
     display: "flex",
@@ -194,18 +152,21 @@ const drinkTitleChild = {
     position: "absolute"
 }
 
-// Styling drink image container
-const drinkStyle = {
-    width: "50%",
-    backgroundColor: "#fafafa",
-    padding: "2%",
+const drinkDiv = {
+    cursor: "pointer",
+    position: "absolute",
+    right: "35px",
+    bottom: "9%"
 }
 
-// Styling drink info container
-const drinkInfo = {
-    width: "50%",
-    backgroundColor: "#fafafa",
-    padding: "2%",   
+const drinkImg = {
+    maxHeight: "60px",
+}
+
+const stylebackbtn = {
+    height: "80px",
+    marginLeft: "4%",
+    cursor: "pointer"
 }
 
 export default DrinksPage;

@@ -1,4 +1,13 @@
+/**
+ * Additional utilities needed to preform helpful methods
+ * @class
+ */
 class Utilities {
+    /**
+     * @static
+     * @param {Array} arr
+     * @returns {Array} arr
+     */
     static shuffleArray(arr) {
         let tempArr = [];
         while (arr.length) {
@@ -10,7 +19,7 @@ class Utilities {
             arr.push(tempArr.shift());
         }
         return arr;
-    } 
+    }
 }
 
 export default Utilities;

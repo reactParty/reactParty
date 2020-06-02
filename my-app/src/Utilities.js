@@ -1,3 +1,7 @@
+/**
+ * Additional utilities needed to preform helpful methods
+ * @class
+ */
 class Utilities {
     /**
      * @static

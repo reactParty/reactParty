@@ -3,6 +3,9 @@ import drinkDot from './layout/drinkDot.png';
 import removeIcon from "./layout/saveIcon1.png";
 import saveIcon from "./layout/saveIcon2.png";
 
+/**
+ * @class
+ */
 class ViewRecipe extends Component {
     constructor(props) {
         super(props);
@@ -12,6 +15,9 @@ class ViewRecipe extends Component {
         }
     }
 
+    /**
+     * @property {*} ingredient
+     */
     getDrinkInfo = (ingredient) => {
         return (
             <li key = {ingredient.key} style = {{display: "flex", justifyContent: "space-between", fontSize:"20px"}}>

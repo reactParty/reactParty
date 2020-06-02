@@ -88,21 +88,11 @@ class App extends Component {
     this.getSpotifyCurrentlyPlaying();
   }
 
-  handleFetchError = (response) => {
-    if (!response.ok) {
-      return Error(response.statusText);
-    }
-    return response;
+  handleCatch(e) {
+    console.error(e)
   }
 
-  handleStatus204 = (response) => {
-    if (response.status === 204) {
-      return Error("User not active");
-    }
-    return response;
-  }
-
-  handleCatch = (e) => {
+  handleSpotifyCatch = (e) => {
     this.setState( { spotifyCurrentlyPlaying: "Something went wrong! Perhaps you're not active on your Spotify-account!" } )
     console.error(e);
   }
@@ -117,7 +107,6 @@ class App extends Component {
       });
     }
     fetch('http://pebble-pickup.herokuapp.com/tweets')
-      .then(this.handleFetchError)
       .then(response => response.json())
       .then(data => this.setState( { pickupLines: Utilities.shuffleArray(data) } ))
       .catch(this.handleCatch)
@@ -129,11 +118,9 @@ class App extends Component {
       headers: new Headers({
         Authorization: "Bearer " + this.state.spotifyToken
       })
-    }).then(this.handleFetchError)
-      .then(this.handleStatus204)
-      .then(response=>response.json())
+    }).then(response=>response.json())
       .then(currentlyPlayingData=>this.setState( { spotifyCurrentlyPlaying: currentlyPlayingData.item } ))
-      .catch(this.handleCatch)
+      .catch(this.handleSpotifyCatch)
   }
 
   modifyPlayer=(action) => {
@@ -150,17 +137,16 @@ class App extends Component {
       headers: new Headers({
         Authorization: "Bearer " + this.state.spotifyToken
       })
-    }).then(this.handleFetchError)
-      .then(()=>this.getSpotifyCurrentlyPlaying())
-      .catch(this.handleCatch)
+    }).then(()=>this.getSpotifyCurrentlyPlaying())
+      .catch(this.handleSpotifyCatch)
   }
 
   getDrinksFromSearch = (search, drinkPage) => {
     drinkPage.setState( { viewRecipe: null } )
     fetch('https://www.thecocktaildb.com/api/json/v1/1/search.php?s=' + search)
-      .then(this.handleFetchError)
       .then(response => response.json())
       .then(data => this.setState( { recipesSearchResult: data.drinks } ))
+      .catch(this.handleCatch)
   }
 
   toHomePage = () => {

@@ -4,14 +4,21 @@ import danceImg from './layout/danicng.png'
 import drinkDot from './layout/drinkDot.png'
 
 class DrinksPage extends Component {
+    /**
+     * @constructor
+     * @param {*} props - Costructor requires super(props)
+     */
     constructor(props) {
         super(props);
         this.state= {
-            nonAlcoholic: false,
-            viewRecipe: null
+            nonAlcoholic: false, // Sets default filter
+            viewRecipe: null // ViewRecipe is null before search has been made
         }
     }
 
+    /**
+     * Returns HTML when no results are found
+     */
     getNoResults() {
         return (
             <div style={{width: "100%", fontSize: "1.3em", textAlign: "center", padding: "50px"}}>
@@ -21,14 +28,17 @@ class DrinksPage extends Component {
         )
     }
 
+    /** 
+    * Checks if results are found then returns HTML for displaying the result
+    */
     getResults = () => {
         if (this.props.searchResults == null) return this.getNoResults();
         if (!this.props.searchResults.length) return;
         let strAlcoholic = (this.state.nonAlcoholic) ? "Non alcoholic" : "Alcoholic";
-        return (
+        return ( 
             <div style={drinkContainer}>
-                {this.props.searchResults.filter((result) => result.strAlcoholic === strAlcoholic).map((result) => {
-                    return (
+                {this.props.searchResults.filter((result) => result.strAlcoholic === strAlcoholic).map((result) => { // Loops through every specific result item
+                    return ( // Returns HTML for each individual search result
                         <div style={drinkItem} key={result.idDrink}>
                             <img width="100%" style = {{borderRadius: "10px", cursor: "pointer"}}
                                 src={result.strDrinkThumb}
@@ -46,6 +56,11 @@ class DrinksPage extends Component {
         )
     }
 
+    /**
+     * @param {Object}
+     * Contains a key, an ingredient and a measure to an ingredient
+     * Returns HTML to display ingredients and measures
+     */
     getDrinkInfo = (ingredient) => {
         return (
             <li key = {ingredient.key} style = {{display: "flex", justifyContent: "space-between", fontSize:"20px"}}>
@@ -58,6 +73,10 @@ class DrinksPage extends Component {
         )
     }
 
+    /**
+     * Creates an Object ingredientObj (key, ingredient, measure)
+     * Loops through all objects and pushes these to ingredients list
+     */
     getIngredients = () => {
         let ingredients = []
         let i = 1;
@@ -71,14 +90,16 @@ class DrinksPage extends Component {
             ingredients.push(ingredientObj)
             i++
         }
-        return (<ul style={{marginTop: "50px", padding:"0"}}>
-                {ingredients.map(this.getDrinkInfo)}
+        return (<ul style={{marginTop: "50px", padding:"0"}}> {/** Returns an ul element */}
+                {ingredients.map(this.getDrinkInfo)} {/** Maps ingredients and calls function getDrinkInfo */}
             </ul>
         )
     }
 
 
-
+    /**
+     * Returns JSX for rendering search results and recipes
+     */
     render() {
         return (
             <div>
@@ -111,6 +132,7 @@ class DrinksPage extends Component {
     }
 }
 
+// Styling container of drinkInfo
 const drinkInfoContainer = {
     width: "60%",
     display: "flex",
@@ -122,6 +144,7 @@ const drinkInfoContainer = {
     boxShadow: "#333 0px 0px 3px"
 }
 
+// Styling container of recipes and image
 const drinkContainer = {
     width: "80%",
     display: "flex",
@@ -131,6 +154,7 @@ const drinkContainer = {
     margin: "50px auto"
 }
 
+// Styling of drink image
 const drinkItem = {
     display: "flex",
     width: "31%",
@@ -144,6 +168,7 @@ const drinkItem = {
     boxShadow: "#333 0px 0px 3px"
 }
 
+// Styling for container of drink title inside image
 const drinkTitleStyle = {
     display: "flex",
     justifyContent: "center",
@@ -159,16 +184,19 @@ const drinkTitleStyle = {
     borderRadius: "0 0 10px 10px"
 }
 
+// Styling of drink title
 const drinkTitleChild = {
     position: "absolute"
 }
 
+// Styling drink image container
 const drinkStyle = {
     width: "50%",
     backgroundColor: "#fafafa",
     padding: "2%",
 }
 
+// Styling drink info container
 const drinkInfo = {
     width: "50%",
     backgroundColor: "#fafafa",

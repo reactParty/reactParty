@@ -18,6 +18,7 @@ class DrinksPage extends Component {
 
     /**
      * Returns HTML when no results are found
+     * @returns JSX
      */
     getNoResults() {
         return (
@@ -30,6 +31,7 @@ class DrinksPage extends Component {
 
     /** 
     * Checks if results are found then returns HTML for displaying the result
+    * @returns JSX
     */
     getResults = () => {
         if (this.props.searchResults == null) return this.getNoResults();
@@ -58,6 +60,7 @@ class DrinksPage extends Component {
 
     /**
      * @param {Object}
+     * @returns JSX
      * Contains a key, an ingredient and a measure to an ingredient
      * Returns HTML to display ingredients and measures
      */
@@ -76,6 +79,7 @@ class DrinksPage extends Component {
     /**
      * Creates an Object ingredientObj (key, ingredient, measure)
      * Loops through all objects and pushes these to ingredients list
+     * @returns JSX
      */
     getIngredients = () => {
         let ingredients = []
@@ -99,6 +103,7 @@ class DrinksPage extends Component {
 
     /**
      * Returns JSX for rendering search results and recipes
+     * @returns JSX
      */
     render() {
         return (

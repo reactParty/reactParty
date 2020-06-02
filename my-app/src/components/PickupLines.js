@@ -33,7 +33,7 @@ class PickupLines extends Component {
                 transitionTime={10000}
                 interval={10000}
                 showThumbs={false}>
-                {this.props.pickupLines.filter(pickupLine => pickupLine.tweet != null).map( {/** Maps through pickuplines */}
+                {this.props.pickupLines.filter(pickupLine => pickupLine.tweet != null).map( /** Maps through pickuplines */
                     (pickupLine, i) => {
                         return (
                             <div key={"pickupLineparent" + i} style={carouselItemStyle}>

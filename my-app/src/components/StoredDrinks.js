@@ -1,9 +1,15 @@
 import React, { Component } from 'react';
 import ViewRecipe from './ViewRecipe';
 import backbtn from './layout/backbtn.png';
-// import drinkDot from './layout/drinkDot.png'
 
+/**
+ * @class
+ */
 class StoredDrinks extends Component {
+    /**
+     * @constructor
+     * @param {*} props
+     */
     constructor(props) {
         super(props);
         this.state= {
@@ -12,6 +18,9 @@ class StoredDrinks extends Component {
         }
     }
 
+    /**
+     * @returns JSX
+     */
     render() {
         const { drinks } = this.props;
         return (
@@ -50,6 +59,7 @@ class StoredDrinks extends Component {
     }
 }
 
+// Style the back arrow button
 const stylebackbtn = {
     height: "80px",
     marginLeft: "4%",

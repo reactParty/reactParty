@@ -5,6 +5,10 @@ import pausebtn from './layout/pausebtn.png'
 import nextsongbtn from './layout/nextsongbtn.png'
 import previousbtn from './layout/previousbtn.png'
 
+
+    /**
+     * @class
+     */
 class Spotifypopup extends Component {
     constructor(props) {
         super(props);
@@ -13,14 +17,31 @@ class Spotifypopup extends Component {
         }
     }
 
+    /**
+     * When the Spotify compenent opens
+     * Starts a loop which fetches the artis name and title of the song every second
+     */
     componentDidMount() {
         this.setState( { intervalId: setInterval(()=>this.props.getSpotifyCurrentlyPlaying(), 1000) });
     }
 
+    /**
+     * When the Spotify compenent closes
+     * Breaks the loop
+     */
     componentWillUnmount() {
         clearInterval(this.state.intervalId);
     }
 
+    /**
+     * Opens and closes the popup window when clicking on the Spotify icon
+     * Displays artist and title of the song currently playing
+     * Allows user to play music
+     * Allows user to pauses music
+     * Allows user to play next song
+     * Allows user to play previous song
+     * @returns JSX
+     */
     render() {
         return(
             <div style={spotifyPopUp}> 
@@ -48,6 +69,7 @@ class Spotifypopup extends Component {
     }
 }
 
+// Style properites for the outer div, aka the outlines of the popup box 
 const spotifyPopUp = {
     position: "fixed",  
     width: "100%",  
@@ -60,6 +82,7 @@ const spotifyPopUp = {
     backgroundColor:"rgba(0,0,0, 0.5)"
 }
 
+// Style properites for the inner div, aka the inside of the box
 const SpotifyPopUpInner = {
     position: "absolute",  
     left: "25%",  
@@ -70,6 +93,7 @@ const SpotifyPopUpInner = {
     background: "white"
 }
 
+// Style properites for the Spotify buttons
 const Spotifybtn = {
     display: "flex",
     justifyContent: "center",

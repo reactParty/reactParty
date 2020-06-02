@@ -2,8 +2,15 @@ import React, { Component } from 'react';
 import closingCross from './layout/close.png'
 import dancingPinapple from './layout/dancing.png'
 
-
-class Popup extends Component {  
+/**
+ * @class
+ */
+class Popup extends Component {
+    /**
+     * This function runs when klicking on the info-icon.
+     * An info-box shows up and tells what the user can do on the page
+     * @returns JSX
+     */
     render() {  
         return (  
             <div style={popUp}> 
@@ -47,6 +54,7 @@ class Popup extends Component {
         }  
     }  
 
+// Styling for the pop up box
 const popUp = {
     position: "fixed",  
     width: "100%",  
@@ -59,6 +67,7 @@ const popUp = {
     backgroundColor:"rgba(0,0,0, 0.5)"
 }
 
+// Styling for the content inside pop up box
 const popUpInner = {
     position: "absolute",  
     left: "25%",  
@@ -69,10 +78,12 @@ const popUpInner = {
     background: "white"
 }
 
+// Style for the font in pop up box
 const pStyle = {
     fontStyle: "italic"
 }
 
+// Styling h5 element inside pop up box
 const h5Style = {
     fontWeight: "bold",
     color: "black",

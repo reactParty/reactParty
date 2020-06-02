@@ -2,9 +2,12 @@ import React, { Component } from 'react';
 import PickupLine from './PickupLine';
 import { Carousel } from 'react-responsive-carousel';
 
+/**
+ * @extends Component
+ */
 class PickupLines extends Component {
     /**
-     * 
+     * @constructor
      * @param {*} props 
      */
     constructor(props) {
@@ -16,7 +19,7 @@ class PickupLines extends Component {
 
     /**
      * Render pickuplines in React Bootstrap Carousel
-     * @returns JSX 
+     * @returns {JSX.Element} 
      */
     render() {
         if (this.props.pickupLines.length === 0) return <div></div>; // Creates an empty div elememt if pickuplines is empty

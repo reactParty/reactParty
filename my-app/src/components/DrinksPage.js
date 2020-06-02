@@ -6,6 +6,10 @@ import saveIcon from "./layout/saveIcon2.png";
 import ViewRecipe from "./ViewRecipe";
 import backbtn from "./layout/backbtn.png";
 
+/**
+ * Page that allows users to search and store drink recipes
+ * @extends Component
+ */
 class DrinksPage extends Component {
     /**
      * @constructor
@@ -20,8 +24,7 @@ class DrinksPage extends Component {
     }
 
     /**
-     * Returns HTML when no results are found
-     * @returns JSX
+     * @returns {JSX.Element} Div when no results are found
      */
     getNoResults() {
         return (
@@ -33,8 +36,8 @@ class DrinksPage extends Component {
     }
 
     /** 
-    * Checks if results are found then returns HTML for displaying the result
-    * @returns JSX
+    * Checks if results are found
+    * @returns {JSX.Element} Divs for displaying search result
     */
     getResults = () => {
         const { storedDrinks } = this.props;
@@ -82,6 +85,10 @@ class DrinksPage extends Component {
         )
     }
 
+    /**
+     * If you click on a drink it returns a ViewRecipe object, otherwise it continues to show search results
+     * @returns {JSX.Element}
+     */
     render() {
         return (
             <div>
@@ -108,6 +115,7 @@ class DrinksPage extends Component {
     }
 }
 
+// Styling of div containing all drinks
 const drinkContainer = {
     width: "80%",
     display: "flex",
@@ -139,7 +147,7 @@ const drinkTitleStyle = {
     position: "absolute",
     bottom: "6.4%",
     width: "87.2%",
-    backgroundColor: "rgba(0,0,0 , 0.3)",
+    backgroundColor: "rgba(0,0,0 , 0.5)",
     color: "white",
     textShadow: "2px 2px 4px #000000",
     fontWeight: "bold",
@@ -152,6 +160,7 @@ const drinkTitleChild = {
     position: "absolute"
 }
 
+// Styling div containing a drink
 const drinkDiv = {
     cursor: "pointer",
     position: "absolute",
@@ -159,10 +168,12 @@ const drinkDiv = {
     bottom: "9%"
 }
 
+// Styling drink image
 const drinkImg = {
     maxHeight: "60px",
 }
 
+// Styling of back-button
 const stylebackbtn = {
     height: "80px",
     marginLeft: "4%",

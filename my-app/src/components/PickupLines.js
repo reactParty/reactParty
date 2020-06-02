@@ -50,7 +50,7 @@ class PickupLines extends Component {
     }
 }
 
-// Styles the div containing a pickupline
+/** Styles the div containing a pickupline */ 
 const carouselItemStyle = {
     backgroundColor: "white",
     height: "66px",

@@ -53,7 +53,7 @@ class Search extends Component {
     }
 }
 
-// Style properites for div
+/** Style properites for div */
 const divStyle = {
     display: "flex",
     justifyContent: "center",
@@ -61,7 +61,7 @@ const divStyle = {
     paddingBottom: "10px"
 }
 
-// Style properites for the search container
+/** Style properites for the search container */
 const searchContainer = {
   height: "50px",
   fontSize: "30px",
@@ -69,7 +69,7 @@ const searchContainer = {
   width: "60%",
 }
 
-// Style properites for the magnifying glass icon/img
+/** Style properites for the magnifying glass icon/img */
 const logoStyle = {
     height:"40px",
     marginLeft: "-55px",
@@ -77,7 +77,7 @@ const logoStyle = {
     cursor: "pointer"
 }
 
-// Style properites for form search
+/** Style properites for form search */
 const searchStyle = {
     padding: "30px",
     borderRadius: "40px"

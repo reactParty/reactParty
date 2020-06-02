@@ -10,6 +10,7 @@ class PickupLine extends Component {
     }
 }
 
+/** Styling of pickupline paragraph */
 const pStyle = {
     margin: "0px",
     height: "66px",

@@ -70,13 +70,13 @@ class Main extends Component {
     }
 }
 
-// Styling the main
+/** Styling the main */ 
 const mainStyle = {
     margin: "auto",
     textAlign: "center",
 }
 
-// Styling the drink logo
+/** Styling the drink logo */ 
 const logoStyle1 = {
     height: "300px",
     margin: "50px 85px",
@@ -84,7 +84,7 @@ const logoStyle1 = {
     cursor: "pointer"
 }
 
-// Styling the spotify logo
+/** Styling the spotify logo */
 const logoStyle2 = {
     height: "300px",
     margin: "50px 85px",

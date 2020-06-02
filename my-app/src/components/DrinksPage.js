@@ -115,7 +115,7 @@ class DrinksPage extends Component {
     }
 }
 
-// Styling of div containing all drinks
+/** Styling of div containing all drinks */ 
 const drinkContainer = {
     width: "80%",
     display: "flex",
@@ -125,7 +125,7 @@ const drinkContainer = {
     margin: "50px auto"
 }
 
-// Styling of drink image
+/** Styling of drink image */ 
 const drinkItem = {
     display: "flex",
     width: "31%",
@@ -139,7 +139,7 @@ const drinkItem = {
     boxShadow: "#333 0px 0px 3px"
 }
 
-// Styling for container of drink title inside image
+/** Styling for container of drink title inside image */ 
 const drinkTitleStyle = {
     display: "flex",
     justifyContent: "center",
@@ -155,12 +155,12 @@ const drinkTitleStyle = {
     borderRadius: "0 0 10px 10px"
 }
 
-// Styling of drink title
+/** Styling of drink title */ 
 const drinkTitleChild = {
     position: "absolute"
 }
 
-// Styling div containing a drink
+/** Styling div containing a drink */ 
 const drinkDiv = {
     cursor: "pointer",
     position: "absolute",
@@ -168,12 +168,12 @@ const drinkDiv = {
     bottom: "9%"
 }
 
-// Styling drink image
+/** Styling drink image */
 const drinkImg = {
     maxHeight: "60px",
 }
 
-// Styling of back-button
+/** Styling of back-button */ 
 const stylebackbtn = {
     height: "80px",
     marginLeft: "4%",

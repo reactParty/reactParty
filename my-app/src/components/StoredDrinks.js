@@ -33,7 +33,8 @@ class StoredDrinks extends Component {
                         </div>
                     ) : 
                     (
-                        <div>
+                        <div style={savedRecipesContainer}>
+                            <h2>Saved recipes</h2>
                             {(drinks.length) ?
                                 (
                                     <ul>
@@ -64,6 +65,10 @@ const stylebackbtn = {
     height: "80px",
     marginLeft: "4%",
     cursor: "pointer"
+}
+
+const savedRecipesContainer = {
+    
 }
 
 export default StoredDrinks;

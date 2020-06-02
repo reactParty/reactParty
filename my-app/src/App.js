@@ -50,7 +50,8 @@ class App extends Component {
       spotifyToken: undefined,
       spotifyCurrentlyPlaying: undefined,
       showSpotifyPopUp : false,
-      storedRecipes: this.getLocalStorageDrinks()
+      storedRecipes: this.getLocalStorageDrinks(),
+      resetViewRecipe: false
     }
   }
 
@@ -162,7 +163,7 @@ class App extends Component {
       case "drinks":
         return <DrinksPage addDrink={this.addDrink} removeDrink={this.removeDrink} storedDrinks={this.state.storedRecipes} searchResults={this.state.recipesSearchResult} getDrinksFromSearch={this.getDrinksFromSearch} />
       case "savedDrinks":
-        return <StoredDrinks addDrink={this.addDrink} removeDrink={this.removeDrink} drinks={this.state.storedRecipes} />
+        return <StoredDrinks reResetViewRecipe={this.reResetViewRecipe} resetViewRecipe={this.state.resetViewRecipe} addDrink={this.addDrink} removeDrink={this.removeDrink} drinks={this.state.storedRecipes} />
       default:
         return (
           <div>
@@ -170,6 +171,10 @@ class App extends Component {
           </div>
         )
     }
+  }
+
+  reResetViewRecipe = () => {
+    this.setState( { resetViewRecipe: false } );
   }
 
   render() {
@@ -180,7 +185,7 @@ class App extends Component {
           <PickupLines pickupLines={this.state.pickupLines}/>
           <div style={{height: "100px"}}>
             <img src={info} alt="info" onClick={this.togglePopup.bind(this)} style={{height: "50px", margin: "10px 0 0 3px", cursor: "pointer"}}/>
-            <img src={savedDrinksLogo} alt="log for saved drinks" onClick={()=>this.setState( { page: "savedDrinks" } )} style={{height: "80px", margin: "10px 50px 0 0", float: "right", cursor: "pointer"}}/>
+            <img src={savedDrinksLogo} alt="log for saved drinks" onClick={()=>this.setState( { page: "savedDrinks", resetViewRecipe: true } )} style={{height: "80px", margin: "10px 50px 0 0", float: "right", cursor: "pointer"}}/>
           </div> 
           {this.getMain()}
           <Footer />

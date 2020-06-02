@@ -4,23 +4,31 @@ import removeIcon from "./layout/saveIcon1.png";
 import saveIcon from "./layout/saveIcon2.png";
 
 /**
- * @class
+ * Drink-component with title, img, ingrediens and measures.
+ * @extends Component
  */
 class ViewRecipe extends Component {
+    /** Object */ state
+    
+    /**
+     * @param {*} props - Required for super().
+     * @constructor
+     */
     constructor(props) {
-        super(props);
+        super(props); // Parent-class Component requires props.
         this.state= {
-            drinks: [],
-            viewRecipe: null
+            /** {Array<Object>} */ drinks: [],
+            /** {Object} */viewRecipe: null
         }
     }
 
     /**
-     * @property {*} ingredient
+     * @param {Object} ingredient - Contains unique key, ingredient name and ingredient measure.
+     * @returns {JSX.Element} li-tag with information about ingredient.
      */
     getDrinkInfo = (ingredient) => {
         return (
-            <li key = {ingredient.key} style = {{display: "flex", justifyContent: "space-between", fontSize:"20px"}}>
+            <li key={ingredient.key} style={{display: "flex", justifyContent: "space-between", fontSize:"20px"}}>
                 <div>
                     <img src={drinkDot} alt="drinkingdot" style={{height: "30px", marginRight: "15px"}}/>
                     {ingredient.ingredient}
@@ -30,6 +38,12 @@ class ViewRecipe extends Component {
         )
     }
 
+    /**
+     * A drink object contains several properties like strIngredient1, strIngredient2, strMeasure1, strMeasure2.
+     * This method loops through all ingredients 1-10 and pushes them to a new array which is then maped through
+     * to create li-tags.
+     * @returns {JSX.Element} ul-tag
+     */
     getIngredients = () => {
         const { drink } = this.props;
         let ingredients = []
@@ -50,6 +64,9 @@ class ViewRecipe extends Component {
         )
     }
 
+    /**
+     * @returns {JSX.Element} Drink-recipe with ingredients. If drink is stored locally, the "saved"-symbol will appear, else "save"-symbol will appear.
+     */
     render() {
         const { drink, storedDrinks } = this.props;
         return (

@@ -6,15 +6,26 @@ import saveIcon from "./layout/saveIcon2.png";
 import ViewRecipe from "./ViewRecipe";
 import backbtn from "./layout/backbtn.png";
 
+/**
+ * Page that allows users to search and store drink recipes
+ * @extends Component
+ */
 class DrinksPage extends Component {
+    /**
+     * @constructor
+     * @param {*} props - Costructor requires super(props)
+     */
     constructor(props) {
         super(props);
         this.state= {
-            nonAlcoholic: false,
-            viewRecipe: null
+            nonAlcoholic: false, // Sets default filter
+            viewRecipe: null // ViewRecipe is null before search has been made
         }
     }
 
+    /**
+     * @returns {JSX.Element} Div when no results are found
+     */
     getNoResults() {
         return (
             <div style={{width: "100%", fontSize: "1.3em", textAlign: "center", padding: "50px"}}>
@@ -24,15 +35,19 @@ class DrinksPage extends Component {
         )
     }
 
+    /** 
+    * Checks if results are found
+    * @returns {JSX.Element} Divs for displaying search result
+    */
     getResults = () => {
         const { storedDrinks } = this.props;
         if (this.props.searchResults == null) return this.getNoResults();
         if (!this.props.searchResults.length) return;
         let strAlcoholic = (this.state.nonAlcoholic) ? "Non alcoholic" : "Alcoholic";
-        return (
+        return ( 
             <div style={drinkContainer}>
-                {this.props.searchResults.filter((result) => result.strAlcoholic === strAlcoholic).map((result) => {
-                    return (
+                {this.props.searchResults.filter((result) => result.strAlcoholic === strAlcoholic).map((result) => { // Loops through every specific result item
+                    return ( // Returns HTML for each individual search result
                         <div style={drinkItem} key={result.idDrink}>
                             <img width="100%" style = {{borderRadius: "10px", cursor: "pointer"}}
                                 src={result.strDrinkThumb}
@@ -70,6 +85,10 @@ class DrinksPage extends Component {
         )
     }
 
+    /**
+     * If you click on a drink it returns a ViewRecipe object, otherwise it continues to show search results
+     * @returns {JSX.Element}
+     */
     render() {
         return (
             <div>
@@ -96,6 +115,7 @@ class DrinksPage extends Component {
     }
 }
 
+// Styling of div containing all drinks
 const drinkContainer = {
     width: "80%",
     display: "flex",
@@ -105,6 +125,7 @@ const drinkContainer = {
     margin: "50px auto"
 }
 
+// Styling of drink image
 const drinkItem = {
     display: "flex",
     width: "31%",
@@ -118,6 +139,7 @@ const drinkItem = {
     boxShadow: "#333 0px 0px 3px"
 }
 
+// Styling for container of drink title inside image
 const drinkTitleStyle = {
     display: "flex",
     justifyContent: "center",
@@ -125,7 +147,7 @@ const drinkTitleStyle = {
     position: "absolute",
     bottom: "6.4%",
     width: "87.2%",
-    backgroundColor: "rgba(0,0,0 , 0.3)",
+    backgroundColor: "rgba(0,0,0 , 0.5)",
     color: "white",
     textShadow: "2px 2px 4px #000000",
     fontWeight: "bold",
@@ -133,10 +155,12 @@ const drinkTitleStyle = {
     borderRadius: "0 0 10px 10px"
 }
 
+// Styling of drink title
 const drinkTitleChild = {
     position: "absolute"
 }
 
+// Styling div containing a drink
 const drinkDiv = {
     cursor: "pointer",
     position: "absolute",
@@ -144,10 +168,12 @@ const drinkDiv = {
     bottom: "9%"
 }
 
+// Styling drink image
 const drinkImg = {
     maxHeight: "60px",
 }
 
+// Styling of back-button
 const stylebackbtn = {
     height: "80px",
     marginLeft: "4%",

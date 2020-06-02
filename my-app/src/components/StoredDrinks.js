@@ -22,6 +22,10 @@ class StoredDrinks extends Component {
      * @returns JSX
      */
     render() {
+        if (this.props.resetViewRecipe === true) {
+            this.props.reResetViewRecipe();
+            this.setState( { viewRecipe: null } );
+        }
         const { drinks } = this.props;
         return (
             <div>

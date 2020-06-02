@@ -1,5 +1,8 @@
 import React from 'react';
 
+/**
+ * @returns JSX
+ */
 function Footer() {
     return (
         <footer style={footerStyle}>
@@ -16,6 +19,7 @@ function Footer() {
     )
 }
 
+// Styling the footer
 const footerStyle = {
     paddingTop: "10px",
     height: "auto",
@@ -24,6 +28,7 @@ const footerStyle = {
     color: "#fff",
 }
 
+// Styling the list inside the footer
 const listStyle = {
     listStyle: "none",
     textAlign: "center",

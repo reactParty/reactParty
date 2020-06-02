@@ -88,6 +88,25 @@ class App extends Component {
     this.getSpotifyCurrentlyPlaying();
   }
 
+  handleFetchError = (response) => {
+    if (!response.ok) {
+      return Error(response.statusText);
+    }
+    return response;
+  }
+
+  handleStatus204 = (response) => {
+    if (response.status === 204) {
+      return Error("User not active");
+    }
+    return response;
+  }
+
+  handleCatch = (e) => {
+    this.setState( { spotifyCurrentlyPlaying: "Something went wrong! Perhaps you're not active on your Spotify-account!" } )
+    console.error(e);
+  }
+
   componentDidMount() {
     // Set token for spotify
     let _token = hash.access_token;
@@ -98,24 +117,10 @@ class App extends Component {
       });
     }
     fetch('http://pebble-pickup.herokuapp.com/tweets')
+      .then(this.handleFetchError)
       .then(response => response.json())
       .then(data => this.setState( { pickupLines: Utilities.shuffleArray(data) } ))
-  }
-
-  // Spotify methods
-  getCurrentlyPlaying() {
-    fetch("https://api.spotify.com/v1/me/player", {
-      method: "GET",
-      headers: new Headers({
-        Authorization: "Bearer " + this.state.spotifyToken
-      })
-    }).then((response)=>{
-      if (response.status !== 204) {
-        response.json()
-      } else {
-        alert("Du är inte aktiv på ditt spotify-konto!")
-      }
-    })
+      .catch(this.handleCatch)
   }
 
   getSpotifyCurrentlyPlaying = () => {
@@ -124,12 +129,14 @@ class App extends Component {
       headers: new Headers({
         Authorization: "Bearer " + this.state.spotifyToken
       })
-    }).then(response=>response.json())
+    }).then(this.handleFetchError)
+      .then(this.handleStatus204)
+      .then(response=>response.json())
       .then(currentlyPlayingData=>this.setState( { spotifyCurrentlyPlaying: currentlyPlayingData.item } ))
+      .catch(this.handleCatch)
   }
 
   modifyPlayer=(action) => {
-    // behövs catch error och guard för status != 200 samt 204 => ej aktiv på sitt spotify-konto.
     if (action == null) return;
     let method;
     if (action === "next" || action === "previous") {
@@ -143,13 +150,15 @@ class App extends Component {
       headers: new Headers({
         Authorization: "Bearer " + this.state.spotifyToken
       })
-    }).then(()=>this.getSpotifyCurrentlyPlaying())
+    }).then(this.handleFetchError)
+      .then(()=>this.getSpotifyCurrentlyPlaying())
+      .catch(this.handleCatch)
   }
 
   getDrinksFromSearch = (search, drinkPage) => {
-    // behövs catch error
     drinkPage.setState( { viewRecipe: null } )
     fetch('https://www.thecocktaildb.com/api/json/v1/1/search.php?s=' + search)
+      .then(this.handleFetchError)
       .then(response => response.json())
       .then(data => this.setState( { recipesSearchResult: data.drinks } ))
   }

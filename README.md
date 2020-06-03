@@ -7,7 +7,7 @@
 * Victor Persson 
 
 ## About reactParty
-We chose to build an application that is pefect for your stay at home party night. On our application 'reactParty' the user can search for different drinks, save your favorit drinks, litsen and control to your Spotify playlists and get some great ideas for some possible icebreakers to cick off the night. 
+We chose to build an application that is pefect for your stay at home party night. On our application 'reactParty' the user can search for different drinks, save your favorite drinks, listen and control to your Spotify playlists and get some great ideas for some possible icebreakers to kick off the night. 
     
 
 ## Why React?

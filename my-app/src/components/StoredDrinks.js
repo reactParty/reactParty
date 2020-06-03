@@ -42,6 +42,7 @@ class StoredDrinks extends Component {
                         </div>
                     ) : 
                     (
+                    <div className="row">
                         <div style={savedRecipesContainer} className="col-10 col-sm-11 col-md-8 col-lg-4">
                             <h2>Saved recipes</h2>
                             {(drinks.length) ?
@@ -56,13 +57,15 @@ class StoredDrinks extends Component {
                                             )
                                         })}
                                     </div>
+
                                 ) :
                                 (
                                     <p>You have no saved drink recipes!</p>
                                 )
                             }
                     
-                        </div>              
+                        </div>  
+                    </div>            
                     )
 
                 }

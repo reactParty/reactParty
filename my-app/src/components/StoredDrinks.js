@@ -8,15 +8,18 @@ import drinkDot from './layout/drinkDot.png';
  * @extends Component
  */
 class StoredDrinks extends Component {
+    /** @type {Object} current state of component */ state
+
     /**
      * @constructor
-     * @param {*} props
+     * @param {*} props - Costructor requires super(props).
      */
     constructor(props) {
-        super(props);
+        super(props);   // Parent-class Component requires props.
+
         this.state= {
-            drinks: [],
-            viewRecipe: null
+            /** @type {Array<Object>} */    drinks: [],
+            /** @type {Object} */           viewRecipe: null
         }
     }
 

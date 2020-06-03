@@ -36,12 +36,12 @@ class Main extends Component {
         return (
             <main style={mainStyle}>
                 <img
-                    onClick={this.props.toDrinkPage} // When clicking on objekt the user is sent to the drink page
+                    onClick={this.props.toDrinkPage}            // When clicking on objekt the user is sent to the drink page.
                     src={Logo1}
                     alt="Logo"
                     style={logoStyle1}
-                    onMouseOver={this.increaseSize} // On hover - the increaseSize function is running
-                    onMouseLeave={this.decreaseSize} // Leaving hover - the decreaseSize function is running, and the logo goes back to normal size
+                    onMouseOver={this.increaseSize}             // On hover - the increaseSize method is called.
+                    onMouseLeave={this.decreaseSize}            // Leaving hover - the decreaseSize method is called, and the logo goes back to normal size.
                     />
                 {!spotifyToken && (
                     <a
@@ -51,8 +51,8 @@ class Main extends Component {
                             src={Logo2}
                             alt="Logo"
                             style={logoStyle2}
-                            onMouseOver={this.increaseSize} // On hover - the increaseSize function is running
-                            onMouseLeave={this.decreaseSize} // Leaving hover - the decreaseSize function is running, and the logo goes back to normal size
+                            onMouseOver={this.increaseSize}     // On hover - the increaseSize method is called.
+                            onMouseLeave={this.decreaseSize}    // Leaving hover - the decreaseSize method is called, and the logo goes back to normal size.
                         />
                     </a>
                 )}
@@ -62,8 +62,8 @@ class Main extends Component {
                         src={Logo2}
                         alt="Logo"
                         style={logoStyle2}
-                        onMouseOver={this.increaseSize} // On hover - the increaseSize function is running
-                        onMouseLeave={this.decreaseSize} // Leaving hover - the decreaseSize function is running, and the logo goes back to normal size
+                        onMouseOver={this.increaseSize}         // On hover - the increaseSize method is called.
+                        onMouseLeave={this.decreaseSize}        // Leaving hover - the decreaseSize method is called, and the logo goes back to normal size.
                     />
                 )}
             </main>

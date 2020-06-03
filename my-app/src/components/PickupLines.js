@@ -14,7 +14,7 @@ class PickupLines extends Component {
      * @param {*} props - Costructor requires super(props).
      */
     constructor(props) {
-        super(props);   // Parent-class Component requires props.
+        super(props); // Parent-class Component requires props.
         this.state = {
             /** @type {Number} */ currentSlide: 0
         };
@@ -39,7 +39,7 @@ class PickupLines extends Component {
                 transitionTime={10000}
                 interval={10000}
                 showThumbs={false}>
-                {this.props.pickupLines.filter(pickupLine => pickupLine.tweet != null).map( /** Maps through pickuplines */
+                {this.props.pickupLines.filter(pickupLine => pickupLine.tweet != null).map(                 // Maps through pickuplines
                     (pickupLine, i) => {
                         return (
                             <div key={"pickupLineparent" + i} style={carouselItemStyle}>

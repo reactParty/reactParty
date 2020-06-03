@@ -50,6 +50,7 @@ class StoredDrinks extends Component {
                         </div>
                     ) : 
                     (
+                    <div className="row">
                         <div style={savedRecipesContainer} className="col-10 col-sm-11 col-md-8 col-lg-4">
                             <h2>Saved recipes</h2>
                             {(drinks.length) ?
@@ -61,23 +62,25 @@ class StoredDrinks extends Component {
                                                 onClick={()=>this.setState( { viewRecipe: drink } )}
                                                 onMouseEnter={(event)=>this.handleMouseEnter(event)}
                                                 onMouseLeave={(event)=>this.handleMouseLeave(event)}
-                                                style={savedRecipesListItem} key={"drinkId" + drink.idDrink}> 
+                                                style={savedRecipesItem} key={"drinkId" + drink.idDrink}> 
                                                     <img 
                                                     src={drinkDot} 
                                                     alt="drinkingdot" 
-                                                    style={{height: "30px", marginRight: "15px"}}/>
+                                                    style={{height: "40px", marginRight: "15px"}}/>
                                                     {drink.strDrink}
                                                 </div>
                                             )
                                         })}
                                     </div>
+
                                 ) :
                                 (
                                     <p>You have no saved drink recipes!</p>
                                 )
                             }
                     
-                        </div>              
+                        </div>  
+                    </div>            
                     )
 
                 }
@@ -100,10 +103,12 @@ const savedRecipesContainer = {
     backgroundColor: "#FFCCB4",
     padding: "2%",
     marginBottom: "50px",
-    borderRadius: "10px"
+    borderRadius: "10px",
+    border: "1px solid #999",
+    boxShadow: "#333 0px 0px 3px"
 }
 
-const savedRecipesListItem = {
+const savedRecipesItem = {
     cursor: "pointer",
     marginTop: "15px",
     marginBottom: "15px",
@@ -112,7 +117,8 @@ const savedRecipesListItem = {
     backgroundColor: "rgba(255, 255, 255, 0.5)",
     textDecoration: "underline",
     borderRadius: "10px",
-    transition: "all 0.2s"
+    transition: "all 0.2s",
+    border: "1px solid #999"
 }
 
 

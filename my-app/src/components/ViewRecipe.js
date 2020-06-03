@@ -71,7 +71,7 @@ class ViewRecipe extends Component {
     render() {
         const { drink, storedDrinks } = this.props;
         return (
-            <div className="row">         
+            <div className="row" style={{justifyContent: "center"}}>         
                 <div style={drinkInfoContainer} className="col-12 col-sm-10 col-md-10 col-lg-6">
                     <div style={drinkStyle} className="col-10 col-sm-10 col-md-10 col-lg-6">
                         <h2>{drink.strDrink}</h2>
@@ -118,22 +118,21 @@ const drinkInfoContainer = {
     padding: "0",
     justifyContent: "center",
     flexWrap: "wrap",
-    margin: "50px auto",
+    margin: "50px 0 50px 0",
     borderRadius: "10px",
+    backgroundColor: "#fafafa",
     boxShadow: "#333 0px 0px 3px"
 }
 
 /** @type {Object} Style of left inner container: title, thumbnail-image and "save"/"remove"-icons */
 const drinkStyle = {
     width: "50%",
-    backgroundColor: "#fafafa",
     padding: "2%",
 }
 
 /** @type {Object} Style of right inner container: list of ingredients and measures */
 const drinkInfo = {
     width: "50%",
-    backgroundColor: "#fafafa",
     padding: "2%",   
 }
 

@@ -23,10 +23,18 @@ class StoredDrinks extends Component {
         }
     }
 
+    /**
+     * Changes background-color of element on mouse enter.
+     * @param {Event} event
+     */
     handleMouseEnter = (event) => {
         event.target.style.backgroundColor = "rgba(255, 255, 255, 0.8)";
     }
 
+    /**
+     * Resets background-color of element on mouse leave.
+     * @param {Event} event
+     */
     handleMouseLeave = (event) => {
         event.target.style.backgroundColor = "rgba(255, 255, 255, 0.5)";
     }

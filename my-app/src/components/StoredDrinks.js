@@ -50,8 +50,8 @@ class StoredDrinks extends Component {
                                     <div>
                                         {drinks.map((drink) => {
                                             return (
-                                                <div onClick={()=>this.setState( { viewRecipe: drink } )} style={savedRecipesListItem} key={"drinkId" + drink.idDrink}> 
-                                                    <img src={drinkDot} alt="drinkingdot" style={{height: "30px", marginRight: "15px"}}/>
+                                                <div onClick={()=>this.setState( { viewRecipe: drink } )} style={savedRecipesItem} key={"drinkId" + drink.idDrink}> 
+                                                    <img src={drinkDot} alt="drinkingdot" style={{height: "40px", marginRight: "15px"}}/>
                                                     {drink.strDrink}
                                                 </div>
                                             )
@@ -88,10 +88,12 @@ const savedRecipesContainer = {
     backgroundColor: "#FFCCB4",
     padding: "2%",
     marginBottom: "50px",
-    borderRadius: "10px"
+    borderRadius: "10px",
+    border: "1px solid #999",
+    boxShadow: "#333 0px 0px 3px"
 }
 
-const savedRecipesListItem = {
+const savedRecipesItem = {
     cursor: "pointer",
     marginTop: "15px",
     marginBottom: "15px",
@@ -99,7 +101,8 @@ const savedRecipesListItem = {
     fontSize: "22px",
     backgroundColor: "rgba(255, 255, 255, 0.5)",
     textDecoration: "underline",
-    borderRadius: "10px"
+    borderRadius: "10px",
+    border: "1px solid #999"
 }
 
 

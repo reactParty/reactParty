@@ -17,3 +17,8 @@
     Varför valde vi React?
     - Gruppen stod i valet mellan att arbete med React, Angular eller Vue. Men, tog det gemensamma beslutet att arbeta med React då [fördelarna med react]. 
     Gruppen ansåg att Angular och Vue var mindre aktuella för detta projekt med tanke på tidsbegränsningen. Detta eftersom Vue är en relativ ny produkt på marknaden och har lite mager dokumentation online hade det krävts mer tid av gruppen att försöka hitta och förstå sig på verktyget. Angular beskrivs ofta online som svårlärt för nybörjare, men väldigt användbart när man väl lärt sig det, vilket upplevdes som ett stort berg att bestiga för gruppen. 
+
+## Run the application
+    1. CD into the repository
+    2. Write `$ npm start`
+    3. Navigate to [http://localhost:3000/]

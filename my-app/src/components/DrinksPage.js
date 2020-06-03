@@ -49,35 +49,33 @@ class DrinksPage extends Component {
                 {this.props.searchResults.filter((result) => result.strAlcoholic === strAlcoholic).map((result) => { // Loops through every specific result item
                     return ( // Returns HTML for each individual search result
                         <div className="col-10 col-sm-10 col-md-4 col-lg-4 col-xl-3" style={drinkItem} key={result.idDrink}>
-                            <img width="100%" style = {{borderRadius: "10px", cursor: "pointer"}}
+                            <img width="100%" style = {{borderRadius: "10px 10px 0 0", cursor: "pointer", borderTop: "1px solid #999", borderRight: "1px solid #999", borderLeft: "1px solid #999"}}
                                 src={result.strDrinkThumb}
                                 alt={result.strDrink}
                                 onClick={()=>this.setState( { viewRecipe: result } )}/>
-                            <div className="col-12" style={drinkTitleStyle}>
-                                <div style={drinkTitleChild}>
-                                    {result.strDrink}
-                                </div>
-                            </div>
-                            {(storedDrinks.filter((storedDrink)=>result.idDrink === storedDrink.idDrink).length) ?
+                            <figcaption style={drinkTitleStyle}>
+                                <p style={{margin: "0px"}}>{result.strDrink}</p>
+                                {(storedDrinks.filter((storedDrink)=>result.idDrink === storedDrink.idDrink).length) ?
                                 (
                                     <div style={drinkDiv}>
-                                    <img
-                                        onClick={()=>this.props.removeDrink(result.idDrink)}
-                                        style={drinkImg}
-                                        src={removeIcon}
-                                        alt="Remove Drink"/>
+                                        <img
+                                            onClick={()=>this.props.removeDrink(result.idDrink)}
+                                            style={saveDrinkIcon}
+                                            src={removeIcon}
+                                            alt="Remove Drink"/>
                                     </div>
                                 ) :
                                 (
                                     <div style={drinkDiv}>
-                                    <img
-                                        onClick={()=>this.props.addDrink(result)}
-                                        style={drinkImg}
-                                        src={saveIcon}
-                                        alt="Save Drink"/>
+                                        <img
+                                            onClick={()=>this.props.addDrink(result)}
+                                            style={saveDrinkIcon}
+                                            src={saveIcon}
+                                            alt="Save Drink"/>
                                     </div>
                                 )
                             }
+                            </figcaption>
                         </div>
                     )
                 })}
@@ -138,39 +136,37 @@ const drinkItem = {
     boxShadow: "#333 0px 0px 3px"
 }
 
+
 /** Styling for container of drink title inside image */ 
 const drinkTitleStyle = {
     display: "flex",
     justifyContent: "center",
     alignItems: "center",
-    position: "absolute",
-    bottom: "6.4%",
-    width: "100%",
-    //width: "87.2%",
-    backgroundColor: "rgba(155, 155, 155, 0.7)",
-    color: "white",
-    textShadow: "2px 2px 4px #000000",
+    backgroundColor: "rgba(0,0,0,0.05)",
+    borderTop: "1px solid rgba(0,0,0,0.1)",
+    borderBottom: "1px solid #999",
+    borderRight: "1px solid #999",
+    borderLeft: "1px solid #999",
     fontWeight: "bold",
-    height: "20%",
+    padding: "20px 0 20px 0",
     borderRadius: "0 0 10px 10px"
 }
 
-/** Styling of drink title */ 
-const drinkTitleChild = {
+/** Styling of drink title */
+/**const drinkTitleChild = {
     position: "absolute"
-}
+}*/
 
-/** Styling div containing a drink */ 
+/** Styling div containing save icon */ 
 const drinkDiv = {
     cursor: "pointer",
     position: "absolute",
-    right: "35px",
-    bottom: "9%"
+    right: "10%",
 }
 
-/** Styling drink image */
-const drinkImg = {
-    maxHeight: "60px",
+/** Styling save icon */
+const saveDrinkIcon = {
+    maxHeight: "50px",
 }
 
 /** Styling of back-button */ 

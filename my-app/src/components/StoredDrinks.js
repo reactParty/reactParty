@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import ViewRecipe from './ViewRecipe';
 import backbtn from './layout/backbtn.png';
+import drinkDot from './layout/drinkDot.png';
 
 /**
  * @class
@@ -37,18 +38,20 @@ class StoredDrinks extends Component {
                         </div>
                     ) : 
                     (
-                        <div>
+                        <div style={savedRecipesContainer}>
+                            <h2>Saved recipes</h2>
                             {(drinks.length) ?
                                 (
-                                    <ul>
+                                    <div>
                                         {drinks.map((drink) => {
                                             return (
-                                                <li onClick={()=>this.setState( { viewRecipe: drink } )} style={{cursor: "pointer"}} key={"drinkId" + drink.idDrink}>
+                                                <div onClick={()=>this.setState( { viewRecipe: drink } )} style={savedRecipesListItem} key={"drinkId" + drink.idDrink}> 
+                                                    <img src={drinkDot} alt="drinkingdot" style={{height: "30px", marginRight: "15px"}}/>
                                                     {drink.strDrink}
-                                                </li>
+                                                </div>
                                             )
                                         })}
-                                    </ul>
+                                    </div>
                                 ) :
                                 (
                                     <p>You have no saved drink recipes!</p>
@@ -68,6 +71,25 @@ const stylebackbtn = {
     height: "80px",
     marginLeft: "4%",
     cursor: "pointer"
+}
+
+const savedRecipesContainer = {
+    width: "25%",
+    marginLeft: "auto",
+    marginRight: "auto",
+    backgroundColor: "lightgrey",
+    padding: "2%",
+    marginBottom: "50px",
+    borderRadius: "10px"
+}
+
+const savedRecipesListItem = {
+    cursor: "pointer",
+    marginTop: "15px",
+    marginBottom: "15px",
+    padding: "2%",
+    fontSize: "22px",
+    backgroundColor: "lightblue",
 }
 
 export default StoredDrinks;

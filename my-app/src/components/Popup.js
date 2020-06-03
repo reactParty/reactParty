@@ -65,7 +65,8 @@ const popUp = {
     right: "0",  
     bottom: "0",  
     margin: "auto",  
-    backgroundColor:"rgba(0,0,0, 0.5)"
+    backgroundColor:"rgba(0,0,0, 0.5)",
+    overflowX: "scroll"
 }
 
 /** @type {Object} Styling for the content inside pop up box */

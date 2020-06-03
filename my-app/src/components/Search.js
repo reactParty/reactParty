@@ -7,16 +7,24 @@ import searchLogo from './layout/search1.png';
  * @extends Component
  */
 class Search extends Component {
+    /** @type {Object} current state of component */ state
+
+    /**
+     * @constructor
+     * @param {*} props - Costructor requires super(props).
+     */
     constructor(props) {
-        super(props);
+        super(props);   // Parent-class Component requires props.
+
         this.state = {
-            value: ""
+            /** @type {String} */ value: "" // The user input.
         }
     }
 
     /**
-     * Updates this.state.value to the users input when typing in searchform
-     * The search starts when the user presses enter
+     * Updates this.state.value to the users input when typing in searchform.
+     * The search starts when the user presses enter.
+     * @param {Event} event keyboard event keyup.
      */
     handleChange = (event) => {
         this.setState( { value: event.target.value } )
@@ -26,10 +34,10 @@ class Search extends Component {
     }
 
     /**
-     * Search form fetched from Bootstrap
-     * Fetches user search input when clicking on the magnifying glass icon
-     * Changes the current state value
-     * @returns JSX
+     * Search form fetched from Bootstrap.
+     * Fetches user search input when clicking on the magnifying glass icon.
+     * Changes the current state value.
+     * @returns {JSX.Element}
      */
     render() {
         return (

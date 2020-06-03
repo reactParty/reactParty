@@ -4,7 +4,8 @@ import backbtn from './layout/backbtn.png';
 import drinkDot from './layout/drinkDot.png';
 
 /**
- * @class
+ * Saved drink-recipes page component.
+ * @extends Component
  */
 class StoredDrinks extends Component {
     /**
@@ -67,7 +68,7 @@ class StoredDrinks extends Component {
     }
 }
 
-/** Style the back arrow button */
+/** @type {Object} Style the back arrow button */
 const stylebackbtn = {
     height: "80px",
     marginLeft: "4%",

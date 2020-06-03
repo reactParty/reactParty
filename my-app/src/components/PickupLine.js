@@ -1,5 +1,9 @@
 import React, { Component } from 'react';
 
+/**
+ * Pickupline component displays a pickupline.
+ * @extends Component
+ */
 class PickupLine extends Component {    
     render() {
         return (
@@ -10,7 +14,7 @@ class PickupLine extends Component {
     }
 }
 
-/** Styling of pickupline paragraph */
+/** @type {Object} Styling of pickupline paragraph */
 const pStyle = {
     margin: "0px",
     height: "66px",

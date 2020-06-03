@@ -3,27 +3,28 @@ import Logo1 from './layout/Drinks.png';
 import Logo2 from './layout/Music.png';
 
 /**
- * @class
+ * Main/home page component with options like "search for drinks" and "open spotify player".
+ * @extends Component
  */
 class Main extends Component {
     /**
      * The size of element is increasing when hover
-     * @param {*} event 
+     * @param {Event} event 
      */
     increaseSize(event) {
-        event.target.style.height = "320px"
-        event.target.style.margin = "40px 75px"
-        event.target.style.cursor = "pointer"
+        event.target.style.height = "320px";
+        event.target.style.margin = "40px 75px";
+        event.target.style.cursor = "pointer";
     }
 
     /**
      * The size of element is decreasing when hover
-     * @param {*} event 
+     * @param {Event} event 
      */
     decreaseSize(event) {
-        event.target.style.height = "300px"
-        event.target.style.margin = "50px 85px"
-        event.target.style.cursor = "none"
+        event.target.style.height = "300px";
+        event.target.style.margin = "50px 85px";
+        event.target.style.cursor = "none";
     }
 
     render() {
@@ -70,13 +71,13 @@ class Main extends Component {
     }
 }
 
-/** Styling the main */ 
+/** @type {Object} Styling the main */ 
 const mainStyle = {
     margin: "auto",
     textAlign: "center",
 }
 
-/** Styling the drink logo */ 
+/** @type {Object} Styling the drink logo */ 
 const logoStyle1 = {
     height: "300px",
     margin: "50px 85px",
@@ -84,7 +85,7 @@ const logoStyle1 = {
     cursor: "pointer"
 }
 
-/** Styling the spotify logo */
+/** @type {Object} Styling the spotify logo */
 const logoStyle2 = {
     height: "300px",
     margin: "50px 85px",

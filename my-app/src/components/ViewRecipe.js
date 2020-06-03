@@ -8,17 +8,18 @@ import saveIcon from "./layout/saveIcon2.png";
  * @extends Component
  */
 class ViewRecipe extends Component {
-    /** Object */ state
+    /** @type {Object} current state of component */ state
     
     /**
-     * @param {*} props - Required for super().
+     * @param {*} props - Costructor requires super(props).
      * @constructor
      */
     constructor(props) {
-        super(props); // Parent-class Component requires props.
+        super(props);   // Parent-class Component requires props.
+
         this.state= {
-            /** {Array<Object>} */ drinks: [],
-            /** {Object} */viewRecipe: null
+            /** @type {Array<Object>} */    drinks: [],
+            /** @type {Object} */           viewRecipe: null
         }
     }
 
@@ -70,7 +71,7 @@ class ViewRecipe extends Component {
     render() {
         const { drink, storedDrinks } = this.props;
         return (
-            <div className="row" style={rowDiv}>         
+            <div className="row">         
                 <div style={drinkInfoContainer} className="col-12 col-sm-10 col-md-10 col-lg-6">
                     <div style={drinkStyle} className="col-10 col-sm-10 col-md-10 col-lg-6">
                         <h2>{drink.strDrink}</h2>
@@ -110,11 +111,7 @@ class ViewRecipe extends Component {
     }
 }
 
-const rowDiv = {
-
-}
-
-/** Style of Component container */
+/** @type {Object} Style of Component container */
 const drinkInfoContainer = {
     width: "46%",
     display: "flex",
@@ -126,21 +123,21 @@ const drinkInfoContainer = {
     boxShadow: "#333 0px 0px 3px"
 }
 
-/** Style of left inner container: title, thumbnail-image and "save"/"remove"-icons */
+/** @type {Object} Style of left inner container: title, thumbnail-image and "save"/"remove"-icons */
 const drinkStyle = {
     width: "50%",
     backgroundColor: "#fafafa",
     padding: "2%",
 }
 
-/** Style of right inner container: list of ingredients and measures */
+/** @type {Object} Style of right inner container: list of ingredients and measures */
 const drinkInfo = {
     width: "50%",
     backgroundColor: "#fafafa",
     padding: "2%",   
 }
 
-/** Style of individual container of "save"/"remove"-icons */
+/** @type {Object} Style of individual container of "save"/"remove"-icons */
 const drinkDiv = {
     cursor: "pointer",
     position: "absolute",
@@ -148,12 +145,12 @@ const drinkDiv = {
     bottom: "10px"
 }
 
-/** Style of "save"/"remove"-icons */
+/** @type {Object} Style of "save"/"remove"-icons */
 const drinkImg = {
     maxHeight: "60px",
 }
 
-/** Style of container of individual containers of "save"/"remove"-icons */
+/** @type {Object} Style of container of individual containers of "save"/"remove"-icons */
 const imgParent = {
     width: "100%",
     margin: "0",

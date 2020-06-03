@@ -2,9 +2,10 @@ import React, { Component } from 'react';
 import Form from 'react-bootstrap/Form';
 import searchLogo from './layout/search1.png';
 
-    /**
-     * @class
-     */
+/**
+ * Search component allows user to search for drink recipes.
+ * @extends Component
+ */
 class Search extends Component {
     constructor(props) {
         super(props);
@@ -53,7 +54,7 @@ class Search extends Component {
     }
 }
 
-/** Style properites for div */
+/** @type {Object} Style properites for div */
 const divStyle = {
     display: "flex",
     justifyContent: "center",
@@ -61,7 +62,7 @@ const divStyle = {
     paddingBottom: "10px"
 }
 
-/** Style properites for the search container */
+/** @type {Object} Style properites for the search container */
 const searchContainer = {
   height: "50px",
   fontSize: "30px",
@@ -69,7 +70,7 @@ const searchContainer = {
   width: "60%",
 }
 
-/** Style properites for the magnifying glass icon/img */
+/** @type {Object} Style properites for the magnifying glass icon/img */
 const logoStyle = {
     height:"40px",
     marginLeft: "-55px",
@@ -77,7 +78,7 @@ const logoStyle = {
     cursor: "pointer"
 }
 
-/** Style properites for form search */
+/** @type {Object} Style properites for form search */
 const searchStyle = {
     padding: "30px",
     borderRadius: "40px"

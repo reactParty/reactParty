@@ -1,19 +1,14 @@
-## About appen/ reactParty 
-    [Detta skall skrivas på ingles]
-    En liten förklaring om appen
-    Vi har valt att bygga en applikation som kan användas i festsammanhang. Något vi medlemmar i gruppen diskuterat om länge att det skulle vara roligt att få bygga och att vi nu fick chansen. I vår applikation ska användare kunna söka på flertalet drinkar och få fram deras recept. Hittar man en drink som är passande så kan man spara ner den med dess tillhörande recept. Hemsidan har en härlig festlig stämning med pick-up-lines som sveps vågrätt genom sidan med syfte att ge användarna tips för icebreakers som kan användas på festen. Inte nog med det, på hemsidan kan användarna även koppla sitt spotify-konto och spela all sin festmusik i den mån de själva vill.
-
-    We chose to build an application that is pefect for
+## reactParty ##
 
 ## Developers
     Erica Sjöberg
     Lukas Jönsson
     Olof Takman
     Victor Persson 
+
+## About reactParty
+    We chose to build an application that is pefect for your stay at home party night. On our application 'reactParty' the user can search for different drinks, save your favorit drinks, litsen and control to your Spotify playlists and get some great ideas for some possible icebreakers to cick off the night. 
     
 
 ## Why React?
-    [Detta ska skrivas på ingles]
-    Varför valde vi React?
-    - Gruppen stod i valet mellan att arbete med React, Angular eller Vue. Men, tog det gemensamma beslutet att arbeta med React då [fördelarna med react]. 
-    Gruppen ansåg att Angular och Vue var mindre aktuella för detta projekt med tanke på tidsbegränsningen. Detta eftersom Vue är en relativ ny produkt på marknaden och har lite mager dokumentation online hade det krävts mer tid av gruppen att försöka hitta och förstå sig på verktyget. Angular beskrivs ofta online som svårlärt för nybörjare, men väldigt användbart när man väl lärt sig det, vilket upplevdes som ett stort berg att bestiga för gruppen. 
+    Before choosing React to work with we looked into both Vue and Angular. We did not choose Vue due to fact that we tought that it was slim on online documentation and examples. Angular was a little more attractive to us, but due to our time limit we felt that it was a bit too complicated to understand and learn. React was therefor the better fit for us, the project and our previous coding knowlegde. 

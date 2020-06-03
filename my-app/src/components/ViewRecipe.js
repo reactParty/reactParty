@@ -8,7 +8,7 @@ import saveIcon from "./layout/saveIcon2.png";
  * @extends Component
  */
 class ViewRecipe extends Component {
-    /** Object */ state
+    /** @type {Object} */ state
     
     /**
      * @param {*} props - Required for super().
@@ -17,8 +17,8 @@ class ViewRecipe extends Component {
     constructor(props) {
         super(props); // Parent-class Component requires props.
         this.state= {
-            /** {Array<Object>} */ drinks: [],
-            /** {Object} */viewRecipe: null
+            /** @type {Array<Object>} */    drinks: [],
+            /** @type {Object} */           viewRecipe: null
         }
     }
 

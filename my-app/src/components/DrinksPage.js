@@ -147,7 +147,7 @@ const drinkTitleStyle = {
     position: "absolute",
     bottom: "6.4%",
     width: "87.2%",
-    backgroundColor: "rgba(0,0,0 , 0.5)",
+    backgroundColor: "rgba(155, 155, 155, 0.7)",
     color: "white",
     textShadow: "2px 2px 4px #000000",
     fontWeight: "bold",

@@ -3,7 +3,8 @@ import closingCross from './layout/close.png'
 import dancingPinapple from './layout/dancing.png'
 
 /**
- * @class
+ * Information popup component.
+ * @extends Component
  */
 class Popup extends Component {
     /**

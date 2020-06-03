@@ -11,20 +11,23 @@ import backbtn from "./layout/backbtn.png";
  * @extends Component
  */
 class DrinksPage extends Component {
+    /** @type {Object} current state of component */ state
+
     /**
      * @constructor
-     * @param {*} props - Costructor requires super(props)
+     * @param {*} props - Costructor requires super(props).
      */
     constructor(props) {
-        super(props);
+        super(props);   // Parent-class Component requires props.
+
         this.state= {
-            nonAlcoholic: false, // Sets default filter
-            viewRecipe: null // ViewRecipe is null before search has been made
+            /** @type {Boolean} */  nonAlcoholic: false,    // Sets default filter
+            /** @type {Object} */   viewRecipe: null        // ViewRecipe is null before search has been made
         }
     }
 
     /**
-     * @returns {JSX.Element} Div when no results are found
+     * @returns {JSX.Element} <div> when no results are found
      */
     getNoResults() {
         return (

@@ -6,9 +6,10 @@ import nextsongbtn from './layout/nextsongbtn.png'
 import previousbtn from './layout/previousbtn.png'
 
 
-    /**
-     * @class
-     */
+/**
+ * Spotify player component allowing user to manipulate their Spotify activity.
+ * @extends Component
+ */
 class Spotifypopup extends Component {
     constructor(props) {
         super(props);

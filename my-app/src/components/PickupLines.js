@@ -3,6 +3,7 @@ import PickupLine from './PickupLine';
 import { Carousel } from 'react-responsive-carousel';
 
 /**
+ * Pickuplines component displays several pickuplines.
  * @extends Component
  */
 class PickupLines extends Component {

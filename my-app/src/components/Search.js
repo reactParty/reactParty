@@ -2,9 +2,10 @@ import React, { Component } from 'react';
 import Form from 'react-bootstrap/Form';
 import searchLogo from './layout/search1.png';
 
-    /**
-     * @class
-     */
+/**
+ * Search component allows user to search for drink recipes.
+ * @extends Component
+ */
 class Search extends Component {
     constructor(props) {
         super(props);

@@ -4,7 +4,8 @@ import backbtn from './layout/backbtn.png';
 import drinkDot from './layout/drinkDot.png';
 
 /**
- * @class
+ * Saved drink-recipes page component.
+ * @extends Component
  */
 class StoredDrinks extends Component {
     /**

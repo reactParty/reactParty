@@ -16,4 +16,4 @@ Before choosing React to work with we looked into both Vue and Angular. We did n
 ## Run the application
 1. CD into the repository
 2. Write `$ npm start`
-3. Navigate to [http://localhost:3000/]
+3. Navigate to [http://localhost:3000/](http://localhost:3000/)

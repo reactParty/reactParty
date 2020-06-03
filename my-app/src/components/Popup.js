@@ -3,7 +3,8 @@ import closingCross from './layout/close.png'
 import dancingPinapple from './layout/dancing.png'
 
 /**
- * @class
+ * Information popup component.
+ * @extends Component
  */
 class Popup extends Component {
     /**
@@ -54,7 +55,7 @@ class Popup extends Component {
         }  
     }  
 
-/** Styling for the pop up box */ 
+/** @type {Object} Styling for the pop up box */ 
 const popUp = {
     position: "fixed",  
     width: "100%",  
@@ -64,10 +65,11 @@ const popUp = {
     right: "0",  
     bottom: "0",  
     margin: "auto",  
-    backgroundColor:"rgba(0,0,0, 0.5)"
+    backgroundColor:"rgba(0,0,0, 0.5)",
+    overflowX: "scroll"
 }
 
-/** Styling for the content inside pop up box */
+/** @type {Object} Styling for the content inside pop up box */
 const popUpInner = {
     position: "absolute",  
     left: "25%",  
@@ -78,12 +80,12 @@ const popUpInner = {
     background: "white"
 }
 
-/** Style for the font in pop up box */ 
+/** @type {Object} Style for the font in pop up box */ 
 const pStyle = {
     fontStyle: "italic"
 }
 
-/** Styling h5 element inside pop up box */
+/** @type {Object} Styling h5 element inside pop up box */
 const h5Style = {
     fontWeight: "bold",
     color: "black",

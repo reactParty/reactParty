@@ -4,18 +4,22 @@ import backbtn from './layout/backbtn.png';
 import drinkDot from './layout/drinkDot.png';
 
 /**
- * @class
+ * Saved drink-recipes page component.
+ * @extends Component
  */
 class StoredDrinks extends Component {
+    /** @type {Object} current state of component */ state
+
     /**
      * @constructor
-     * @param {*} props
+     * @param {*} props - Costructor requires super(props).
      */
     constructor(props) {
-        super(props);
+        super(props);   // Parent-class Component requires props.
+
         this.state= {
-            drinks: [],
-            viewRecipe: null
+            /** @type {Array<Object>} */    drinks: [],
+            /** @type {Object} */           viewRecipe: null
         }
     }
 
@@ -38,7 +42,7 @@ class StoredDrinks extends Component {
                         </div>
                     ) : 
                     (
-                        <div style={savedRecipesContainer}>
+                        <div style={savedRecipesContainer} className="col-10 col-sm-11 col-md-8 col-lg-4">
                             <h2>Saved recipes</h2>
                             {(drinks.length) ?
                                 (
@@ -57,6 +61,7 @@ class StoredDrinks extends Component {
                                     <p>You have no saved drink recipes!</p>
                                 )
                             }
+                    
                         </div>              
                     )
 
@@ -66,7 +71,7 @@ class StoredDrinks extends Component {
     }
 }
 
-/** Style the back arrow button */
+/** @type {Object} Style the back arrow button */
 const stylebackbtn = {
     height: "80px",
     marginLeft: "4%",
@@ -77,7 +82,7 @@ const savedRecipesContainer = {
     width: "25%",
     marginLeft: "auto",
     marginRight: "auto",
-    backgroundColor: "lightgrey",
+    backgroundColor: "#FFCCB4",
     padding: "2%",
     marginBottom: "50px",
     borderRadius: "10px"
@@ -89,7 +94,10 @@ const savedRecipesListItem = {
     marginBottom: "15px",
     padding: "2%",
     fontSize: "22px",
-    backgroundColor: "lightblue",
+    backgroundColor: "rgba(255, 255, 255, 0.5)",
+    textDecoration: "underline",
+    borderRadius: "10px"
 }
+
 
 export default StoredDrinks;

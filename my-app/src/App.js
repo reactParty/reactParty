@@ -44,7 +44,7 @@ window.location.hash = "";
  * @extends Component
  * */
 class App extends Component {
-  /** @type {Object} */ state
+  /** @type {Object} current state of component */ state
 
   /**
    * @param {*} props - Required for super().

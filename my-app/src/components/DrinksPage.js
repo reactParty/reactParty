@@ -11,20 +11,23 @@ import backbtn from "./layout/backbtn.png";
  * @extends Component
  */
 class DrinksPage extends Component {
+    /** @type {Object} current state of component */ state
+
     /**
      * @constructor
-     * @param {*} props - Costructor requires super(props)
+     * @param {*} props - Costructor requires super(props).
      */
     constructor(props) {
-        super(props);
+        super(props);   // Parent-class Component requires props.
+
         this.state= {
-            nonAlcoholic: false, // Sets default filter
-            viewRecipe: null // ViewRecipe is null before search has been made
+            /** @type {Boolean} */  nonAlcoholic: false,    // Sets default filter
+            /** @type {Object} */   viewRecipe: null        // ViewRecipe is null before search has been made
         }
     }
 
     /**
-     * @returns {JSX.Element} Div when no results are found
+     * @returns {JSX.Element} <div> when no results are found
      */
     getNoResults() {
         return (
@@ -46,8 +49,8 @@ class DrinksPage extends Component {
         let strAlcoholic = (this.state.nonAlcoholic) ? "Non alcoholic" : "Alcoholic";
         return ( 
             <div className="row" style={drinkContainer}>
-                {this.props.searchResults.filter((result) => result.strAlcoholic === strAlcoholic).map((result) => { // Loops through every specific result item
-                    return ( // Returns HTML for each individual search result
+                {this.props.searchResults.filter((result) => result.strAlcoholic === strAlcoholic).map((result) => {    // Loops through every specific result item.
+                    return (                                                                                            // Returns JSX:div for each individual search result.
                         <div className="col-10 col-sm-10 col-md-4 col-lg-4 col-xl-3" style={drinkItem} key={result.idDrink}>
                             <img width="100%" style = {{borderRadius: "10px 10px 0 0", cursor: "pointer", borderTop: "1px solid #999", borderRight: "1px solid #999", borderLeft: "1px solid #999"}}
                                 src={result.strDrinkThumb}
@@ -113,7 +116,7 @@ class DrinksPage extends Component {
     }
 }
 
-/** Styling of div containing all drinks */ 
+/** @type {Object} Styling of div containing all drinks */ 
 const drinkContainer = {
     display: "flex",
     padding: "0",
@@ -122,7 +125,7 @@ const drinkContainer = {
     margin: "50px auto"
 }
 
-/** Styling of drink image */ 
+/** @type {Object} Styling of drink image */ 
 const drinkItem = {
     display: "flex",
     width: "31%",
@@ -136,8 +139,7 @@ const drinkItem = {
     boxShadow: "#333 0px 0px 3px"
 }
 
-
-/** Styling for container of drink title inside image */ 
+/** @type {Object} Styling for container of drink title inside image */ 
 const drinkTitleStyle = {
     display: "flex",
     justifyContent: "center",
@@ -152,24 +154,19 @@ const drinkTitleStyle = {
     borderRadius: "0 0 10px 10px"
 }
 
-/** Styling of drink title */
-/**const drinkTitleChild = {
-    position: "absolute"
-}*/
-
-/** Styling div containing save icon */ 
+/** @type {Object} Styling div containing a drink */ 
 const drinkDiv = {
     cursor: "pointer",
     position: "absolute",
     right: "10%",
 }
 
-/** Styling save icon */
+/** @type {Object} Styling drink image */
 const saveDrinkIcon = {
     maxHeight: "50px",
 }
 
-/** Styling of back-button */ 
+/** @type {Object} Styling of back-button */ 
 const stylebackbtn = {
     height: "80px",
     marginLeft: "4%",

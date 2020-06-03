@@ -21,7 +21,7 @@ class Footer extends Component {
     }
 }
 
-/** Styling the footer */
+/** @type {Object} Styling the footer */
 const footerStyle = {
     paddingTop: "10px",
     height: "auto",
@@ -30,7 +30,7 @@ const footerStyle = {
     color: "#fff",
 }
 
-/** Styling the list inside the footer */ 
+/** @type {Object} Styling the list inside the footer */ 
 const listStyle = {
     listStyle: "none",
     textAlign: "center",

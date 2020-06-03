@@ -67,7 +67,7 @@ class StoredDrinks extends Component {
     }
 }
 
-/** Style the back arrow button */
+/** @type {Object} Style the back arrow button */
 const stylebackbtn = {
     height: "80px",
     marginLeft: "4%",

@@ -70,7 +70,7 @@ class Spotifypopup extends Component {
     }
 }
 
-/** Style properites for the outer div, aka the outlines of the popup box */ 
+/** @type {Object} Style properites for the outer div, aka the outlines of the popup box */ 
 const spotifyPopUp = {
     position: "fixed",  
     width: "100%",  
@@ -83,7 +83,7 @@ const spotifyPopUp = {
     backgroundColor:"rgba(0,0,0, 0.5)"
 }
 
-/** Style properites for the inner div, aka the inside of the box */
+/** @type {Object} Style properites for the inner div, aka the inside of the box */
 const SpotifyPopUpInner = {
     position: "absolute",  
     left: "25%",  
@@ -94,7 +94,7 @@ const SpotifyPopUpInner = {
     background: "white"
 }
 
-/** Style properites for the Spotify buttons */
+/** @type {Object} Style properites for the Spotify buttons */
 const Spotifybtn = {
     display: "flex",
     justifyContent: "center",

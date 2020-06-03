@@ -109,7 +109,7 @@ class ViewRecipe extends Component {
     }
 }
 
-/** Style of Component container */
+/** @type {Object} Style of Component container */
 const drinkInfoContainer = {
     width: "60%",
     display: "flex",
@@ -121,21 +121,21 @@ const drinkInfoContainer = {
     boxShadow: "#333 0px 0px 3px"
 }
 
-/** Style of left inner container: title, thumbnail-image and "save"/"remove"-icons */
+/** @type {Object} Style of left inner container: title, thumbnail-image and "save"/"remove"-icons */
 const drinkStyle = {
     width: "50%",
     backgroundColor: "#fafafa",
     padding: "2%",
 }
 
-/** Style of right inner container: list of ingredients and measures */
+/** @type {Object} Style of right inner container: list of ingredients and measures */
 const drinkInfo = {
     width: "50%",
     backgroundColor: "#fafafa",
     padding: "2%",   
 }
 
-/** Style of individual container of "save"/"remove"-icons */
+/** @type {Object} Style of individual container of "save"/"remove"-icons */
 const drinkDiv = {
     cursor: "pointer",
     position: "absolute",
@@ -143,12 +143,12 @@ const drinkDiv = {
     bottom: "10px"
 }
 
-/** Style of "save"/"remove"-icons */
+/** @type {Object} Style of "save"/"remove"-icons */
 const drinkImg = {
     maxHeight: "60px",
 }
 
-/** Style of container of individual containers of "save"/"remove"-icons */
+/** @type {Object} Style of container of individual containers of "save"/"remove"-icons */
 const imgParent = {
     width: "100%",
     margin: "0",

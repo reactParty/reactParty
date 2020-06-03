@@ -55,7 +55,7 @@ class Popup extends Component {
         }  
     }  
 
-/** Styling for the pop up box */ 
+/** @type {Object} Styling for the pop up box */ 
 const popUp = {
     position: "fixed",  
     width: "100%",  
@@ -68,7 +68,7 @@ const popUp = {
     backgroundColor:"rgba(0,0,0, 0.5)"
 }
 
-/** Styling for the content inside pop up box */
+/** @type {Object} Styling for the content inside pop up box */
 const popUpInner = {
     position: "absolute",  
     left: "25%",  
@@ -79,12 +79,12 @@ const popUpInner = {
     background: "white"
 }
 
-/** Style for the font in pop up box */ 
+/** @type {Object} Style for the font in pop up box */ 
 const pStyle = {
     fontStyle: "italic"
 }
 
-/** Styling h5 element inside pop up box */
+/** @type {Object} Styling h5 element inside pop up box */
 const h5Style = {
     fontWeight: "bold",
     color: "black",

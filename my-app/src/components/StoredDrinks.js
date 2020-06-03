@@ -23,6 +23,14 @@ class StoredDrinks extends Component {
         }
     }
 
+    handleMouseEnter = (event) => {
+        event.target.style.backgroundColor = "rgba(255, 255, 255, 0.8)";
+    }
+
+    handleMouseLeave = (event) => {
+        event.target.style.backgroundColor = "rgba(255, 255, 255, 0.5)";
+    }
+
     /**
      * @returns JSX
      */
@@ -49,8 +57,15 @@ class StoredDrinks extends Component {
                                     <div>
                                         {drinks.map((drink) => {
                                             return (
-                                                <div onClick={()=>this.setState( { viewRecipe: drink } )} style={savedRecipesListItem} key={"drinkId" + drink.idDrink}> 
-                                                    <img src={drinkDot} alt="drinkingdot" style={{height: "30px", marginRight: "15px"}}/>
+                                                <div 
+                                                onClick={()=>this.setState( { viewRecipe: drink } )}
+                                                onMouseEnter={(event)=>this.handleMouseEnter(event)}
+                                                onMouseLeave={(event)=>this.handleMouseLeave(event)}
+                                                style={savedRecipesListItem} key={"drinkId" + drink.idDrink}> 
+                                                    <img 
+                                                    src={drinkDot} 
+                                                    alt="drinkingdot" 
+                                                    style={{height: "30px", marginRight: "15px"}}/>
                                                     {drink.strDrink}
                                                 </div>
                                             )
@@ -96,7 +111,8 @@ const savedRecipesListItem = {
     fontSize: "22px",
     backgroundColor: "rgba(255, 255, 255, 0.5)",
     textDecoration: "underline",
-    borderRadius: "10px"
+    borderRadius: "10px",
+    transition: "all 0.2s"
 }
 
 

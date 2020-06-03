@@ -71,47 +71,49 @@ class ViewRecipe extends Component {
     render() {
         const { drink, storedDrinks } = this.props;
         return (
-            <div style={drinkInfoContainer}>
-                <div style={drinkStyle}>
-                    <h2>{drink.strDrink}</h2>
-                    <img width="100%" style = {{borderRadius: "10px"}} src={drink.strDrinkThumb} alt={drink.strDrink}/>
-                    <div style={imgParent}>
-                        {(storedDrinks.filter((storedDrink)=>drink.idDrink === storedDrink.idDrink).length) ?
-                            (
-                                <div style={drinkDiv}>
-                                    <img
-                                        onClick={()=>this.props.removeDrink(drink.idDrink)}
-                                        style={drinkImg}
-                                        src={removeIcon}
-                                        alt="Remove Drink"/>
-                                </div>
-                            ) :
-                            (
-                                <div style={drinkDiv}>
-                                    <img
-                                        onClick={()=>this.props.addDrink(drink)}
-                                        style={drinkImg}
-                                        src={saveIcon}
-                                        alt="Save Drink"/>
-                                </div>
-                            )
+            <div className="row">         
+                <div style={drinkInfoContainer} className="col-12 col-sm-10 col-md-10 col-lg-6">
+                    <div style={drinkStyle} className="col-10 col-sm-10 col-md-10 col-lg-6">
+                        <h2>{drink.strDrink}</h2>
+                        <img width="100%" style = {{borderRadius: "10px"}} src={drink.strDrinkThumb} alt={drink.strDrink}/>
+                        <div style={imgParent}>
+                            {(storedDrinks.filter((storedDrink)=>drink.idDrink === storedDrink.idDrink).length) ?
+                                (
+                                    <div style={drinkDiv}>
+                                        <img
+                                            onClick={()=>this.props.removeDrink(drink.idDrink)}
+                                            style={drinkImg}
+                                            src={removeIcon}
+                                            alt="Remove Drink"/>
+                                    </div>
+                                ) :
+                                (
+                                    <div style={drinkDiv}>
+                                        <img
+                                            onClick={()=>this.props.addDrink(drink)}
+                                            style={drinkImg}
+                                            src={saveIcon}
+                                            alt="Save Drink"/>
+                                    </div>
+                                )
+                            }
+                        </div>
+                    </div>
+                    <div style={drinkInfo} className="col-10 col-sm-10 col-md-10 col-lg-6">
+                        <h2>Ingredients</h2>
+                        {
+                            this.getIngredients()
                         }
                     </div>
                 </div>
-                <div style={drinkInfo}>
-                    <h2>Ingredients</h2>
-                    {
-                        this.getIngredients()
-                    }
-                </div>
-            </div>
-        )
+            </div>                
+        )   
     }
 }
 
 /** @type {Object} Style of Component container */
 const drinkInfoContainer = {
-    width: "60%",
+    width: "46%",
     display: "flex",
     padding: "0",
     justifyContent: "center",

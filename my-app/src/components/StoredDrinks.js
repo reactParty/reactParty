@@ -38,7 +38,7 @@ class StoredDrinks extends Component {
                         </div>
                     ) : 
                     (
-                        <div style={savedRecipesContainer}>
+                        <div style={savedRecipesContainer} className="col-10 col-sm-11 col-md-8 col-lg-4">
                             <h2>Saved recipes</h2>
                             {(drinks.length) ?
                                 (
@@ -57,6 +57,7 @@ class StoredDrinks extends Component {
                                     <p>You have no saved drink recipes!</p>
                                 )
                             }
+                    
                         </div>              
                     )
 
@@ -77,7 +78,7 @@ const savedRecipesContainer = {
     width: "25%",
     marginLeft: "auto",
     marginRight: "auto",
-    backgroundColor: "lightgrey",
+    backgroundColor: "#FFCCB4",
     padding: "2%",
     marginBottom: "50px",
     borderRadius: "10px"
@@ -89,7 +90,10 @@ const savedRecipesListItem = {
     marginBottom: "15px",
     padding: "2%",
     fontSize: "22px",
-    backgroundColor: "lightblue",
+    backgroundColor: "rgba(255, 255, 255, 0.5)",
+    textDecoration: "underline",
+    borderRadius: "10px"
 }
+
 
 export default StoredDrinks;

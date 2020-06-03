@@ -24,9 +24,9 @@ Before choosing React to work with we looked into both Vue and Angular. We did n
 `yarn add react-responsive-carousel`
 
 ## API:s
-* [Spotify:](https://developer.spotify.com/)
-* [TheCocktailDB:](https://www.thecocktaildb.com/api.php)
-* [Pickup Line REST API:](http://pebble-pickup.herokuapp.com/)
+* [Spotify](https://developer.spotify.com/)
+* [TheCocktailDB](https://www.thecocktaildb.com/api.php)
+* [Pickup Line REST API](http://pebble-pickup.herokuapp.com/)
 
 ## Run the application
 
@@ -34,6 +34,7 @@ Before choosing React to work with we looked into both Vue and Angular. We did n
 2. Add file ignore.js and put your spotify client ID inside:
    
    `export const clientId = "";`
+
 3. `npm install`
 4. `npm start`
 5. Open [http://localhost:3000](http://localhost:3000) in your browser.

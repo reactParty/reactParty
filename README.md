@@ -15,16 +15,16 @@ Before choosing React to work with we looked into both Vue and Angular. We did n
 
 ## Libraries
 
-react-bootstrap: [https://react-bootstrap.github.io/getting-started/introduction]
+[react-bootstrap:](https://react-bootstrap.github.io/getting-started/introduction)
 `npm install react-bootstrap bootstrap`
 
-react-responsive-carousel: [https://www.npmjs.com/package/react-responsive-carousel]
+[react-responsive-carousel:](https://www.npmjs.com/package/react-responsive-carousel)
 `yarn add react-responsive-carousel`
 
 ## API:s
-* Spotify: [https://developer.spotify.com/]
-* TheCocktailDB: [https://www.thecocktaildb.com/api.php]
-* Pickup Line REST API: [http://pebble-pickup.herokuapp.com/]
+* [Spotify:](https://developer.spotify.com/)
+* [TheCocktailDB:](https://www.thecocktaildb.com/api.php)
+* [Pickup Line REST API:](http://pebble-pickup.herokuapp.com/)
 
 ## Run the application
 

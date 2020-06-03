@@ -45,15 +45,15 @@ class DrinksPage extends Component {
         if (!this.props.searchResults.length) return;
         let strAlcoholic = (this.state.nonAlcoholic) ? "Non alcoholic" : "Alcoholic";
         return ( 
-            <div style={drinkContainer}>
+            <div className="row" style={drinkContainer}>
                 {this.props.searchResults.filter((result) => result.strAlcoholic === strAlcoholic).map((result) => { // Loops through every specific result item
                     return ( // Returns HTML for each individual search result
-                        <div style={drinkItem} key={result.idDrink}>
+                        <div className="col-10 col-sm-10 col-md-4 col-lg-4 col-xl-3" style={drinkItem} key={result.idDrink}>
                             <img width="100%" style = {{borderRadius: "10px", cursor: "pointer"}}
                                 src={result.strDrinkThumb}
                                 alt={result.strDrink}
                                 onClick={()=>this.setState( { viewRecipe: result } )}/>
-                            <div style={drinkTitleStyle}>
+                            <div className="col-12" style={drinkTitleStyle}>
                                 <div style={drinkTitleChild}>
                                     {result.strDrink}
                                 </div>
@@ -117,7 +117,6 @@ class DrinksPage extends Component {
 
 /** Styling of div containing all drinks */ 
 const drinkContainer = {
-    width: "80%",
     display: "flex",
     padding: "0",
     justifyContent: "center",
@@ -146,7 +145,8 @@ const drinkTitleStyle = {
     alignItems: "center",
     position: "absolute",
     bottom: "6.4%",
-    width: "87.2%",
+    width: "100%",
+    //width: "87.2%",
     backgroundColor: "rgba(155, 155, 155, 0.7)",
     color: "white",
     textShadow: "2px 2px 4px #000000",

@@ -1,4 +1,4 @@
-## reactParty ##
+# reactParty #
 
 ## Developers
 * Erica Sjöberg
@@ -17,23 +17,3 @@ Before choosing React to work with we looked into both Vue and Angular. We did n
 1. CD into the repository
 2. Write `$ npm start`
 3. Navigate to [http://localhost:3000/](http://localhost:3000/)
-
--- Libs
-
-react-bootstrap: https://react-bootstrap.github.io/getting-started/introduction
-npm install react-bootstrap bootstrap
-
-react-responsive-carousel: https://www.npmjs.com/package/react-responsive-carousel
-yarn add react-responsive-carousel
-
--- Run the application
-
-`cd my-app`
-
-Add file ignore.js and put your spotify client ID inside:
-`export const clientId = "";`
-
-`npm install`
-`npm start`
-
-Then open [http://localhost:3000](http://localhost:3000) in your browser.

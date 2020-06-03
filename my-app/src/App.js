@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { clientId } from './ignore';
-import Header from './components/layout/Header';
+import Header from './components/Header';
 import PickupLines from './components/PickupLines';
 import Main from './components/Main';
 import Footer from './components/Footer';

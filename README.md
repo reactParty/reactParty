@@ -11,20 +11,20 @@ We chose to build an application that is pefect for your stay at home party nigh
     
 
 ## Why React?
-Before choosing React to work with we looked into both Vue and Angular. We did not choose Vue due to fact that we tought that it was slim on online documentation and examples. Angular was a little more attractive to us, but due to our time limit we felt that it was a bit too complicated to understand and learn. React was therefor the better fit for us, the project and our previous coding knowlegde. 
-
-## Run the application
-1. CD into the repository
-2. Write `$ npm start`
-3. Navigate to [http://localhost:3000/](http://localhost:3000/)
+Before choosing React to work with we looked into both Vue and Angular. We did not choose Vue due to fact that we tought that it was slim on online documentation and examples. Angular was a little more attractive to us, but due to our time limit we felt that it was a bit too complicated to understand and learn. React was therefor the better fit for us, the project and our previous coding knowlegde.
 
 ## Libraries
 
-react-bootstrap: https://react-bootstrap.github.io/getting-started/introduction
+react-bootstrap: [https://react-bootstrap.github.io/getting-started/introduction]
 `npm install react-bootstrap bootstrap`
 
-react-responsive-carousel: https://www.npmjs.com/package/react-responsive-carousel
+react-responsive-carousel: [https://www.npmjs.com/package/react-responsive-carousel]
 `yarn add react-responsive-carousel`
+
+## API:s
+* Spotify: [https://developer.spotify.com/]
+* TheCocktailDB: [https://www.thecocktaildb.com/api.php]
+* Pickup Line REST API: [http://pebble-pickup.herokuapp.com/]
 
 ## Run the application
 

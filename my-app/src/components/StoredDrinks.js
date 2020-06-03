@@ -23,6 +23,14 @@ class StoredDrinks extends Component {
         }
     }
 
+    handleMouseEnter = (event) => {
+        event.target.style.backgroundColor = "rgba(255, 255, 255, 0.8)";
+    }
+
+    handleMouseLeave = (event) => {
+        event.target.style.backgroundColor = "rgba(255, 255, 255, 0.5)";
+    }
+
     /**
      * @returns JSX
      */
@@ -50,8 +58,15 @@ class StoredDrinks extends Component {
                                     <div>
                                         {drinks.map((drink) => {
                                             return (
-                                                <div onClick={()=>this.setState( { viewRecipe: drink } )} style={savedRecipesItem} key={"drinkId" + drink.idDrink}> 
-                                                    <img src={drinkDot} alt="drinkingdot" style={{height: "40px", marginRight: "15px"}}/>
+                                                <div 
+                                                onClick={()=>this.setState( { viewRecipe: drink } )}
+                                                onMouseEnter={(event)=>this.handleMouseEnter(event)}
+                                                onMouseLeave={(event)=>this.handleMouseLeave(event)}
+                                                style={savedRecipesItem} key={"drinkId" + drink.idDrink}> 
+                                                    <img 
+                                                    src={drinkDot} 
+                                                    alt="drinkingdot" 
+                                                    style={{height: "40px", marginRight: "15px"}}/>
                                                     {drink.strDrink}
                                                 </div>
                                             )
@@ -102,6 +117,7 @@ const savedRecipesItem = {
     backgroundColor: "rgba(255, 255, 255, 0.5)",
     textDecoration: "underline",
     borderRadius: "10px",
+    transition: "all 0.2s",
     border: "1px solid #999"
 }
 
